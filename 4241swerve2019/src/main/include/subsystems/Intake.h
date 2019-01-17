@@ -8,13 +8,17 @@
 #pragma once
 
 #include <frc/commands/Subsystem.h>
+#include "ctre/phoenix.h"
 
 class Intake : public frc::Subsystem {
  private:
+ TalonSRX intakeMotor1;
+ TalonSRX intakeMoter2;
   // It's desirable that everything possible under private except
   // for methods that implement subsystem capabilities
 
  public:
   Intake();
   void InitDefaultCommand() override;
+  void open;
 };

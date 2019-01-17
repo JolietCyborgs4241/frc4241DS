@@ -10,6 +10,8 @@
 #include <frc/commands/Command.h>
 
 class Claw : public frc::Command {
+
+
  public:
   Claw();
   void Initialize() override;
@@ -17,4 +19,5 @@ class Claw : public frc::Command {
   bool IsFinished() override;
   void End() override;
   void Interrupted() override;
+
 };
