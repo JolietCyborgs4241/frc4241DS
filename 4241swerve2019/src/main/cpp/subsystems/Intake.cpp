@@ -7,7 +7,7 @@
 
 #include "subsystems/Intake.h"
 #include "WPILib.h"
-#include "ctre/phoenix"
+#include "ctre/phoenix.h"
 
 Intake::Intake() : Subsystem("Intake") {
   intakemotor1 = TalonSRX(5);

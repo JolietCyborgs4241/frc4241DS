@@ -11,10 +11,12 @@
 #include <frc/commands/Command.h>
 #include <frc/smartdashboard/SendableChooser.h>
 
+#include "subsytems/Intake.h"
 #include "OI.h"
 #include "commands/ExampleCommand.h"
 #include "commands/MyAutoCommand.h"
 #include "subsystems/ExampleSubsystem.h"
+#include "commands/Claw.h"
 
 class Robot : public frc::TimedRobot {
  public:
@@ -31,6 +33,7 @@ class Robot : public frc::TimedRobot {
   void TeleopPeriodic() override;
   void TestPeriodic() override;
 
+static Intake* intake;
  private:
   // Have it null by default so that if testing teleop it
   // doesn't have undefined behavior and potentially crash.
