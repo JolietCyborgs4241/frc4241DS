@@ -1,7 +1,7 @@
 #include "frc/WPILib.h"
 #include "OI.h"
 #include "subsystems/DriveTrain.h"
-#include "LiveWindow/LiveWindow.h"
+#include "frc/liveWindow/LiveWindow.h"
 #include "RobotMap.h"
 using namespace frc;
 
@@ -55,7 +55,7 @@ class Robot : public IterativeRobot {
     std::unique_ptr<frc::Command> autonomousCommand;
     frc::SendableChooser<int> chooser;
 
-    /*
+    
       void LEDSet(int led);
       bool prevTrigger;
       Preferences* Prefs;
@@ -63,4 +63,4 @@ class Robot : public IterativeRobot {
       int turnDirection;
       float driveForwardAngle;
       */ 
-}
+};

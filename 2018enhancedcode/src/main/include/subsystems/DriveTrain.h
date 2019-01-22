@@ -2,6 +2,7 @@
 #include "frc/WPILib.h"
 #include "ctre/Phoenix.h"
 #include "Math.h"
+using namespace frc;
 
 // Code copied and modified from FRC 16's Macy's 2014 DriveTrain
 // https://github.com/FRCTeam16/Macys2014/blob/master/Macys2014/Subsystems/DriveTrain.cpp

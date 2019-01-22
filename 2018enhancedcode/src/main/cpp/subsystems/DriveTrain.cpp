@@ -1,8 +1,9 @@
-#include "DriveTrain.h"
+#include "subsystems/DriveTrain.h"
 #include "Math.h"
 #include "Robot.h"
 #include "Robotmap.h"
 #include "ctre/Phoenix.h"
+using namespace frc;
 
 DriveTrain::DriveTrain() : Subsystem("DriveTrain") {
     frontLeftDrive = RobotMap::driveTrainFrontLeftDrive;
@@ -52,11 +53,11 @@ void DriveTrain::Crab(float y, float x, float twist, bool useGyro) {
     float FWD = y * driveAdjust;
     float STR = x * driveAdjust;
 
-    if (useGyro) {
+    /*if (useGyro) {
         double robotangle = Robot::pigeon->GetYaw() * M_PI / 180;
         FWD = +y * sin(robotangle) + x * cos(robotangle);
         STR = -y * cos(robotangle) + x * sin(robotangle);
-    }
+    } */
 
     radius = sqrt(pow(Y, 2) + pow(X, 2));
 
@@ -117,11 +118,11 @@ void DriveTrain::SwerveArcade(float y, float x, float twist, bool useGyro) {
     float FWD = y * driveAdjust;
     float STR = x * driveAdjust;
 
-    if (useGyro) {
+    /*if (useGyro) {
         double robotangle = Robot::pigeon->GetYaw() * M_PI / 180;
         FWD = +y * sin(robotangle) + x * cos(robotangle);
         STR = -y * cos(robotangle) + x * sin(robotangle);
-    }
+    } */
 
     AP = STR;
     BP = STR;
