@@ -299,4 +299,4 @@ void Robot::Dashboard() {
     SmartDashboard::PutBoolean("Precision-Drive", driveTrain->precisionDrive);
 }
 */
-//START_ROBOT_CLASS(Robot); Syntax Update for "Start_ROBOT_CLASS" fix it
+START_ROBOT_CLASS(Robot); 
