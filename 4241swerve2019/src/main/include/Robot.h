@@ -13,10 +13,11 @@
 
 #include "OI.h"
 #include "subsystems/Pneumatics.h"
+using namespace frc;
 class Robot : public frc::TimedRobot {
  public:
-  static Pneumatics pneumatics;
-  static OI oi;
+  static Pneumatics* pneumatics;
+  static OI* oi;
 
   void RobotInit() override;
   void RobotPeriodic() override;

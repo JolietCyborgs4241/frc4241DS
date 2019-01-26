@@ -11,11 +11,14 @@
 #include <frc/smartdashboard/SmartDashboard.h>
 using namespace frc;
 
-OI Robot::oi;
-Pneumatics Robot::pneumatics;
+
+OI* Robot::oi = NULL;
+Pneumatics* Robot::pneumatics = NULL;
 
 void Robot::RobotInit() {
   frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
+  oi = new OI();
+  pneumatics = new Pneumatics();
 }
 
 /**
@@ -67,7 +70,7 @@ void Robot::AutonomousInit() {
 
 void Robot::AutonomousPeriodic() { frc::Scheduler::GetInstance()->Run(); }
 
-//void Robot::TeleopInit() {
+void Robot::TeleopInit() {
   // This makes sure that the autonomous stops running when
   // teleop starts running. If you want the autonomous to
   // continue until interrupted by another command, remove
@@ -76,7 +79,7 @@ void Robot::AutonomousPeriodic() { frc::Scheduler::GetInstance()->Run(); }
     //m_autonomousCommand->Cancel();
     //m_autonomousCommand = nullptr;
   //}
-//}
+}
 
 void Robot::TeleopPeriodic() { frc::Scheduler::GetInstance()->Run(); }
 
@@ -85,3 +88,4 @@ void Robot::TestPeriodic() {}
 #ifndef RUNNING_FRC_TESTS
 int main() { return frc::StartRobot<Robot>(); }
 #endif
+

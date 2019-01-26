@@ -6,9 +6,15 @@
 /*----------------------------------------------------------------------------*/
 
 #include "OI.h"
-
+#include "commands/ClawPneumatics.h"
 #include <frc/WPILib.h>
 
 OI::OI() {
   // Process operator interface input here.
+  mechanismjoystick = new Joystick(0);
+  a = new JoystickButton(mechanismjoystick, 1);
+
+a->ToggleWhenPressed(new ClawPneumatics);
 }
+
+
