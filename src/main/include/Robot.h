@@ -10,7 +10,7 @@
 #include <frc/TimedRobot.h>
 #include <frc/commands/Command.h>
 #include <frc/smartdashboard/SendableChooser.h>
-#include "subsytems/Intake.h"
+#include "subsystems/Intake.h"
 #include "OI.h"
 #include "commands/Claw.h"
 using namespace frc;

@@ -17,7 +17,7 @@ Intake* Robot::m_intake = NULL;
 void Robot::RobotInit() {
 
   frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
-  oi = new OI();
+  m_oi = new OI();
   m_intake = new Intake();
 }
 

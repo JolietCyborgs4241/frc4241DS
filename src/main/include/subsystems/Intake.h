@@ -6,9 +6,8 @@
 /*----------------------------------------------------------------------------*/
 
 #pragma once
-
-#include <frc/commands/Subsystem.h>
 #include "ctre/Phoenix.h"
+#include "frc/WPILib.h"
 using namespace frc;
 class Intake : public frc::Subsystem {
  private:

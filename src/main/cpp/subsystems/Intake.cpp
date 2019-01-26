@@ -6,7 +6,7 @@
 /*----------------------------------------------------------------------------*/
 
 #include "subsystems/Intake.h"
-#include "WPILib.h"
+#include "frc/WPILib.h"
 #include "ctre/Phoenix.h"
 
 Intake::Intake() : Subsystem("Intake") {
