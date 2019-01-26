@@ -16,7 +16,7 @@
 class Robot : public frc::TimedRobot {
  public:
   static Pneumatics pneumatics;
-  static OI m_oi;
+  static OI oi;
 
   void RobotInit() override;
   void RobotPeriodic() override;
