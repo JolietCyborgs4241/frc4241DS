@@ -5,23 +5,20 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "subsystems/Intake.h"
-#include "WPILib.h"
-#include "ctre/phoenix.h"
+#pragma once
 
-Intake::Intake() : Subsystem("Intake") {
-  intakemotor1 = TalonSRX(5);
-  intakemotor2 = TalonSRx(7);
-}
+#include <frc/commands/Subsystem.h>
+#include "ctre/Phoenix.h"
+using namespace frc;
+class Intake : public frc::Subsystem {
+ private:
+ WPI_TalonSRX* intakeMotor1;
+ WPI_TalonSRX* intakeMotor2;
+  // It's desirable that everything possible under private except
+  // for methods that implement subsystem capabilities
 
-void Intake::InitDefaultCommand() {
-  // Set the default command for a subsystem here.
-  // SetDefaultCommand(new MySpecialCommand());
-
-}
- void Intake::open(){
-   intakemotor1 -> set(0.2);
-   intakemotor2 -> set(0.2);
- }
-// Put methods for controlling this subsystem
-// here. Call these from Commands.
+ public:
+  Intake();
+  void InitDefaultCommand() override;
+  void Open();
+};

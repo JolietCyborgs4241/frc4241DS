@@ -7,12 +7,12 @@
 
 #include "commands/Claw.h"
 #include "Robot.h"
-#include "Intake.h"
+#include "subsystems/Intake.h"
 
 Claw::Claw() {
   // Use Requires() here to declare subsystem dependencies
   // eg. Requires(Robot::chassis.get());
-  Requires(Robot::open());
+  
 }
 
 // Called just before this Command runs the first time
@@ -20,7 +20,7 @@ void Claw::Initialize() {}
 
 // Called repeatedly when this Command is scheduled to run
 void Claw::Execute() {
-Robot::Intake->open();
+Robot::m_intake->Open();
 }
 
 // Make this return true when this Command no longer needs to run execute()
