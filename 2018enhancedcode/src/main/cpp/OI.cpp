@@ -5,7 +5,7 @@ OI::OI() {
     xBoxControl = new Joystick(0);
     xBoxDrive = new Joystick(1);
 
-    // Xbox
+    //Xbox
     /*DriveA = new JoystickButton(xBoxDrive, 1);
     DriveB = new JoystickButton(xBoxDrive, 2);
     DriveX = new JoystickButton(xBoxDrive, 3);
