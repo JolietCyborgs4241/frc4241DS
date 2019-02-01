@@ -6,12 +6,12 @@
 /*----------------------------------------------------------------------------*/
 
 #include "subsystems/Intake.h"
-#include "WPILib.h"
-#include "ctre/phoenix.h"
+#include "frc/WPILib.h"
+#include "ctre/Phoenix.h"
 
 Intake::Intake() : Subsystem("Intake") {
-  intakemotor1 = TalonSRX(5);
-  intakemotor2 = TalonSRx(7);
+  intakeMotor1 = new WPI_TalonSRX(5);
+  intakeMotor2 = new WPI_TalonSRX(7);
 }
 
 void Intake::InitDefaultCommand() {
@@ -19,9 +19,9 @@ void Intake::InitDefaultCommand() {
   // SetDefaultCommand(new MySpecialCommand());
 
 }
- void Intake::open(){
-   intakemotor1 -> set(0.2);
-   intakemotor2 -> set(0.2);
+ void Intake::Open(){
+   intakeMotor1->Set(0.2);
+   intakeMotor2->Set(0.2);
  }
 // Put methods for controlling this subsystem
 // here. Call these from Commands.

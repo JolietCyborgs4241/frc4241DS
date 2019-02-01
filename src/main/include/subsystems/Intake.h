@@ -6,19 +6,18 @@
 /*----------------------------------------------------------------------------*/
 
 #pragma once
-
-#include <frc/commands/Subsystem.h>
-#include "ctre/phoenix.h"
-
+#include "ctre/Phoenix.h"
+#include "frc/WPILib.h"
+using namespace frc;
 class Intake : public frc::Subsystem {
  private:
- TalonSRX intakeMotor1;
- TalonSRX intakeMoter2;
+ WPI_TalonSRX* intakeMotor1;
+ WPI_TalonSRX* intakeMotor2;
   // It's desirable that everything possible under private except
   // for methods that implement subsystem capabilities
 
  public:
   Intake();
   void InitDefaultCommand() override;
-  void open;
+  void Open();
 };

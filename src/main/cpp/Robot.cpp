@@ -9,15 +9,16 @@
 
 #include <frc/commands/Scheduler.h>
 #include <frc/smartdashboard/SmartDashboard.h>
+using namespace frc;
 
-ExampleSubsystem Robot::m_subsystem;
-OI Robot::m_oi;
-Intake Robot::m_intake;
+OI* Robot::m_oi = NULL;
+Intake* Robot::m_intake = NULL;
 
 void Robot::RobotInit() {
-  m_chooser.SetDefaultOption("Default Auto", &m_defaultAuto);
-  m_chooser.AddOption("My Auto", &m_myAuto);
+
   frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
+  m_oi = new OI();
+  m_intake = new Intake();
 }
 
 /**
