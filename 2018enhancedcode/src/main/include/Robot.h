@@ -3,6 +3,8 @@
 #include "subsystems/DriveTrain.h"
 #include "frc/liveWindow/LiveWindow.h"
 #include "RobotMap.h"
+#include "subsystems/Pigeon.h"
+#include "subsystems/PigeonPID.h"
 using namespace frc;
 
 class Robot : public IterativeRobot {
@@ -10,16 +12,18 @@ class Robot : public IterativeRobot {
     // Command *autonomousCommand;
     static OI* oi;
     static DriveTrain* driveTrain;
-    /*static Pigeon* pigeon;
-    static Elevator* elevator;
+    static Pigeon* pigeon;
+    static double twistPID_Value;
+	  static bool twistPID_Enabled;
+    /*static Elevator* elevator;
     static Pneumatics* pneumatics;
     static Elevator2* elevator2;
 
-    static bool gyroAssist;
+    static bool gyroAssist; */
     static PigeonPID* gyroAssistPID;
 
     static bool fieldCentric;
-    static bool elevatorPositionControl;
+    /*static bool elevatorPositionControl;
     static bool useUpperLimitSwitch;
 
     static MB1013Sensor* mb1013Sensor;
@@ -31,7 +35,7 @@ class Robot : public IterativeRobot {
     static bool recievedGameData;
 
     static Timer* autoTimer;
-
+*/
     LiveWindow* lw;
     virtual void RobotInit();
     virtual void AutonomousInit();
@@ -62,5 +66,5 @@ class Robot : public IterativeRobot {
       int turnDegree;
       int turnDirection;
       float driveForwardAngle;
-      */ 
+      
 };

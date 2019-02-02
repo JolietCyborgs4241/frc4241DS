@@ -1,6 +1,7 @@
 #pragma once
 #include "frc/WPILib.h"
 #include "ctre/Phoenix.h"
+#include "subsystems/Pigeon.h"
 using namespace frc;
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -31,6 +32,7 @@ class RobotMap {
     static WPI_TalonSRX* rampWinchMotor;
     static DigitalInput* elevatorUpperLimitSwitch;
     static DigitalInput* elevatorBottomLimitSwitch;
+    static Pigeon* pigeon;
     // static CameraServer* Cam;
 
     static void init();

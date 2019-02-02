@@ -27,6 +27,7 @@ PIDController* RobotMap::driveTrainRearLeft = NULL;
 AnalogInput* RobotMap::driveTrainRearRightPos = NULL;
 WPI_TalonSRX* RobotMap::driveTrainRearRightSteer = NULL;
 PIDController* RobotMap::driveTrainRearRight = NULL;
+Pigeon* RobotMap::pigeon = NULL;
 
 /*WPI_TalonSRX* RobotMap::elevatorMotor = NULL;
 DigitalInput* RobotMap::elevatorUpperLimitSwitch = NULL;
@@ -55,7 +56,7 @@ void RobotMap::init() {
     // driveTrainRearRightDrive->ConfigOpenloopRamp(RAMP_TIME_TO_FULL, 10);
 
     driveTrainRearRightPos = new AnalogInput(3);
-    /*lw->AddSensor("DriveTrain", "RearRightPos", driveTrainRearRightPos);*/ //Syntax update for "lw->" fix it 
+    /*lw->AddSensor("DriveTrain", "RearRightPos", driveTrainRearRightPos);*/  
     driveTrainRearRightSteer = new WPI_TalonSRX(1);
     driveTrainRearRight = new PIDController(0.6, 0.0, 0.0, driveTrainRearRightPos, driveTrainRearRightSteer, 0.02);
     /*lw->AddActuator("DriveTrain", "RearRight", driveTrainRearRight);*/
