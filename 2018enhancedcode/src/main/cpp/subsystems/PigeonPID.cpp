@@ -28,16 +28,17 @@ void PigeonPID::InitDefaultCommand() {
     // SetDefaultCommand(new MySpecialCommand());
 }
 
-/*void PigeonPID::UsePIDOutput(double output) {
+void PigeonPID::UsePIDOutput(double output) {
 	Robot::twistPID_Value = output;
 	//RobotMap::angleDrive = (output);
 	// Use output to drive your system, like a motor
 	// e.g. yourMotor->Set(output);
-} */
-
-void PigeonPID::UsePIDOutput(double out) {
     output = out;
-}
+} 
+
+
+    
+
 
 bool PigeonPID::IsEnabled() {
     return pid->IsEnabled();

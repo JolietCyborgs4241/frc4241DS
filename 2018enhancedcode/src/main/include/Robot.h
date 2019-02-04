@@ -18,8 +18,8 @@ class Robot : public IterativeRobot {
     /*static Elevator* elevator;
     static Pneumatics* pneumatics;
     static Elevator2* elevator2;
-
-    static bool gyroAssist; */
+    */
+    static bool gyroAssist; 
     static PigeonPID* gyroAssistPID;
 
     static bool fieldCentric;

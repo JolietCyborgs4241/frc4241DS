@@ -12,8 +12,8 @@ Pneumatics* Robot::pneumatics = NULL;
 
 LIDARLite* Robot::leftLidarLite = NULL;
 LIDARLite* Robot::rightLidarLite = NULL;
-
-bool Robot::gyroAssist = false; */
+*/
+bool Robot::gyroAssist = false; 
 PigeonPID* Robot::gyroAssistPID = NULL;
 
 bool Robot::fieldCentric = true;
@@ -225,11 +225,11 @@ void Robot::TeleopPeriodic() {
 //     joystickX is +right, so do nothing to match +X -> right
 //     joystickZ is +right, so invert to match -twist -> clockwise (decrement angle on unit circle)
 
-//     if (gyroAssist) {
-//        driveTrain->Crab(-oi->getDriveLeftY(), oi->getDriveLeftX(), gyroAssistPID->GetOutput(), true);
-//     } else {
-//         driveTrain->Crab(-oi->getDriveLeftY(), oi->getDriveLeftX(), -oi->getDriveRightX(), fieldCentric);
-//    }
+    if (gyroAssist) {
+       driveTrain->Crab(-oi->getDriveLeftY(), oi->getDriveLeftX(), gyroAssistPID->GetOutput(), true);
+    } else {
+        driveTrain->Crab(-oi->getDriveLeftY(), oi->getDriveLeftX(), -oi->getDriveRightX(), fieldCentric);
+   }
 
     /*
     // Elevator Control
