@@ -6,7 +6,7 @@ using namespace frc;
 OI* Robot::oi = NULL;
 
 DriveTrain* Robot::driveTrain = NULL;
-Pigeon* Robot::pigeon = NULL;
+//Pigeon* Robot::pigeon = NULL;
 /*Elevator* Robot::elevator = NULL;
 Pneumatics* Robot::pneumatics = NULL;
 
@@ -14,7 +14,7 @@ LIDARLite* Robot::leftLidarLite = NULL;
 LIDARLite* Robot::rightLidarLite = NULL;
 */
 bool Robot::gyroAssist = false; 
-PigeonPID* Robot::gyroAssistPID = NULL;
+//PigeonPID* Robot::gyroAssistPID = NULL;
 
 bool Robot::fieldCentric = true;
 /*bool Robot::elevatorPositionControl = false;
@@ -35,10 +35,11 @@ void Robot::RobotInit() {
     //pneumatics = new Pneumatics();
 
     driveTrain = new DriveTrain();
-    pigeon = new Pigeon();
+    //pigeon = new Pigeon();
 
-    gyroAssistPID = new PigeonPID();
-    gyroAssistPID->SetSetpoint(0);
+    //gyroAssistPID = new PigeonPID();
+    //gyroAssistPID->SetSetpoint(0);
+    
 /*
     mb1013Sensor = new MB1013Sensor();
 
@@ -207,8 +208,8 @@ void Robot::TeleopInit() {
 
     cycleTime = Timer::GetFPGATimestamp();
 
-    pigeon->Update();
-    pigeon->SaveTilt();
+    //pigeon->Update();
+    //pigeon->SaveTilt();
 
     driveTrain->EnablePIDs();
 
@@ -225,11 +226,11 @@ void Robot::TeleopPeriodic() {
 //     joystickX is +right, so do nothing to match +X -> right
 //     joystickZ is +right, so invert to match -twist -> clockwise (decrement angle on unit circle)
 
-    if (gyroAssist) {
-       driveTrain->Crab(-oi->getDriveLeftY(), oi->getDriveLeftX(), gyroAssistPID->GetOutput(), true);
-    } else {
-        driveTrain->Crab(-oi->getDriveLeftY(), oi->getDriveLeftX(), -oi->getDriveRightX(), fieldCentric);
-   }
+//     if (gyroAssist) {
+//        driveTrain->Crab(-oi->getDriveLeftY(), oi->getDriveLeftX(), gyroAssistPID->GetOutput(), true);
+//     } else {
+//         driveTrain->Crab(-oi->getDriveLeftY(), oi->getDriveLeftX(), -oi->getDriveRightX(), fieldCentric);
+//    }
 
     /*
     // Elevator Control
@@ -277,13 +278,13 @@ void Robot::Dashboard() {
     //SmartDashboard::PutBoolean("LimitSwitch", RobotMap::elevatorUpperLimitSwitch->Get());
 
 
-    SmartDashboard::PutNumber("Pigeon-Yaw", pigeon->GetYaw());
-    SmartDashboard::PutBoolean("Pigeon-AmTilted", pigeon->AmTilted());
-    SmartDashboard::PutBoolean("Pigeon-COLLIDED", pigeon->WasCollision());
+    // SmartDashboard::PutNumber("Pigeon-Yaw", pigeon->GetYaw());
+    // SmartDashboard::PutBoolean("Pigeon-AmTilted", pigeon->AmTilted());
+    // SmartDashboard::PutBoolean("Pigeon-COLLIDED", pigeon->WasCollision());
 
     //SmartDashboard::PutBoolean("Gyro-Assist", gyroAssist);
-    SmartDashboard::PutNumber("GyroPID-Pos", gyroAssistPID->GetPosition());
-    SmartDashboard::PutBoolean("GyroPID-OnTarget", gyroAssistPID->OnTarget());
+    //SmartDashboard::PutNumber("GyroPID-Pos", gyroAssistPID->GetPosition());
+    //000SmartDashboard::PutBoolean("GyroPID-OnTarget", gyroAssistPID->OnTarget());
     //SmartDashboard::PutNumber("GyroPID-Twist", gyroAssistPID->GetOutput());
     //SmartDashboard::PutNumber("GyroPID-Error", gyroAssistPID->GetDegError());
 

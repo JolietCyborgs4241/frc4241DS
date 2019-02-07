@@ -27,7 +27,7 @@ PIDController* RobotMap::driveTrainRearLeft = NULL;
 AnalogInput* RobotMap::driveTrainRearRightPos = NULL;
 WPI_TalonSRX* RobotMap::driveTrainRearRightSteer = NULL;
 PIDController* RobotMap::driveTrainRearRight = NULL;
-Pigeon* RobotMap::pigeon = NULL;
+//Pigeon* RobotMap::pigeon = NULL;
 
 /*WPI_TalonSRX* RobotMap::elevatorMotor = NULL;
 DigitalInput* RobotMap::elevatorUpperLimitSwitch = NULL;

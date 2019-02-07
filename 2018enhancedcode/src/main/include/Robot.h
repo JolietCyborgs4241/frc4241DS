@@ -12,15 +12,15 @@ class Robot : public IterativeRobot {
     // Command *autonomousCommand;
     static OI* oi;
     static DriveTrain* driveTrain;
-    static Pigeon* pigeon;
-    static double twistPID_Value;
-	  static bool twistPID_Enabled;
+    //static Pigeon* pigeon;
+    //static double twistPID_Value;
+	  //static bool twistPID_Enabled;
     /*static Elevator* elevator;
     static Pneumatics* pneumatics;
     static Elevator2* elevator2;
     */
     static bool gyroAssist; 
-    static PigeonPID* gyroAssistPID;
+    //static PigeonPID* gyroAssistPID;
 
     static bool fieldCentric;
     /*static bool elevatorPositionControl;
