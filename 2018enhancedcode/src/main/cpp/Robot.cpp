@@ -6,7 +6,7 @@ using namespace frc;
 OI* Robot::oi = NULL;
 
 DriveTrain* Robot::driveTrain = NULL;
-//Pigeon* Robot::pigeon = NULL;
+Pigeon* Robot::pigeon = NULL;
 /*Elevator* Robot::elevator = NULL;
 Pneumatics* Robot::pneumatics = NULL;
 
@@ -35,7 +35,7 @@ void Robot::RobotInit() {
     //pneumatics = new Pneumatics();
 
     driveTrain = new DriveTrain();
-    //pigeon = new Pigeon();
+    pigeon = new Pigeon();
 
     //gyroAssistPID = new PigeonPID();
     //gyroAssistPID->SetSetpoint(0);
@@ -220,7 +220,8 @@ void Robot::TeleopInit() {
 void Robot::TeleopPeriodic() {
     SmartDashboard::PutNumber("CycleTime", Timer::GetFPGATimestamp() - cycleTime);
     cycleTime = Timer::GetFPGATimestamp();
-    driveTrain->Crab(-oi->getDriveLeftY(), oi->getDriveLeftX(), -oi->getDriveRightX(), fieldCentric);
+    //driveTrain->Crab(-oi->getDriveLeftY(), oi->getDriveLeftX(), -oi->getDriveRightX(), fieldCentric);
+    driveTrain->Crab(-oi->getDriveLeftY(), oi->getDriveLeftX(), 0, fieldCentric);
 //     Drive Control
 //     joystickY is -up, so invert to match +Y -> forward
 //     joystickX is +right, so do nothing to match +X -> right

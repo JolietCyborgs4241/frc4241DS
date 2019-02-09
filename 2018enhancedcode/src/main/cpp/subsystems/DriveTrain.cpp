@@ -23,7 +23,7 @@ DriveTrain::DriveTrain() : Subsystem("DriveTrain") {
     rearRightSteer = RobotMap::driveTrainRearRightSteer;
     rearRight = RobotMap::driveTrainRearRight;
 
-    FLInv = 1;
+    FLInv = 1; 
     FRInv = 1;
     RRInv = 1;
     RLInv = 1;
@@ -50,21 +50,23 @@ void DriveTrain::ToggleFrontBack() {
 }
 
 void DriveTrain::Crab(float y, float x, float twist, bool useGyro) {
-    float FWD = y * driveAdjust;
-    float STR = x * driveAdjust;
+    // float forward = y * driveAdjust;
+    // float strafe = x * driveAdjust; //doesn't match github
+    float forward = y; 
+    float strafe = x;
 
-    /*if (useGyro) {
+    if (useGyro) {
         double robotangle = Robot::pigeon->GetYaw() * M_PI / 180;
-        FWD = +y * sin(robotangle) + x * cos(robotangle);
-        STR = -y * cos(robotangle) + x * sin(robotangle);
-    } */
+        forward = +y * sin(robotangle) + x * cos(robotangle);
+        strafe = -y * cos(robotangle) + x * sin(robotangle);
+    } 
 
     radius = sqrt(pow(Y, 2) + pow(X, 2));
 
-    AP = STR + twist * X / radius;
-    BP = STR - twist * X / radius;
-    CP = FWD + twist * Y / radius;
-    DP = FWD - twist * Y / radius;
+    AP = strafe + twist * X / radius;
+    BP = strafe - twist * X / radius;
+    CP = forward + twist * Y / radius;
+    DP = forward - twist * Y / radius;
 
     float FLSetPoint = 0;
     float FRSetPoint = 0;
@@ -115,19 +117,19 @@ void DriveTrain::Crab(float y, float x, float twist, bool useGyro) {
 }
 
 void DriveTrain::SwerveArcade(float y, float x, float twist, bool useGyro) {
-    float FWD = y * driveAdjust;
-    float STR = x * driveAdjust;
+    float forward = y * driveAdjust;
+    float strafe = x * driveAdjust;
 
     /*if (useGyro) {
         double robotangle = Robot::pigeon->GetYaw() * M_PI / 180;
-        FWD = +y * sin(robotangle) + x * cos(robotangle);
-        STR = -y * cos(robotangle) + x * sin(robotangle);
+        forward = +y * sin(robotangle) + x * cos(robotangle);
+        strafe = -y * cos(robotangle) + x * sin(robotangle);
     } */
 
-    AP = STR;
-    BP = STR;
-    CP = FWD;
-    DP = FWD;
+    AP = strafe;
+    BP = strafe;
+    CP = forward;
+    DP = forward;
 
     float FLSetPoint = 0;
     float FRSetPoint = 0;
