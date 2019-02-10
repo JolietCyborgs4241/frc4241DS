@@ -6,6 +6,7 @@
 /*----------------------------------------------------------------------------*/
 
 #include "subsystems/Ramp.h"
+#include "RobotMap.h"
 
 Ramp::Ramp() : Subsystem("ExampleSubsystem") {
   RampMolo = RobotMap::rampMolo;

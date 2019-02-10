@@ -8,12 +8,14 @@
 #pragma once
 
 #include <frc/commands/Subsystem.h>
+#include "frc/WPILib.h"
+#include "ctre/Phoenix.h"
 
 class Ramp : public frc::Subsystem {
  private:
   // It's desirable that everything possible under private except
   // for methods that implement subsystem capabilities
-  WPI_TALONSRX* RampMolo;
+  WPI_TalonSRX* RampMolo;
 
  public:
   Ramp();

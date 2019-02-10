@@ -34,7 +34,7 @@ class RobotMap {
     static  WPI_TalonSRX* robotArmFulcrum;
     static WPI_TalonSRX* robotArmExtension;
     static WPI_TalonSRX* robotArmClaw;
-    static WPITalonSRX* rampMolo;
+    static WPI_TalonSRX* rampMolo;
     // static CameraServer* Cam;
 
     static void init();

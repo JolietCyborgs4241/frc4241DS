@@ -30,7 +30,7 @@ PIDController* RobotMap::driveTrainRearRight = NULL;
 WPI_TalonSRX* RobotMap::robotArmFulcrum = NULL;
 WPI_TalonSRX* RobotMap::robotArmExtension = NULL;
 WPI_TalonSRX* RobotMap::robotArmClaw = NULL;
-WPI_TalonSRX* RbotMap::rampMolo = NULL;
+WPI_TalonSRX* RobotMap::rampMolo = NULL;
 
 /*WPI_TalonSRX* RobotMap::elevatorMotor = NULL;
 DigitalInput* RobotMap::elevatorUpperLimitSwitch = NULL;
@@ -42,7 +42,7 @@ void RobotMap::init() {
     robotArmFulcrum = new WPI_TalonSRX(1);
     robotArmExtension = new WPI_TalonSRX(2);
     robotArmClaw = new WPI_TalonSRX(3);
-    rampMolo = new WPI_TalonSrx(4);
+    rampMolo = new WPI_TalonSRX(4);
     /*elevatorMotor = new WPI_TalonSRX(4);
     elevatorMotor->ConfigOpenloopRamp(0.5, 10);
     elevatorMotor->ConfigClosedloopRamp(0.5, 10);
