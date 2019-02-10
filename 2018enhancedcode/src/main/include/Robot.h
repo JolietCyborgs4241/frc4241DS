@@ -4,6 +4,7 @@
 #include "frc/liveWindow/LiveWindow.h"
 #include "RobotMap.h"
 #include "subsystems/RobotArm.h"
+#include "subsystems/Ramp.h"
 using namespace frc;
 
 class Robot : public IterativeRobot {
@@ -12,6 +13,7 @@ class Robot : public IterativeRobot {
     static OI* oi;
     static DriveTrain* driveTrain;
     static RobotArm* robotArm;
+    static Ramp* ramp;
     /*static Pigeon* pigeon;
     static Elevator* elevator;
     static Pneumatics* pneumatics;

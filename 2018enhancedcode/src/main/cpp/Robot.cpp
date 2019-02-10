@@ -6,6 +6,7 @@ using namespace frc;
 OI* Robot::oi = NULL;
 RobotArm* Robot::robotArm = NULL;
 DriveTrain* Robot::driveTrain = NULL;
+Ramp* Robot::ramp = NULL;
 // Pigeon* Robot::pigeon = NULL;
 // Elevator* Robot::elevator = NULL;
 // Pneumatics* Robot::pneumatics = NULL;
@@ -30,6 +31,7 @@ void Robot::RobotInit() {
     RobotMap::init();
 
     oi = new OI();
+    ramp = new Ramp();
 
     // elevator = new Elevator();
     // pneumatics = new Pneumatics();
