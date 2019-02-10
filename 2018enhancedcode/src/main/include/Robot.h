@@ -3,6 +3,7 @@
 #include "subsystems/DriveTrain.h"
 #include "frc/liveWindow/LiveWindow.h"
 #include "RobotMap.h"
+#include "subsystems/RobotArm.h"
 using namespace frc;
 
 class Robot : public IterativeRobot {
@@ -10,6 +11,7 @@ class Robot : public IterativeRobot {
     // Command *autonomousCommand;
     static OI* oi;
     static DriveTrain* driveTrain;
+    static RobotArm* robotArm;
     /*static Pigeon* pigeon;
     static Elevator* elevator;
     static Pneumatics* pneumatics;
@@ -32,9 +34,9 @@ class Robot : public IterativeRobot {
 
     static Timer* autoTimer;
 
-    LiveWindow* lw;
+    LiveWindow* lw; */
     virtual void RobotInit();
-    virtual void AutonomousInit();
+    /*virtual void AutonomousInit();
     virtual void AutonomousPeriodic();
     virtual void TeleopInit();
     virtual void TeleopPeriodic();
@@ -62,5 +64,5 @@ class Robot : public IterativeRobot {
       int turnDegree;
       int turnDirection;
       float driveForwardAngle;
-      */ 
+      */
 };
