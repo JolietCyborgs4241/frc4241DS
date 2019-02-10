@@ -6,6 +6,16 @@ OI::OI() {
     xBoxDrive = new Joystick(1);
 
     // Xbox
+    ControlA = new JoystickButton(xBoxControl, 1)
+    ControlB = new JoystickButton(xBoxControl, 2)
+
+    ControlA->WhenPressed(new RampUp());
+    ControlB->WhenPressed(new RampDown());
+
+
+
+
+
     /*DriveA = new JoystickButton(xBoxDrive, 1);
     DriveB = new JoystickButton(xBoxDrive, 2);
     DriveX = new JoystickButton(xBoxDrive, 3);
