@@ -1,4 +1,8 @@
 #include "OI.h"
+#include "commands/ClawClose.h"
+#include "commands/ClawOpen.h"
+#include "commands/ClawExtend.h"
+#include "commands/ClawRetract.h"
 using namespace frc;
 OI::OI() {
     // Process operator interface input here.
@@ -8,10 +12,17 @@ OI::OI() {
     // Xbox
     ControlA = new JoystickButton(xBoxControl, 1);
     ControlB = new JoystickButton(xBoxControl, 2);
+    ControlX = new JoystickButton(xBoxControl, 3);
+    ControlY = new JoystickButton(xBoxControl, 4);
+    ControlLB = new JoystickButton(xBoxControl, 5);
+    ControlRB = new JoystickButton(xBoxControl, 6);
+    
+    ControlX->WhenPressed(new ClawOpen());
+    ControlY->WhenPressed(new ClawClose());
+    ControlLB->WhenPressed(new ClawExtend());
+    ControlRB->WhenPressed(new ClawRetract());
 
-    ControlA->WhenPressed(new RampUp());
-    ControlB->WhenPressed(new RampDown());
-
+    
 
 
 

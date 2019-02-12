@@ -6,7 +6,7 @@ using namespace frc;
 OI* Robot::oi = NULL;
 RobotArm* Robot::robotArm = NULL;
 DriveTrain* Robot::driveTrain = NULL;
-Ramp* Robot::ramp = NULL;
+
 // Pigeon* Robot::pigeon = NULL;
 // Elevator* Robot::elevator = NULL;
 // Pneumatics* Robot::pneumatics = NULL;
@@ -31,13 +31,14 @@ void Robot::RobotInit() {
     RobotMap::init();
 
     oi = new OI();
-    ramp = new Ramp();
+
 
     // elevator = new Elevator();
     // pneumatics = new Pneumatics();
 
     driveTrain = new DriveTrain();
     robotArm = new RobotArm();
+
 //     pigeon = new Pigeon();
 
 //     gyroAssistPID = new PigeonPID();
@@ -79,19 +80,19 @@ void Robot::RobotInit() {
 //     driveTrain->rearRight->Enable();
 
 //     pneumatics->Start();
-// }
+ }
 
-// void Robot::DisabledInit() {
+ void Robot::DisabledInit() {
 //     // Makes sure that enabling the robot doesn't
 //     // make the elevator shoot to the last position
 //     elevatorPositionControl = false;
 //     // RobotMap::elevatorMotor->Set(0);
-// }
+ }
 
-// void Robot::DisabledPeriodic() {
-// }
+ void Robot::DisabledPeriodic() {
+}
 
-// void Robot::AutonomousInit() {
+void Robot::AutonomousInit() {
 //     pigeon->Update();
 //     pigeon->SaveTilt();
 
@@ -101,7 +102,7 @@ void Robot::RobotInit() {
 
 //     autoTimer->Reset();
 //     autoTimer->Start();
-// }
+ }
 
 // void Robot::AutonomousPeriodic() {
 //     Scheduler::GetInstance()->Run();
@@ -300,6 +301,6 @@ void Robot::RobotInit() {
 //     SmartDashboard::PutBoolean("Use-UpperLimitSwitch", useUpperLimitSwitch);
 //     SmartDashboard::PutBoolean("Elevator-PositionControl", elevatorPositionControl);
 //     SmartDashboard::PutBoolean("Precision-Drive", driveTrain->precisionDrive);
-}
+//}
 
 START_ROBOT_CLASS(Robot); 

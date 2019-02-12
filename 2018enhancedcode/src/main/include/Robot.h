@@ -38,7 +38,7 @@ class Robot : public IterativeRobot {
 
     LiveWindow* lw; */
     virtual void RobotInit();
-    /*virtual void AutonomousInit();
+    virtual void AutonomousInit();
     virtual void AutonomousPeriodic();
     virtual void TeleopInit();
     virtual void TeleopPeriodic();
@@ -66,5 +66,5 @@ class Robot : public IterativeRobot {
       int turnDegree;
       int turnDirection;
       float driveForwardAngle;
-      */
+      
 };
