@@ -7,18 +7,14 @@
 
 #pragma once
 
-#include <frc/commands/Subsystem.h>
-#include "frc/WPILib.h"
-#include "ctre/Phoenix.h"
-using namespace frc;
-class Ramp : public frc::Subsystem {
- private:
-  // It's desirable that everything possible under private except
-  // for methods that implement subsystem capabilities
-  Relay* RampRelay;
+#include <frc/commands/Command.h>
+
+class CommandRamp : public frc::Command {
  public:
   Ramp();
-  void RampDeploy();
-  void RampUp();
-  void InitDefaultCommand() override;
+  void Initialize() override;
+  void Execute() override;
+  bool IsFinished() override;
+  void End() override;
+  void Interrupted() override;
 };

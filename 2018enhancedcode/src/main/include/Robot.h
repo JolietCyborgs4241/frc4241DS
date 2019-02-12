@@ -3,6 +3,7 @@
 #include "frc/liveWindow/LiveWindow.h"
 #include "RobotMap.h"
 #include "subsystems/Lift.h"
+#include "subsystems/Ramp.h"
 using namespace frc;
 
 class Robot : public IterativeRobot {
@@ -10,6 +11,7 @@ class Robot : public IterativeRobot {
     // Command *autonomousCommand;
     static OI* oi;
     static Lift* lift;
+    static Ramp* ramp;
     /*static Pigeon* pigeon;
     static Elevator* elevator;
     static Pneumatics* pneumatics;
@@ -34,13 +36,13 @@ class Robot : public IterativeRobot {
 
     LiveWindow* lw; */
     virtual void RobotInit();
-    /*virtual void AutonomousInit();
-    virtual void AutonomousPeriodic();
+    //virtual void AutonomousInit();
+    //virtual void AutonomousPeriodic();
     virtual void TeleopInit();
     virtual void TeleopPeriodic();
-    virtual void TestPeriodic();
+    //virtual void TestPeriodic();
     virtual void DisabledInit();
-    virtual void DisabledPeriodic();
+    //virtual void DisabledPeriodic();
 
   private:
     void Dashboard();
@@ -52,7 +54,7 @@ class Robot : public IterativeRobot {
 
     float cycleTime;
 
-    std::unique_ptr<frc::Command> autonomousCommand;
+   /* std::unique_ptr<frc::Command> autonomousCommand;
     frc::SendableChooser<int> chooser;
 
     

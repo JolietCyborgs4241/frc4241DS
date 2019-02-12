@@ -7,8 +7,9 @@
 
 #include "subsystems/Ramp.h"
 
-Ramp::Ramp() : Subsystem("ExampleSubsystem") {}
+Ramp::Ramp() : Subsystem("ExampleSubsystem") {
   RampRelay = new Relay(1);
+}
 void Ramp::InitDefaultCommand() {
   // Set the default command for a subsystem here.
   // SetDefaultCommand(new MySpecialCommand());

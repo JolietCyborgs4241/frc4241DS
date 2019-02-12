@@ -5,6 +5,7 @@ using namespace frc;
 
 OI* Robot::oi = NULL;
 Lift* Robot::lift = NULL;
+Ramp* Robot::ramp = NULL;
 // Pigeon* Robot::pigeon = NULL;
 // Elevator* Robot::elevator = NULL;
 // Pneumatics* Robot::pneumatics = NULL;
@@ -30,6 +31,7 @@ void Robot::RobotInit() {
 
     oi = new OI();
     lift = new Lift();
+    ramp = new Ramp();
 
     // elevator = new Elevator();
     // pneumatics = new Pneumatics();
@@ -77,14 +79,15 @@ void Robot::RobotInit() {
 //     driveTrain->rearRight->Enable();
 
 //     pneumatics->Start();
-// }
+ }
 
-// void Robot::DisabledInit() {
+ void Robot::DisabledInit() {
 //     // Makes sure that enabling the robot doesn't
 //     // make the elevator shoot to the last position
 //     elevatorPositionControl = false;
 //     // RobotMap::elevatorMotor->Set(0);
-// }
+    Robot::ramp->RampUp();
+ }
 
 // void Robot::DisabledPeriodic() {
 // }
@@ -198,15 +201,15 @@ void Robot::RobotInit() {
 //     }
 // }
 
-// void Robot::TeleopInit() {
+ void Robot::TeleopInit() {
 //     // This makes sure that the autonomous stops running when
 //     // teleop starts running. If you want the autonomous to
 //     // continue until interrupted by another command, remove
 //     // this line or comment it out.
 
-//     Scheduler::GetInstance()->RemoveAll();
+    Scheduler::GetInstance()->RemoveAll();
 
-//     cycleTime = Timer::GetFPGATimestamp();
+     cycleTime = Timer::GetFPGATimestamp();
 
 //     pigeon->Update();
 //     pigeon->SaveTilt();
@@ -215,11 +218,11 @@ void Robot::RobotInit() {
 
 //     pneumatics->CloseClaw();
 //     pneumatics->RetractPiston();
-// }
+ }
 
-// void Robot::TeleopPeriodic() {
-//     SmartDashboard::PutNumber("CycleTime", Timer::GetFPGATimestamp() - cycleTime);
-//     cycleTime = Timer::GetFPGATimestamp();
+ void Robot::TeleopPeriodic() {
+     SmartDashboard::PutNumber("CycleTime", Timer::GetFPGATimestamp() - cycleTime);
+     cycleTime = Timer::GetFPGATimestamp();
 
 //     // Drive Control
 //     // joystickY is -up, so invert to match +Y -> forward
@@ -245,7 +248,7 @@ void Robot::RobotInit() {
 //     Dashboard();
 
 //     Scheduler::GetInstance()->Run();
-// }
+ }
 
 // void Robot::TestPeriodic() {
 //     driveTrain->DisablePIDs();
@@ -298,6 +301,6 @@ void Robot::RobotInit() {
 //     SmartDashboard::PutBoolean("Use-UpperLimitSwitch", useUpperLimitSwitch);
 //     SmartDashboard::PutBoolean("Elevator-PositionControl", elevatorPositionControl);
 //     SmartDashboard::PutBoolean("Precision-Drive", driveTrain->precisionDrive);
-}
+//}
 
 START_ROBOT_CLASS(Robot); 
