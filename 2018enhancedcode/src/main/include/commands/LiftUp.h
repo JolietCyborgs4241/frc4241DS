@@ -9,9 +9,9 @@
 
 #include <frc/commands/Command.h>
 
-class RampDown : public frc::Command {
+class LiftUp : public frc::Command {
  public:
-  RampDown();
+  LiftUp();
   void Initialize() override;
   void Execute() override;
   bool IsFinished() override;

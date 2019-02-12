@@ -7,14 +7,19 @@
 
 #pragma once
 
-#include <frc/commands/Command.h>
+#include <frc/commands/Subsystem.h>
+#include "frc/WPILib.h"
+#include "ctre/Phoenix.h"
 
-class ClawFulcrumDown : public frc::Command {
+class Lift : public frc::Subsystem {
+ private:
+  // It's desirable that everything possible under private except
+  // for methods that implement subsystem capabilities
+  WPI_TalonSRX* LiftWinch;
+
  public:
-  ClawFulcrumDown();
-  void Initialize() override;
-  void Execute() override;
-  bool IsFinished() override;
-  void End() override;
-  void Interrupted() override;
+  Lift();
+  void LiftUp();
+  void LiftDown();
+  void InitDefaultCommand() override;
 };

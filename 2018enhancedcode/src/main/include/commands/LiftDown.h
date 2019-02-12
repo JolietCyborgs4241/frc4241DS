@@ -5,25 +5,16 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include "subsystems/Ramp.h"
-#include "RobotMap.h"
+#pragma once
 
-Ramp::Ramp() : Subsystem("ExampleSubsystem") {
-  RampMolo = RobotMap::rampMolo;
-}
+#include <frc/commands/Command.h>
 
-void Ramp::InitDefaultCommand() {
-  // Set the default command for a subsystem here.
-  // SetDefaultCommand(new MySpecialCommand());
-}
-
-// Put methods for controlling this subsystem
-// here. Call these from Commands.
-
-void Ramp::RampUp() {
-  RampMolo->Set(.5);
-}
-
-void Ramp::RampDown() {
-  RampMolo->Set(-.5);
-}
+class LiftDown : public frc::Command {
+ public:
+  LiftDown();
+  void Initialize() override;
+  void Execute() override;
+  bool IsFinished() override;
+  void End() override;
+  void Interrupted() override;
+};

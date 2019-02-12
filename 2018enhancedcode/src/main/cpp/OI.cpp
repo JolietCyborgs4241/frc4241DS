@@ -1,6 +1,6 @@
 #include "OI.h"
-#include "commands/RampUp.h"
-#include "commands/RampDown.h"
+#include "commands/LiftUp.h"
+#include "commands/LiftDown.h"
 using namespace frc;
 OI::OI() {
     // Process operator interface input here.
@@ -11,8 +11,8 @@ OI::OI() {
     ControlA = new JoystickButton(xBoxControl, 1);
     ControlB = new JoystickButton(xBoxControl, 2);
 
-    ControlA->WhenPressed(new RampUp());
-    ControlB->WhenPressed(new RampDown());
+    ControlA->WhenPressed(new LiftUp());
+    ControlB->WhenPressed(new LiftDown());
 
 
 
