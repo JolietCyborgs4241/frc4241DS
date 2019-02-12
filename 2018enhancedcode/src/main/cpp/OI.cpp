@@ -1,4 +1,6 @@
 #include "OI.h"
+#include "commands/RampUp.h"
+#include "commands/RampDown.h"
 using namespace frc;
 OI::OI() {
     // Process operator interface input here.
