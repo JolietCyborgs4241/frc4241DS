@@ -7,7 +7,7 @@
 #include "Robot.h"
 #include "commands/CommandRamp.h"
 
-CommandRamp::Ramp() {
+void CommandRamp::Ramp() {
   // Use Requires() here to declare subsystem dependencies
   // eg. Requires(Robot::chassis.get());
 }

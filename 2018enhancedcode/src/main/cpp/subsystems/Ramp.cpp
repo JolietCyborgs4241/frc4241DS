@@ -6,7 +6,7 @@
 /*----------------------------------------------------------------------------*/
 
 #include "subsystems/Ramp.h"
-
+using namespace frc;
 Ramp::Ramp() : Subsystem("ExampleSubsystem") {
   RampRelay = new Relay(1);
 }
@@ -15,11 +15,11 @@ void Ramp::InitDefaultCommand() {
   // SetDefaultCommand(new MySpecialCommand());
 }
 
-void RampDeploy() {
+void Ramp::RampDeploy() {
   RampRelay->Set(Relay::Value::kOn);
 }
 
-void RampUp() {
+void Ramp::RampUp() {
   RampRelay->Set(Relay::Value::kOff);
 }
 // Put methods for controlling this subsystem

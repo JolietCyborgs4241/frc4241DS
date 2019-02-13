@@ -10,6 +10,8 @@ class OI {
     Joystick* xBoxDrive;
     JoystickButton* ControlA;
     JoystickButton* ControlB;
+    JoystickButton* Select;
+    
     
     /*JoystickButton* DriveA;
     JoystickButton* DriveB;
