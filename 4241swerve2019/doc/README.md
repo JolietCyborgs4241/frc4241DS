@@ -8,7 +8,7 @@ From the top of the robot:
 
 1) Remove any tie-wrap securing the encoder wire to the protection bracket (as needed)
 
-1) Unplug the encoder cable - pull straight up - try to pull on the connector itself as much as possible and not on the wireing going into the connector
+1) Unplug the encoder cable - pull straight up - try to pull on the connector itself as much as possible and not on the wiring going into the connector
 
 
 From the bottom of the robot:
@@ -28,17 +28,17 @@ Back to the top side of the robot:
 
 From the top of the robot:
 
+1) Put a **small** drop of *BLUE* thread locker on the threaded encoder mounting part - use a **small** drop and don't let it get on the encoder shaft itself (the threaded part is brass colored and the shaft is silver - keep the thread locking compund away from the silver shaft as it could damage the encoder if it gets inside
+
 1) Insert the encoder into its mounting hole
 
 From the bottom of the robot:
 
-1) Put a small drop of *BLUE* thread locker on the threaded encoder mounting part - use a **small** and don't let it get on the encoder shaft itself (the threaded part os brass colored and the shaft is silver - keep the thread locking compund away from the silver shaft
-
-1) Replace the nut securing the encoder to the swerve drive mounting plate - make sure you include any washers which were used to mount the older encoder
+1) Replace the nut securing the encoder to the swerve drive mounting plate - make sure you include any washers which were used to mount the damaged encoder
 
 1) Snug the nut but be careful not to overtighten it  - snug is fine
 
-1) Replace the gear on the encoder shaft - take care to line up the holes in the gear with the holes in the shaft - use a pin punch to help line them up and make sure that the punch can go all the way through before going further - if you have any trouble, remove the gear and tuen the gear 180 degress, replace it on the shaft, and try to realign the gear and shaft
+1) Replace the gear on the encoder shaft - take care to line up the holes in the gear with the holes in the shaft - use a pin punch to help line them up and make sure that the punch can go all the way through before going further - if you have any trouble, remove the gear and turn the gear by 180 degress, replace it on the shaft, and try to realign the gear and shaft again
 
 1) Insert the roll pin securing the gear to the encoder shaft ( *HOW DO WE USUALLY DO THAT?  HAMMER AND PUNCH?  YIKES.  WE MIGHT WANT TO MAKE A TOOL.* )
 
