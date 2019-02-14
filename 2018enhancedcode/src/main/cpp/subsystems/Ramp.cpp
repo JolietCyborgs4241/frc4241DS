@@ -7,7 +7,7 @@
 
 #include "subsystems/Ramp.h"
 Ramp::Ramp() : Subsystem("ExampleSubsystem") {
-  RampRelay = new Relay(1);
+  RampMolo = new WPI_TalonSRX(64);
 }
 void Ramp::InitDefaultCommand() {
   // Set the default command for a subsystem here.
@@ -15,11 +15,9 @@ void Ramp::InitDefaultCommand() {
 }
 
 void Ramp::RampDeploy() {
-  RampRelay->Set(Relay::Value::kOn);
+  RampMolo->Set(.5);
 }
 
-void Ramp::RampUp() {
-  RampRelay->Set(Relay::Value::kOff);
-}
+
 // Put methods for controlling this subsystem
 // here. Call these from Commands.

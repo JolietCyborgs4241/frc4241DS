@@ -86,7 +86,6 @@ void Robot::RobotInit() {
 //     // make the elevator shoot to the last position
 //     elevatorPositionControl = false;
 //     // RobotMap::elevatorMotor->Set(0);
-    Robot::ramp->RampUp();
  }
 
 // void Robot::DisabledPeriodic() {
