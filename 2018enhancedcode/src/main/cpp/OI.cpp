@@ -10,13 +10,14 @@ OI::OI() {
     xBoxDrive = new Joystick(1);
 
     // Xbox
-    ControlA = new JoystickButton(xBoxControl, 1);
-    ControlB = new JoystickButton(xBoxControl, 2);
+    //ControlA = new JoystickButton(xBoxControl, 1);
+    //ControlB = new JoystickButton(xBoxControl, 2);
     ControlX = new JoystickButton(xBoxControl, 3);
     ControlY = new JoystickButton(xBoxControl, 4);
     ControlLB = new JoystickButton(xBoxControl, 5);
     ControlRB = new JoystickButton(xBoxControl, 6);
     
+    // Xbox controller set up
     ControlX->WhenPressed(new ClawOpen());
     ControlY->WhenPressed(new ClawClose());
     ControlLB->WhenPressed(new ClawExtend());
@@ -47,8 +48,7 @@ OI::OI() {
     ControlRB = new JoystickButton(xBoxControl, 6);
     ControlBack = new JoystickButton(xBoxControl, 7);
     ControlStart = new JoystickButton(xBoxControl, 8);
-    ControlLeftStick = new JoystickButton(xBoxControl, 9);
-    ControlRightStick = new JoystickButton(xBoxControl, 10); */
+   
     // Used For controlling main subsystems excluding drive
 
     // XboxDrive
@@ -120,6 +120,9 @@ double OI::getControlJoy() {
     return adjustJoystick(xBoxControl->GetY());
 }
 
+double OI::getControlLY()  {
+    return adjustJoystick(xBoxControl->GetRawAxis(1));
+}
 double OI::adjustJoystick(double value) {
     // cube output
     double adjV = pow(value, 3);

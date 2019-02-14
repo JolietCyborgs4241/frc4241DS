@@ -104,7 +104,7 @@ void Robot::AutonomousInit() {
 //     autoTimer->Start();
  }
 
-// void Robot::AutonomousPeriodic() {
+ void Robot::AutonomousPeriodic() {
 //     Scheduler::GetInstance()->Run();
 
 //     if (!recievedGameData && autoTimer->Get() < 8) {
@@ -199,9 +199,9 @@ void Robot::AutonomousInit() {
 //             }
 //         }
 //     }
-// }
+ }
 
-// void Robot::TeleopInit() {
+void Robot::TeleopInit() {
 //     // This makes sure that the autonomous stops running when
 //     // teleop starts running. If you want the autonomous to
 //     // continue until interrupted by another command, remove
@@ -218,9 +218,9 @@ void Robot::AutonomousInit() {
 
 //     pneumatics->CloseClaw();
 //     pneumatics->RetractPiston();
-// }
+ }
 
-// void Robot::TeleopPeriodic() {
+ void Robot::TeleopPeriodic() {
 //     SmartDashboard::PutNumber("CycleTime", Timer::GetFPGATimestamp() - cycleTime);
 //     cycleTime = Timer::GetFPGATimestamp();
 
@@ -248,12 +248,12 @@ void Robot::AutonomousInit() {
 //     Dashboard();
 
 //     Scheduler::GetInstance()->Run();
-// }
+ }
 
-// void Robot::TestPeriodic() {
+ void Robot::TestPeriodic() {
 //     driveTrain->DisablePIDs();
 //     Dashboard();
-// }
+ }
 
 // void Robot::Dashboard() {
 //     // Joystick Variables
