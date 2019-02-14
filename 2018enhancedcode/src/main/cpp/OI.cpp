@@ -2,11 +2,12 @@
 #include "commands/LiftUp.h"
 #include "commands/LiftDown.h"
 #include "commands/CommandRamp.h"
+#include "Robot.h"
 using namespace frc;
 OI::OI() {
     // Process operator interface input here.
     xBoxControl = new Joystick(0);
-    xBoxDrive = new Joystick(1);
+    //xBoxDrive = new Joystick(1);
 
     // Xbox
     ControlA = new JoystickButton(xBoxControl, 1);
@@ -16,7 +17,7 @@ OI::OI() {
     ControlA->WhenPressed(new LiftUp());
     ControlB->WhenPressed(new LiftDown());
     Select->WhenPressed(new CommandRamp());
-
+    
 
 
 

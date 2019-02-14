@@ -6,7 +6,6 @@
 /*----------------------------------------------------------------------------*/
 
 #include "subsystems/Ramp.h"
-using namespace frc;
 Ramp::Ramp() : Subsystem("ExampleSubsystem") {
   RampRelay = new Relay(1);
 }
