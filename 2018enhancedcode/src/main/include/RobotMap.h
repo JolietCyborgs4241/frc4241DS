@@ -32,6 +32,7 @@ class RobotMap {
     static DigitalInput* elevatorUpperLimitSwitch;
     static DigitalInput* elevatorBottomLimitSwitch;
     static WPI_TalonSRX* lift;
+    static WPI_TalonSRX* ramp;
     // static CameraServer* Cam;
 
     static void init();

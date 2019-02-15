@@ -6,8 +6,10 @@
 /*----------------------------------------------------------------------------*/
 
 #include "subsystems/Ramp.h"
+#include "RobotMap.h"
+#include "Robot.h"
 Ramp::Ramp() : Subsystem("ExampleSubsystem") {
-  RampMolo = new WPI_TalonSRX(64);
+  RampMolo = RobotMap::ramp;
 }
 void Ramp::InitDefaultCommand() {
   // Set the default command for a subsystem here.
@@ -15,7 +17,7 @@ void Ramp::InitDefaultCommand() {
 }
 
 void Ramp::RampDeploy() {
-  RampMolo->Set(.5);
+  RampMolo->Set(1.0);
 }
 
 
