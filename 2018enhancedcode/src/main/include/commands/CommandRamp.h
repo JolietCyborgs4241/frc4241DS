@@ -11,7 +11,7 @@
 
 class CommandRamp : public frc::Command {
  public:
-  void Ramp();
+  CommandRamp();
   void Initialize() override;
   void Execute() override;
   bool IsFinished() override;
