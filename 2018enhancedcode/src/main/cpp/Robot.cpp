@@ -90,8 +90,8 @@ void Robot::DisabledPeriodic() {
 }
 
 void Robot::AutonomousInit() {
-   // pigeon->Update();
-    // pigeon->SaveTilt();
+   pigeon->Update();
+    pigeon->SaveTilt();
 
     driveTrain->EnablePIDs();
 
@@ -221,7 +221,7 @@ void Robot::TeleopPeriodic() {
     SmartDashboard::PutNumber("CycleTime", Timer::GetFPGATimestamp() - cycleTime);
     cycleTime = Timer::GetFPGATimestamp();
     //driveTrain->Crab(-oi->getDriveLeftY(), oi->getDriveLeftX(), -oi->getDriveRightX(), fieldCentric);
-    driveTrain->Crab(-oi->getDriveLeftY(), oi->getDriveLeftX(), 0, fieldCentric);
+    driveTrain->Crab(-oi->getDriveLeftY(), oi->getDriveLeftX(), -oi->getDriveRightX(), fieldCentric);
 //     Drive Control
 //     joystickY is -up, so invert to match +Y -> forward
 //     joystickX is +right, so do nothing to match +X -> right
@@ -256,9 +256,9 @@ void Robot::TestPeriodic() {
 
 void Robot::Dashboard() {
     // Joystick Variables
-    SmartDashboard::PutNumber("DriveStickY", oi->getDriveJoystick()->GetY());
-    SmartDashboard::PutNumber("DriveStickX", oi->getDriveJoystick()->GetX());
-    SmartDashboard::PutNumber("DriveStickZ", oi->getDriveJoystick()->GetZ());
+    SmartDashboard::PutNumber("DriveStickY", oi->getDriveLeftY());
+    SmartDashboard::PutNumber("DriveStickX", oi->getDriveLeftX());
+    SmartDashboard::PutNumber("DriveStickZ", oi->getDriveRightX());
 
     // Wheel Module Voltages
     SmartDashboard::PutNumber("FrontLeftVol", driveTrain->frontLeftPos->GetAverageVoltage());
@@ -275,6 +275,12 @@ void Robot::Dashboard() {
     SmartDashboard::PutNumber("FRSetPoint", driveTrain->frontRight->GetSetpoint());
     SmartDashboard::PutNumber("RLSetPoint", driveTrain->rearLeft->GetSetpoint());
     SmartDashboard::PutNumber("RRSetPoint", driveTrain->rearRight->GetSetpoint());
+
+    // Driver Motor Voltages 
+    SmartDashboard::PutNumber("FLDrive", RobotMap::driveTrainFrontLeftDrive->GetMotorOutputVoltage());
+    SmartDashboard::PutNumber("FRDrive", RobotMap::driveTrainFrontRightDrive->GetMotorOutputVoltage());
+    SmartDashboard::PutNumber("RRDrive", RobotMap::driveTrainRearRightDrive->GetMotorOutputVoltage());
+    SmartDashboard::PutNumber("RLDrive", RobotMap::driveTrainRearLeftDrive->GetMotorOutputVoltage());
 
     //SmartDashboard::PutBoolean("LimitSwitch", RobotMap::elevatorUpperLimitSwitch->Get());
 
