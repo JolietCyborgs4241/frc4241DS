@@ -19,7 +19,19 @@ void Robot::RobotInit() {
   m_chooser.AddOption("My Auto", &m_myAuto);
   frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
 }
-
+ static void VisionThread()
+    {
+        cs::UsbCamera camera = CameraServer::GetInstance()->StartAutomaticCapture();
+        camera.SetResolution(640, 480);P
+        cs::CvSink cvSink = CameraServer::GetInstance()->GetVideo();
+        cs::CvSource outputStreamStd = CameraServer::GetInstance()->PutVideo("Gray", 640, 480);
+        cv::Mat source;
+        cv::Mat output;
+         while(true) {
+            cvSink.GrabFrame(source);
+            cvtColor(source, output, cv::COLOR_BGR2GRAY);
+            outputStreamStd.PutFrame(output);
+        }
 /**
  * This function is called every robot packet, no matter the mode. Use
  * this for items like diagnostics that you want ran during disabled,

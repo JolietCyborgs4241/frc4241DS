@@ -41,4 +41,7 @@ static Intake* intake;
   ExampleCommand m_defaultAuto;
   MyAutoCommand m_myAuto;
   frc::SendableChooser<frc::Command*> m_chooser;
+  Void RobotInit{
+  CameraServer::GetInstance()->StartAutomaticCapture();
+  }
 };
