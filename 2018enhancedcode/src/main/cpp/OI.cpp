@@ -2,6 +2,8 @@
 #include "commands/LiftUp.h"
 #include "commands/LiftDown.h"
 #include "commands/CommandRamp.h"
+#include "commands/RampUndeploy.h"
+#include "commands/LiftStop.h"
 #include "Robot.h"
 using namespace frc;
 OI::OI() {
@@ -13,9 +15,10 @@ OI::OI() {
     ControlB = new JoystickButton(xBoxControl, 2);
     Select = new JoystickButton(xBoxControl, 7);
 
-    ControlA->WhenPressed(new LiftUp());
-    ControlB->WhenPressed(new LiftDown());
-    Select->WhenPressed(new CommandRamp());
+    ControlA->WhileHeld(new LiftUp());
+    ControlB->WhileHeld(new LiftDown());
+    Select->WhileHeld(new CommandRamp());
+    
 }    
 
 Joystick* OI::getControlJoystick() {

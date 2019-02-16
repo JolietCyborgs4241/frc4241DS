@@ -20,6 +20,6 @@ void RobotMap::init() {
 
     
     lift = new WPI_TalonSRX(4);
-    ramp = new WPI_TalonSRX(7);
+    ramp = new WPI_TalonSRX(3);
     
 }

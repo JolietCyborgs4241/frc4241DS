@@ -9,14 +9,12 @@
 
 #include <frc/commands/Command.h>
 
-class CommandRamp : public frc::Command {
- 
+class LiftStop : public frc::Command {
  public:
-  CommandRamp();
+  LiftStop();
   void Initialize() override;
   void Execute() override;
   bool IsFinished() override;
   void End() override;
   void Interrupted() override;
-
 };

@@ -27,3 +27,7 @@ void Lift::LiftUp() {
 void Lift::LiftDown() {
   LiftWinch->Set(-.5);
 }
+
+void Lift::LiftStop() {
+  LiftWinch->Set(0.0);
+}

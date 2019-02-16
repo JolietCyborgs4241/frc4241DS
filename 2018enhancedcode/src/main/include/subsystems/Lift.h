@@ -21,5 +21,6 @@ class Lift : public frc::Subsystem {
   Lift();
   void LiftUp();
   void LiftDown();
+  void LiftStop();
   void InitDefaultCommand() override;
 };
