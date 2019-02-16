@@ -6,32 +6,26 @@
 /*----------------------------------------------------------------------------*/
 
 #include "Robot.h"
-
+#include "frc/WPILib.h"
 #include <frc/commands/Scheduler.h>
 #include <frc/smartdashboard/SmartDashboard.h>
+#include <opencv2/imgproc/imgproc.hpp>
+#include <opencv2/core/core.hpp>
 
-ExampleSubsystem Robot::m_subsystem;
+using namespace frc;
+
 OI Robot::m_oi;
-Intake Robot::m_intake;
-
-void Robot::RobotInit() {
-  m_chooser.SetDefaultOption("Default Auto", &m_defaultAuto);
-  m_chooser.AddOption("My Auto", &m_myAuto);
-  frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
+void Robot::RobotInit(){
+     CameraServer::GetInstance()->StartAutomaticCapture(0);
 }
- static void VisionThread()
-    {
-        cs::UsbCamera camera = CameraServer::GetInstance()->StartAutomaticCapture();
-        camera.SetResolution(640, 480);P
-        cs::CvSink cvSink = CameraServer::GetInstance()->GetVideo();
-        cs::CvSource outputStreamStd = CameraServer::GetInstance()->PutVideo("Gray", 640, 480);
-        cv::Mat source;
-        cv::Mat output;
-         while(true) {
-            cvSink.GrabFrame(source);
-            cvtColor(source, output, cv::COLOR_BGR2GRAY);
-            outputStreamStd.PutFrame(output);
-        }
+
+
+  
+
+
+   
+ 
+        
 /**
  * This function is called every robot packet, no matter the mode. Use
  * this for items like diagnostics that you want ran during disabled,
