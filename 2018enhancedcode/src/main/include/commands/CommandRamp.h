@@ -10,6 +10,7 @@
 #include <frc/commands/Command.h>
 
 class CommandRamp : public frc::Command {
+ 
  public:
   CommandRamp();
   void Initialize() override;
@@ -17,4 +18,9 @@ class CommandRamp : public frc::Command {
   bool IsFinished() override;
   void End() override;
   void Interrupted() override;
+
+  Timer *RampTimer;
 };
+
+
+#define RAMP_ACTIVATION_LIMIT    5

@@ -10,6 +10,7 @@
 #include "Robot.h"
 Ramp::Ramp() : Subsystem("ExampleSubsystem") {
   RampMolo = RobotMap::ramp;
+  initString = "INIT!";
 }
 void Ramp::InitDefaultCommand() {
   // Set the default command for a subsystem here.
@@ -17,9 +18,16 @@ void Ramp::InitDefaultCommand() {
 }
 
 void Ramp::RampDeploy() {
-  RampMolo->Set(1.0);
+  RampMolo->Set(ControlMode::PercentOutput, 1.0);
 }
 
 
+void Ramp::RampUnDeploy() {
+  RampMolo->Set(ControlMode::PercentOutput, 0.0);
+}
+
+char *Ramp::getInitString() {
+  return Ramp::initString;
+}
 // Put methods for controlling this subsystem
 // here. Call these from Commands.

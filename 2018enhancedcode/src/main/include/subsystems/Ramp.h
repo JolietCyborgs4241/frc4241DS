@@ -16,8 +16,11 @@ class Ramp : public frc::Subsystem {
   // It's desirable that everything possible under private except
   // for methods that implement subsystem capabilities
   WPI_TalonSRX* RampMolo;
+  char *initString;
  public:
   Ramp();
   void RampDeploy();
+  void RampUnDeploy();
   void InitDefaultCommand() override;
+  char *getInitString();
 };
