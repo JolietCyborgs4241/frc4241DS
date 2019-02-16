@@ -6,7 +6,7 @@ using namespace frc;
 OI* Robot::oi = NULL;
 
 DriveTrain* Robot::driveTrain = NULL;
-//Pigeon* Robot::pigeon = NULL;
+Pigeon* Robot::pigeon = NULL;
 /*Elevator* Robot::elevator = NULL;
 Pneumatics* Robot::pneumatics = NULL;
 
@@ -35,7 +35,7 @@ void Robot::RobotInit() {
     //pneumatics = new Pneumatics();
 
     driveTrain = new DriveTrain();
-   // pigeon = new Pigeon();
+    pigeon = new Pigeon();
 
     //gyroAssistPID = new PigeonPID();
     //gyroAssistPID->SetSetpoint(0);
@@ -90,10 +90,10 @@ void Robot::DisabledPeriodic() {
 }
 
 void Robot::AutonomousInit() {
- //  pigeon->Update();
- //   pigeon->SaveTilt();
+   // pigeon->Update();
+    // pigeon->SaveTilt();
 
-   driveTrain->EnablePIDs();
+    driveTrain->EnablePIDs();
 
    //gameData = frc::DriverStation::GetInstance().GetGameSpecificMessage();
 
@@ -220,8 +220,8 @@ void Robot::TeleopInit() {
 void Robot::TeleopPeriodic() {
     SmartDashboard::PutNumber("CycleTime", Timer::GetFPGATimestamp() - cycleTime);
     cycleTime = Timer::GetFPGATimestamp();
-    driveTrain->Crab(-oi->getDriveLeftY(), oi->getDriveLeftX(), -oi->getDriveRightX());
-    //driveTrain->Crab(-oi->getDriveLeftY(), oi->getDriveLeftX(), 0, fieldCentric);
+    //driveTrain->Crab(-oi->getDriveLeftY(), oi->getDriveLeftX(), -oi->getDriveRightX(), fieldCentric);
+    driveTrain->Crab(-oi->getDriveLeftY(), oi->getDriveLeftX(), 0, fieldCentric);
 //     Drive Control
 //     joystickY is -up, so invert to match +Y -> forward
 //     joystickX is +right, so do nothing to match +X -> right
@@ -261,16 +261,16 @@ void Robot::Dashboard() {
     SmartDashboard::PutNumber("DriveStickZ", oi->getDriveJoystick()->GetZ());
 
     // Wheel Module Voltages
-    SmartDashboard::PutNumber("FrontLeftVol", RobotMap::driveTrainFrontLeftPos->GetAverageVoltage());
-    SmartDashboard::PutNumber("FrontRightVol", RobotMap::driveTrainFrontRightPos->GetAverageVoltage());
-    SmartDashboard::PutNumber("RearLeftVol", RobotMap::driveTrainRearLeftPos->GetAverageVoltage());
-    SmartDashboard::PutNumber("RearRightVol", RobotMap::driveTrainRearRightPos->GetAverageVoltage());
+    SmartDashboard::PutNumber("FrontLeftVol", driveTrain->frontLeftPos->GetAverageVoltage());
+    SmartDashboard::PutNumber("FrontRightVol", driveTrain->frontRightPos->GetAverageVoltage());
+    SmartDashboard::PutNumber("RearLeftVol", driveTrain->rearLeftPos->GetAverageVoltage());
+    SmartDashboard::PutNumber("RearRightVol", driveTrain->rearRightPos->GetAverageVoltage());
     // Wheel Module Errors
     SmartDashboard::PutNumber("FLError", driveTrain->frontLeft->GetError());
     SmartDashboard::PutNumber("FRError", driveTrain->frontRight->GetError());
     SmartDashboard::PutNumber("RLError", driveTrain->rearLeft->GetError());
     SmartDashboard::PutNumber("RRError", driveTrain->rearRight->GetError());
-    // // Wheel Module Setpoints
+    // Wheel Module Setpoints
     SmartDashboard::PutNumber("FLSetPoint", driveTrain->frontLeft->GetSetpoint());
     SmartDashboard::PutNumber("FRSetPoint", driveTrain->frontRight->GetSetpoint());
     SmartDashboard::PutNumber("RLSetPoint", driveTrain->rearLeft->GetSetpoint());

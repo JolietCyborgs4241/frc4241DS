@@ -79,10 +79,8 @@ class DriveTrain : public Subsystem {
     void TwistLeft();
     void SetWheelbase(float w, float x, float y);
     void SetOffsets(double FLOff, double FROff, double RLOff, double RROff);
-    //void Crab(float y, float x, float twist, bool useGyro);
-    void Crab(float y, float x, float twist);
-    //void SwerveArcade(float y, float x, float twist, bool useGyro);
-    void SwerveArcade(float y, float x, float twist);
+    void Crab(float y, float x, float twist, bool useGyro);
+    void SwerveArcade(float y, float x, float twist, bool useGyro);
     void Lock();
     void Test();
     void ToggleFrontBack();

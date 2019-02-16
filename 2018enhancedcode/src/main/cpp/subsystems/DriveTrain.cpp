@@ -49,18 +49,17 @@ void DriveTrain::ToggleFrontBack() {
     driveFront = !driveFront;
 }
 
-//void DriveTrain::Crab(float y, float x, float twist, bool useGyro) {
-void DriveTrain::Crab(float y, float x, float twist) {
+void DriveTrain::Crab(float y, float x, float twist, bool useGyro) {
     // float forward = y * driveAdjust;
     // float strafe = x * driveAdjust; //doesn't match github
     float forward = y; 
     float strafe = x;
 
-  /*  if (useGyro) {
+    if (useGyro) {
         double robotangle = Robot::pigeon->GetYaw() * M_PI / 180;
         forward = +y * sin(robotangle) + x * cos(robotangle);
         strafe = -y * cos(robotangle) + x * sin(robotangle);
-    } */
+    } 
 
     radius = sqrt(pow(Y, 2) + pow(X, 2));
 
@@ -117,8 +116,7 @@ void DriveTrain::Crab(float y, float x, float twist) {
     SetDriveSpeed(FLRatio, FRRatio, RLRatio, RRRatio);
 }
 
-//void DriveTrain::SwerveArcade(float y, float x, float twist, bool useGyro)
-void DriveTrain::SwerveArcade(float y, float x, float twist) {
+void DriveTrain::SwerveArcade(float y, float x, float twist, bool useGyro) {
     float forward = y * driveAdjust;
     float strafe = x * driveAdjust;
 

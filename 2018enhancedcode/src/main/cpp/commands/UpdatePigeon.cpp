@@ -1,7 +1,7 @@
 #include "commands/UpdatePigeon.h"
 #include "Robot.h"
 UpdatePigeon::UpdatePigeon() {
-   // Requires(Robot::pigeon);
+    Requires(Robot::pigeon);
 }
 
 // Called just before this Command runs the first time
@@ -10,7 +10,7 @@ void UpdatePigeon::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void UpdatePigeon::Execute() {
-    //Robot::pigeon->Update();
+    Robot::pigeon->Update();
 }
 
 // Make this return true when this Command no longer needs to run execute()
