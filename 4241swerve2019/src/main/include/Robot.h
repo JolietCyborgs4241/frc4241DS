@@ -3,8 +3,6 @@
 #include "frc/liveWindow/LiveWindow.h"
 #include "RobotMap.h"
 #include "subsystems/RobotArm.h"
-#include "commands/CommandFulcrum.h"
-
 #include "subsystems/Lift.h"
 #include "subsystems/Ramp.h"
 using namespace frc;
