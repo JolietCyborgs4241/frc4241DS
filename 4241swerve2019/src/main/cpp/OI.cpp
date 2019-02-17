@@ -6,8 +6,6 @@
 #include "commands/LiftUp.h"
 #include "commands/LiftDown.h"
 #include "commands/CommandRamp.h"
-#include "commands/RampUndeploy.h"
-#include "commands/LiftStop.h"
 #include "Robot.h"
 using namespace frc;
 OI::OI() {
@@ -17,22 +15,23 @@ OI::OI() {
     // Xbox
     //ControlA = new JoystickButton(xBoxControl, 1);
     //ControlB = new JoystickButton(xBoxControl, 2);
+    ControlA = new JoystickButton(xBoxControl, 1);
+    ControlB = new JoystickButton(xBoxControl, 2);
     ControlX = new JoystickButton(xBoxControl, 3);
     ControlY = new JoystickButton(xBoxControl, 4);
     ControlLB = new JoystickButton(xBoxControl, 5);
     ControlRB = new JoystickButton(xBoxControl, 6);
-    
+    Select = new JoystickButton(xBoxControl, 7);
+
     // Xbox controller set up
     ControlX->WhileHeld(new ClawOpen());
     ControlY->WhileHeld(new ClawClose());
     ControlLB->WhileHeld(new ClawExtend());
     ControlRB->WhileHeld(new ClawRetract());
-
-
-
-
-
-
+    ControlA->WhileHeld(new LiftUp());
+    ControlB->WhileHeld(new LiftDown());
+    Select->WhileHeld(new CommandRamp());
+    
     /*DriveA = new JoystickButton(xBoxDrive, 1);
     DriveB = new JoystickButton(xBoxDrive, 2);
     DriveX = new JoystickButton(xBoxDrive, 3);
@@ -106,15 +105,7 @@ double OI::getControlLY()  {
         return adjV;
     }
  }
-    ControlA = new JoystickButton(xBoxControl, 1);
-    ControlB = new JoystickButton(xBoxControl, 2);
-    Select = new JoystickButton(xBoxControl, 7);
-
-    ControlA->WhileHeld(new LiftUp());
-    ControlB->WhileHeld(new LiftDown());
-    Select->WhileHeld(new CommandRamp());
-    
-}    
+       
 
 Joystick* OI::getControlJoystick() {
     return xBoxControl;

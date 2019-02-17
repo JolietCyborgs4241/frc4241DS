@@ -31,3 +31,6 @@ void Lift::LiftDown() {
 void Lift::LiftStop() {
   LiftWinch->Set(0.0);
 }
+
+// Put methods for controlling this subsystem
+// here. Call these from Commands.
