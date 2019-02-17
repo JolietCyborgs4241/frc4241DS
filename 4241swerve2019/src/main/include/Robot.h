@@ -1,41 +1,67 @@
-/*----------------------------------------------------------------------------*/
-/* Copyright (c) 2017-2018 FIRST. All Rights Reserved.                        */
-/* Open Source Software - may be modified and shared by FRC teams. The code   */
-/* must be accompanied by the FIRST BSD license file in the root directory of */
-/* the project.                                                               */
-/*----------------------------------------------------------------------------*/
-
-#pragma once
-
-#include <frc/TimedRobot.h>
-#include <frc/commands/Command.h>
-#include <frc/smartdashboard/SendableChooser.h>
-
+#include "frc/WPILib.h"
 #include "OI.h"
-#include "commands/ExampleCommand.h"
-#include "commands/MyAutoCommand.h"
-#include "subsystems/ExampleSubsystem.h"
+#include "frc/liveWindow/LiveWindow.h"
+#include "RobotMap.h"
+#include "subsystems/RobotArm.h"
+#include "commands/CommandFulcrum.h"
 
-class Robot : public frc::TimedRobot {
- public:
-  static ExampleSubsystem m_subsystem;
-  static OI m_oi;
+using namespace frc;
 
-  void RobotInit() override;
-  void RobotPeriodic() override;
-  void DisabledInit() override;
-  void DisabledPeriodic() override;
-  void AutonomousInit() override;
-  void AutonomousPeriodic() override;
-  void TeleopInit() override;
-  void TeleopPeriodic() override;
-  void TestPeriodic() override;
+class Robot : public IterativeRobot {
+  public:
+    // Command *autonomousCommand;
+    static OI* oi;
+    static RobotArm* robotArm;
+  
+    /*static Pigeon* pigeon;
+    static Elevator* elevator;
+    static Pneumatics* pneumatics;
+    static Elevator2* elevator2;
 
- private:
-  // Have it null by default so that if testing teleop it
-  // doesn't have undefined behavior and potentially crash.
-  frc::Command* m_autonomousCommand = nullptr;
-  ExampleCommand m_defaultAuto;
-  MyAutoCommand m_myAuto;
-  frc::SendableChooser<frc::Command*> m_chooser;
+    static bool gyroAssist;
+    static PigeonPID* gyroAssistPID;
+
+    static bool fieldCentric;
+    static bool elevatorPositionControl;
+    static bool useUpperLimitSwitch;
+
+    static MB1013Sensor* mb1013Sensor;
+
+    static LIDARLite* leftLidarLite;
+    static LIDARLite* rightLidarLite;
+
+    static std::string gameData;
+    static bool recievedGameData;
+
+    static Timer* autoTimer;
+
+   */LiveWindow* lw; 
+    virtual void RobotInit();
+    virtual void TeleopInit();
+    virtual void TeleopPeriodic();
+    virtual void TestPeriodic();
+    virtual void DisabledInit();
+    virtual void DisabledPeriodic();
+
+  private:
+    void Dashboard();
+
+    double FLOffset;
+    double FROffset;
+    double RLOffset;
+    double RROffset;
+
+    float cycleTime;
+
+    std::unique_ptr<frc::Command> autonomousCommand;
+    frc::SendableChooser<int> chooser;
+
+    
+      void LEDSet(int led);
+      bool prevTrigger;
+      Preferences* Prefs;
+      int turnDegree;
+      int turnDirection;
+      float driveForwardAngle;
+      
 };
