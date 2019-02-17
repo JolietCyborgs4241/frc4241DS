@@ -1,14 +1,27 @@
-/*----------------------------------------------------------------------------*/
-/* Copyright (c) 2017-2018 FIRST. All Rights Reserved.                        */
-/* Open Source Software - may be modified and shared by FRC teams. The code   */
-/* must be accompanied by the FIRST BSD license file in the root directory of */
-/* the project.                                                               */
-/*----------------------------------------------------------------------------*/
-
 #include "OI.h"
-
-#include <frc/WPILib.h>
-
+#include "commands/LiftUp.h"
+#include "commands/LiftDown.h"
+#include "commands/CommandRamp.h"
+#include "commands/RampUndeploy.h"
+#include "commands/LiftStop.h"
+#include "Robot.h"
+using namespace frc;
 OI::OI() {
-  // Process operator interface input here.
+    // Process operator interface input here.
+    xBoxControl = new Joystick(0);
+
+    // Xbox
+    ControlA = new JoystickButton(xBoxControl, 1);
+    ControlB = new JoystickButton(xBoxControl, 2);
+    Select = new JoystickButton(xBoxControl, 7);
+
+    ControlA->WhileHeld(new LiftUp());
+    ControlB->WhileHeld(new LiftDown());
+    Select->WhileHeld(new CommandRamp());
+    
+}    
+
+Joystick* OI::getControlJoystick() {
+    return xBoxControl;
 }
+
