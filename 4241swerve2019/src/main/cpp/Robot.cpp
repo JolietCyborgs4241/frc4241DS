@@ -12,7 +12,7 @@
 
 ExampleSubsystem Robot::m_subsystem;
 OI Robot::m_oi;
-Intake Robot::m_intake;
+
 
 void Robot::RobotInit() {
   m_chooser.SetDefaultOption("Default Auto", &m_defaultAuto);
