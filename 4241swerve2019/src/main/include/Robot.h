@@ -5,6 +5,8 @@
 #include "subsystems/RobotArm.h"
 #include "commands/CommandFulcrum.h"
 
+#include "subsystems/Lift.h"
+#include "subsystems/Ramp.h"
 using namespace frc;
 
 class Robot : public IterativeRobot {
@@ -12,6 +14,8 @@ class Robot : public IterativeRobot {
     // Command *autonomousCommand;
     static OI* oi;
     static RobotArm* robotArm;
+    static Lift* lift;
+    static Ramp* ramp;
   
     /*static Pigeon* pigeon;
     static Elevator* elevator;
@@ -81,7 +85,7 @@ class Robot : public frc::TimedRobot {
 
     float cycleTime;
 
-    std::unique_ptr<frc::Command> autonomousCommand;
+   /* std::unique_ptr<frc::Command> autonomousCommand;
     frc::SendableChooser<int> chooser;
 
     
@@ -92,4 +96,6 @@ class Robot : public frc::TimedRobot {
       int turnDirection;
       float driveForwardAngle;
       
+};
+      */
 };

@@ -43,6 +43,10 @@ class OI {
 
     double adjustJoystick(double);
 
+    JoystickButton* Select;
+    
+    
+    
   public:
     OI();
 
