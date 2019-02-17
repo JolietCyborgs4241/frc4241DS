@@ -107,7 +107,4 @@ double OI::getControlLY()  {
  }
        
 
-Joystick* OI::getControlJoystick() {
-    return xBoxControl;
-}
 
