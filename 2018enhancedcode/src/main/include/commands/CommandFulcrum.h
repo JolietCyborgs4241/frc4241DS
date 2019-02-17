@@ -9,9 +9,9 @@
 
 #include <frc/commands/Command.h>
 
-class ClawFulcrumUp : public frc::Command {
+class CommandFulcrum : public frc::Command {
  public:
-  ClawFulcrumUp();
+  CommandFulcrum();
   void Initialize() override;
   void Execute() override;
   bool IsFinished() override;

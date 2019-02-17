@@ -7,7 +7,6 @@ using namespace frc;
 OI::OI() {
     // Process operator interface input here.
     xBoxControl = new Joystick(0);
-    xBoxDrive = new Joystick(1);
 
     // Xbox
     //ControlA = new JoystickButton(xBoxControl, 1);
@@ -18,12 +17,12 @@ OI::OI() {
     ControlRB = new JoystickButton(xBoxControl, 6);
     
     // Xbox controller set up
-    ControlX->WhenPressed(new ClawOpen());
-    ControlY->WhenPressed(new ClawClose());
-    ControlLB->WhenPressed(new ClawExtend());
-    ControlRB->WhenPressed(new ClawRetract());
+    ControlX->WhileHeld(new ClawOpen());
+    ControlY->WhileHeld(new ClawClose());
+    ControlLB->WhileHeld(new ClawExtend());
+    ControlRB->WhileHeld(new ClawRetract());
 
-    
+
 
 
 
@@ -84,46 +83,13 @@ OI::OI() {
 Joystick* OI::getControlJoystick() {
     return xBoxControl;
 }
-Joystick* OI::getDriveJoystick() {
-    return xBoxDrive;
-}
-
-bool OI::getLB() {
-    return xBoxDrive->GetRawButton(5);
-}
-
-double OI::getJoystickMagnitude() {
-    if (xBoxDrive->GetMagnitude() < .1) {
-        return 0;
-    } else {
-        if (xBoxDrive->GetY() < 0) {
-            return -xBoxDrive->GetMagnitude();
-        } else {
-            return xBoxDrive->GetMagnitude();
-        }
-    }
-}
-
-double OI::getDriveRightX() {
-    return adjustJoystick(xBoxDrive->GetRawAxis(4));
-}
-
-double OI::getDriveLeftX() {
-    return adjustJoystick(xBoxDrive->GetX());
-}
-
-double OI::getDriveLeftY() {
-    return adjustJoystick(xBoxDrive->GetY());
-}
-
-double OI::getControlJoy() {
-    return adjustJoystick(xBoxControl->GetY());
-}
 
 double OI::getControlLY()  {
-    return adjustJoystick(xBoxControl->GetRawAxis(1));
+    //return adjustJoystick(xBoxControl->GetRawAxis(1));
+    return xBoxControl->GetRawAxis(1);
 }
-double OI::adjustJoystick(double value) {
+
+ double OI::adjustJoystick(double value) {
     // cube output
     double adjV = pow(value, 3);
 
@@ -133,4 +99,4 @@ double OI::adjustJoystick(double value) {
     } else {
         return adjV;
     }
-}
+ }

@@ -1,19 +1,18 @@
 #include "frc/WPILib.h"
 #include "OI.h"
-#include "subsystems/DriveTrain.h"
 #include "frc/liveWindow/LiveWindow.h"
 #include "RobotMap.h"
 #include "subsystems/RobotArm.h"
-#include "subsystems/Ramp.h"
+#include "commands/CommandFulcrum.h"
+
 using namespace frc;
 
 class Robot : public IterativeRobot {
   public:
     // Command *autonomousCommand;
     static OI* oi;
-    static DriveTrain* driveTrain;
     static RobotArm* robotArm;
-    static Ramp* ramp;
+  
     /*static Pigeon* pigeon;
     static Elevator* elevator;
     static Pneumatics* pneumatics;
@@ -36,10 +35,8 @@ class Robot : public IterativeRobot {
 
     static Timer* autoTimer;
 
-    LiveWindow* lw; */
+   */LiveWindow* lw; 
     virtual void RobotInit();
-    virtual void AutonomousInit();
-    virtual void AutonomousPeriodic();
     virtual void TeleopInit();
     virtual void TeleopPeriodic();
     virtual void TestPeriodic();

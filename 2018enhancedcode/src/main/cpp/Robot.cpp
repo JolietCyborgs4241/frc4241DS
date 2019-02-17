@@ -5,7 +5,7 @@ using namespace frc;
 
 OI* Robot::oi = NULL;
 RobotArm* Robot::robotArm = NULL;
-DriveTrain* Robot::driveTrain = NULL;
+
 
 // Pigeon* Robot::pigeon = NULL;
 // Elevator* Robot::elevator = NULL;
@@ -36,7 +36,7 @@ void Robot::RobotInit() {
     // elevator = new Elevator();
     // pneumatics = new Pneumatics();
 
-    driveTrain = new DriveTrain();
+    
     robotArm = new RobotArm();
 
 //     pigeon = new Pigeon();
@@ -63,7 +63,7 @@ void Robot::RobotInit() {
 
 //     CameraServer::GetInstance()->StartAutomaticCapture(0);
 
-//     lw = LiveWindow::GetInstance();
+     lw = LiveWindow::GetInstance();
 
 //     driveTrain->SetWheelbase(24, 22, 24);
 //     FLOffset = 0;
@@ -92,114 +92,7 @@ void Robot::RobotInit() {
  void Robot::DisabledPeriodic() {
 }
 
-void Robot::AutonomousInit() {
-//     pigeon->Update();
-//     pigeon->SaveTilt();
-
-//     driveTrain->EnablePIDs();
-
-//     gameData = frc::DriverStation::GetInstance().GetGameSpecificMessage();
-
-//     autoTimer->Reset();
-//     autoTimer->Start();
- }
-
- void Robot::AutonomousPeriodic() {
-//     Scheduler::GetInstance()->Run();
-
-//     if (!recievedGameData && autoTimer->Get() < 8) {
-//         gameData = frc::DriverStation::GetInstance().GetGameSpecificMessage();
-
-//         if (gameData.length() > 0) {
-//             recievedGameData = true;
-//             SmartDashboard::PutString("FMS Data!", gameData);
-
-//             int command = chooser.GetSelected();
-//             switch (command) {
-//             case 1:
-//                 autonomousCommand.reset(new NoAuto());
-//                 break;
-//             case 2:
-//                 autonomousCommand.reset(new DriveForward2());
-//                 break;
-//             case 3:
-//                 autonomousCommand.reset(new LeftAuto());
-//                 break;
-//             case 4:
-//                 autonomousCommand.reset(new RightAuto());
-//                 break;
-//             case 5:
-//                 autonomousCommand.reset(new StraightSwitch());
-//                 break;
-//             case 6:
-//                 autonomousCommand.reset(new CenterSwitch());
-//                 break;
-//             case 7:
-//                 autonomousCommand.reset(new MidAuto());
-//                 break;
-//             case 8:
-//                 autonomousCommand.reset(new LeftAutoSwitch());
-//                 break;
-//             case 9:
-//                 autonomousCommand.reset(new RightAutoSwitch());
-//                 break;
-//             default:
-//                 autonomousCommand.reset(new NoAuto());
-//             }
-//             if (autonomousCommand.get() != NULL) {
-//                 autonomousCommand->Start();
-//             }
-//         } else if (!recievedGameData && autoTimer->Get() >= 8) {
-//             // didn't actually receive game data, but we only want to one auto once
-//             recievedGameData = true;
-
-//             int command = chooser.GetSelected();
-//             switch (command) {
-//             case 1:
-//                 autonomousCommand.reset(new NoAuto());
-//                 break;
-//             case 2:
-//                 autonomousCommand.reset(new DriveForward2());
-//                 break;
-//             case 3:
-//                 // make it run baseline code
-//                 gameData = "RRR"; // fake data on right side
-//                 autonomousCommand.reset(new LeftAuto());
-//                 break;
-//             case 4:
-//                 // make it run baseline code
-//                 gameData = "LLL"; // fake data on left side
-//                 autonomousCommand.reset(new RightAuto());
-//                 break;
-//             case 5:
-//                 // straight switch deals with no data
-//                 autonomousCommand.reset(new StraightSwitch());
-//                 break;
-//             case 6:
-//                 // center switch deals with no data
-//                 autonomousCommand.reset(new CenterSwitch());
-//                 break;
-//             case 7:
-//                 // mid auto deals with no data
-//                 autonomousCommand.reset(new MidAuto());
-//                 break;
-//             case 8:
-//                 // goes to baseline with no data
-//                 autonomousCommand.reset(new LeftAutoSwitch());
-//                 break;
-//             case 9:
-//                 // goes to baseline with no data
-//                 autonomousCommand.reset(new RightAutoSwitch());
-//                 break;
-//             default:
-//                 autonomousCommand.reset(new NoAuto());
-//             }
-//             if (autonomousCommand.get() != NULL) {
-//                 autonomousCommand->Start();
-//             }
-//         }
-//     }
- }
+ 
 
 void Robot::TeleopInit() {
 //     // This makes sure that the autonomous stops running when
@@ -207,9 +100,9 @@ void Robot::TeleopInit() {
 //     // continue until interrupted by another command, remove
 //     // this line or comment it out.
 
-//     Scheduler::GetInstance()->RemoveAll();
+     Scheduler::GetInstance()->RemoveAll();
 
-//     cycleTime = Timer::GetFPGATimestamp();
+     cycleTime = Timer::GetFPGATimestamp();
 
 //     pigeon->Update();
 //     pigeon->SaveTilt();
@@ -221,9 +114,9 @@ void Robot::TeleopInit() {
  }
 
  void Robot::TeleopPeriodic() {
-//     SmartDashboard::PutNumber("CycleTime", Timer::GetFPGATimestamp() - cycleTime);
-//     cycleTime = Timer::GetFPGATimestamp();
-
+     SmartDashboard::PutNumber("CycleTime", Timer::GetFPGATimestamp() - cycleTime);
+     cycleTime = Timer::GetFPGATimestamp();
+     
 //     // Drive Control
 //     // joystickY is -up, so invert to match +Y -> forward
 //     // joystickX is +right, so do nothing to match +X -> right
@@ -247,7 +140,7 @@ void Robot::TeleopInit() {
 
 //     Dashboard();
 
-//     Scheduler::GetInstance()->Run();
+     Scheduler::GetInstance()->Run();
  }
 
  void Robot::TestPeriodic() {
@@ -255,9 +148,9 @@ void Robot::TeleopInit() {
 //     Dashboard();
  }
 
-// void Robot::Dashboard() {
+ void Robot::Dashboard() {
 //     // Joystick Variables
-//     SmartDashboard::PutNumber("DriveStickY", oi->getDriveJoystick()->GetY());
+     //SmartDashboard::PutNumber("ControlStickY", oi->getControlLY());
 //     SmartDashboard::PutNumber("DriveStickX", oi->getDriveJoystick()->GetX());
 //     SmartDashboard::PutNumber("DriveStickZ", oi->getDriveJoystick()->GetZ());
 
@@ -301,6 +194,7 @@ void Robot::TeleopInit() {
 //     SmartDashboard::PutBoolean("Use-UpperLimitSwitch", useUpperLimitSwitch);
 //     SmartDashboard::PutBoolean("Elevator-PositionControl", elevatorPositionControl);
 //     SmartDashboard::PutBoolean("Precision-Drive", driveTrain->precisionDrive);
-//}
+   
+}
 
 START_ROBOT_CLASS(Robot); 

@@ -24,8 +24,10 @@ class RobotArm : public frc::Subsystem {
   void InitDefaultCommand() override;
   void openClaw();
   void closeClaw();
+  void StopClaw();
+  void StopExtension();
   void extendClaw();
   void retractClaw();
-  void fulcrumUp();
-  void fulcrumDown();
+  void Fulcrum();
+
 };

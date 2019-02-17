@@ -9,6 +9,7 @@
 #include "Robot.h"
 #include "Robotmap.h"
 #include "ctre/Phoenix.h"
+
 using namespace frc;
 
 RobotArm::RobotArm() : Subsystem("ExampleSubsystem") {
@@ -30,6 +31,10 @@ void RobotArm::closeClaw() {
   m_claw->Set(-1.0);
 }
 
+void RobotArm::StopClaw() {
+  m_claw->Set(0.0);
+}
+
 void RobotArm::extendClaw() {
   m_extension->Set(1.0);
 }
@@ -38,12 +43,14 @@ void RobotArm::retractClaw() {
   m_extension->Set(-1.0);
 }
 
-void RobotArm::fulcrumUp() {
-  m_fulcrum->Set(1.0);
+void RobotArm::StopExtension() {
+  m_extension->Set(0.0);
 }
 
-void RobotArm::fulcrumDown() {
-  m_fulcrum->Set(-1.0);
+void RobotArm::Fulcrum() {
+   double motorValue = - (Robot::oi->getControlLY()); // INVERT the value!
+   SmartDashboard::PutNumber("RobotArm::Fulcrum - motorValue", motorValue);
+   m_fulcrum->Set(motorValue);
 }
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
