@@ -116,6 +116,7 @@ void Robot::TeleopInit() {
  void Robot::TeleopPeriodic() {
      SmartDashboard::PutNumber("CycleTime", Timer::GetFPGATimestamp() - cycleTime);
      cycleTime = Timer::GetFPGATimestamp();
+     Robot::robotArm->Fulcrum();
      
 //     // Drive Control
 //     // joystickY is -up, so invert to match +Y -> forward

@@ -85,8 +85,8 @@ Joystick* OI::getControlJoystick() {
 }
 
 double OI::getControlLY()  {
-    //return adjustJoystick(xBoxControl->GetRawAxis(1));
-    return xBoxControl->GetRawAxis(1);
+    return adjustJoystick(xBoxControl->GetRawAxis(1));
+    
 }
 
  double OI::adjustJoystick(double value) {

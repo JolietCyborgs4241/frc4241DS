@@ -49,7 +49,6 @@ void RobotArm::StopExtension() {
 
 void RobotArm::Fulcrum() {
    double motorValue = - (Robot::oi->getControlLY()); // INVERT the value!
-   SmartDashboard::PutNumber("RobotArm::Fulcrum - motorValue", motorValue);
    m_fulcrum->Set(motorValue);
 }
 // Put methods for controlling this subsystem
