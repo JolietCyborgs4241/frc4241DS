@@ -6,20 +6,26 @@
 /*----------------------------------------------------------------------------*/
 
 #include "Robot.h"
-
+#include "frc/WPILib.h"
 #include <frc/commands/Scheduler.h>
 #include <frc/smartdashboard/SmartDashboard.h>
+#include <opencv2/imgproc/imgproc.hpp>
+#include <opencv2/core/core.hpp>
 
+using namespace frc;
 
 OI Robot::m_oi;
-
-
-void Robot::RobotInit() {
-  m_chooser.SetDefaultOption("Default Auto", &m_defaultAuto);
-  m_chooser.AddOption("My Auto", &m_myAuto);
-  frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
+void Robot::RobotInit(){
+     CameraServer::GetInstance()->StartAutomaticCapture(0);
 }
 
+
+  
+
+
+   
+ 
+        
 /**
  * This function is called every robot packet, no matter the mode. Use
  * this for items like diagnostics that you want ran during disabled,
