@@ -117,7 +117,7 @@ double OI::adjustJoystick(double value) {
     double adjV = pow(value, 3);
 
     // add deadzone
-    if (fabs(adjV) < 0.05) {
+    if (fabs(adjV) < 0.20) {
         return 0;
     } else {
         return adjV;

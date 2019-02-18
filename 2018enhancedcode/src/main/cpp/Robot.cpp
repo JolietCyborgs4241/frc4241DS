@@ -1,5 +1,5 @@
 #include "Robot.h"
-
+#include "frc/WPILib.h"
 
 using namespace frc;
 
@@ -16,9 +16,10 @@ LIDARLite* Robot::rightLidarLite = NULL;
 bool Robot::gyroAssist = false; 
 //PigeonPID* Robot::gyroAssistPID = NULL;
 
-bool Robot::fieldCentric = true;
+bool Robot::fieldCentric = false;
 /*bool Robot::elevatorPositionControl = false;
 bool Robot::useUpperLimitSwitch = true;
+
 
 MB1013Sensor* Robot::mb1013Sensor = NULL;
 
@@ -26,6 +27,12 @@ std::string Robot::gameData = "";
 bool Robot::recievedGameData = false;
 Timer* Robot::autoTimer = new Timer();
 */
+//ArcadeDrive Setup
+frc::SpeedControllerGroup m_leftDrive{RobotMap::driveTrainFrontLeftDrive, RobotMap::driveTrainRearLeftDrive};
+frc::SpeedControllerGroup m_rightDrive{RobotMap::driveTrainFrontRightDrive, RobotMap::driveTrainRearRightDrive};
+frc::DifferentialDrive driveArcade{m_leftDrive, m_rightDrive};
+
+
 void Robot::RobotInit() {
     RobotMap::init();
 
@@ -221,7 +228,8 @@ void Robot::TeleopPeriodic() {
     SmartDashboard::PutNumber("CycleTime", Timer::GetFPGATimestamp() - cycleTime);
     cycleTime = Timer::GetFPGATimestamp();
     //driveTrain->Crab(-oi->getDriveLeftY(), oi->getDriveLeftX(), -oi->getDriveRightX(), fieldCentric);
-    driveTrain->Crab(-oi->getDriveLeftY(), oi->getDriveLeftX(), -oi->getDriveRightX(), fieldCentric);
+    driveTrain->Crab(0.0, 0.0, 0.0, fieldCentric);
+    //driveTrain->Crab(-oi->getDriveLeftY(), oi->getDriveLeftX(), -oi->getDriveRightX(), fieldCentric);
 //     Drive Control
 //     joystickY is -up, so invert to match +Y -> forward
 //     joystickX is +right, so do nothing to match +X -> right

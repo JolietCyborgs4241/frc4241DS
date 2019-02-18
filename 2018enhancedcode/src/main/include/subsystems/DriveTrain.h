@@ -72,6 +72,7 @@ class DriveTrain : public Subsystem {
     AnalogInput* rearRightPos;
     WPI_TalonSRX* rearRightSteer;
     PIDController* rearRight;
+   
 
     DriveTrain();
     void InitDefaultCommand();
@@ -80,7 +81,7 @@ class DriveTrain : public Subsystem {
     void SetWheelbase(float w, float x, float y);
     void SetOffsets(double FLOff, double FROff, double RLOff, double RROff);
     void Crab(float y, float x, float twist, bool useGyro);
-    void SwerveArcade(float y, float x, float twist, bool useGyro);
+    void SwerveArcade();
     void Lock();
     void Test();
     void ToggleFrontBack();
