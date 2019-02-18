@@ -1,6 +1,8 @@
 #include "Robot.h"
 #include "subsystems/Ramp.h"
-
+#include <iostream>
+#include <frc/Timer.h>
+#include <frc/smartdashboard/SmartDashboard.h>
 
 
 using namespace frc;
@@ -41,6 +43,9 @@ void Robot::RobotInit() {
 
     
     robotArm = new RobotArm();
+    m_chooser.SetDefaultOption(kAutoNameDefault, kAutoNameDefault);
+  m_chooser.AddOption(kAutoNameCustom, kAutoNameCustom);
+  frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
 
 //     pigeon = new Pigeon();
 
@@ -93,6 +98,53 @@ void Robot::RobotInit() {
  }
 
  void Robot::DisabledPeriodic() {
+}
+
+void Robot::Autonomous() {
+  std::string autoSelected = m_chooser.GetSelected();
+  // std::string autoSelected = frc::SmartDashboard::GetString(
+  // "Auto Selector", kAutoNameDefault);
+  std::cout << "Auto selected: " << autoSelected << std::endl;
+
+  // MotorSafety improves safety when motors are updated in loops but is
+  // disabled here because motor updates are not looped in this autonomous mode.
+  m_robotDrive.SetSafetyEnabled(false);
+
+  if (autoSelected == kAutoNameCustom) {
+    // Custom Auto goes here
+    std::cout << "Running custom Autonomous" << std::endl;
+
+    // Spin at half speed for two seconds
+    m_robotDrive.ArcadeDrive(0.0, 0.5);
+    frc::Wait(2.0);
+
+    // Stop robot
+    m_robotDrive.ArcadeDrive(0.0, 0.0);
+  } else {
+    // Default Auto goes here
+    std::cout << "Running default Autonomous" << std::endl;
+
+    // Drive forwards at half speed for two seconds
+    m_robotDrive.ArcadeDrive(-0.5, 0.0);
+    frc::Wait(2.0);
+
+    // Stop robot
+    m_robotDrive.ArcadeDrive(0.0, 0.0);
+  }
+}
+
+/**
+ * Runs the motors with arcade steering.
+ */
+void Robot::OperatorControl() {
+  m_robotDrive.SetSafetyEnabled(true);
+  while (IsOperatorControl() && IsEnabled()) {
+    // Drive with arcade style (use right stick)
+    m_robotDrive.ArcadeDrive(-m_stick.GetX(), m_stick.GetY());
+
+    // The motors will be updated every 5ms
+    frc::Wait(0.005);
+  }
 }
 
  

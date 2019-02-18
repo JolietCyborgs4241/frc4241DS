@@ -5,6 +5,14 @@
 #include "subsystems/RobotArm.h"
 #include "subsystems/Lift.h"
 #include "subsystems/Ramp.h"
+#include <string>
+#include <frc/Joystick.h>
+#include <frc/PWMVictorSPX.h>
+#include <frc/SampleRobot.h>
+#include <frc/drive/DifferentialDrive.h>
+#include <frc/smartdashboard/SendableChooser.h>
+#include "ctre/Phoenix.h"
+#include "frc/WPILib.h"
 using namespace frc;
 
 class Robot : public IterativeRobot {
@@ -72,7 +80,8 @@ class Robot : public frc::TimedRobot {
     virtual void TestPeriodic();
     virtual void DisabledInit();
     virtual void DisabledPeriodic();
-
+    void Autonomous();
+    void OperatorControl();
   private:
     void Dashboard();
 
@@ -82,7 +91,16 @@ class Robot : public frc::TimedRobot {
     double RROffset;
 
     float cycleTime;
+  WPI_TalonSRX frontLeft{1};
+  WPI_TalonSRX frontRight{3};
+  WPI_TalonSRX rearLeft{9};
+  WPI_TalonSRX rearRight{6};
+  frc::RobotDrive m_robotDrive{frontLeft, rearLeft, frontRight, rearRight};
+  frc::Joystick m_stick{0};
 
+  frc::SendableChooser<std::string> m_chooser;
+  const std::string kAutoNameDefault = "Default";
+  const std::string kAutoNameCustom = "My Auto";
    /* std::unique_ptr<frc::Command> autonomousCommand;
     frc::SendableChooser<int> chooser;
 
