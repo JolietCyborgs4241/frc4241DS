@@ -14,8 +14,8 @@ WPI_TalonSRX* RobotMap::robotArmClaw = NULL;
 
 WPI_TalonSRX* RobotMap::lift = NULL;
 WPI_TalonSRX* RobotMap::ramp = NULL;
-DigitalInput* Robotmap::limitswitchopen = NULL;
-DigitalInput* Robotmap::limitswitchclose = NULL;
+DigitalInput* RobotMap::limitswitchopen = NULL;
+DigitalInput* RobotMap::limitswitchclose = NULL;
 
 /*WPI_TalonSRX* RobotMap::elevatorMotor = NULL;
 DigitalInput* RobotMap::elevatorUpperLimitSwitch = NULL;

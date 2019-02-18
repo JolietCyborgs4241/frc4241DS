@@ -34,7 +34,7 @@ void RobotArm::openClaw() {
 
 void RobotArm::closeClaw() {
   if (RobotMap::limitswitchclose->Get()) {
-    m_claw->Set(0.0)
+    m_claw->Set(0.0);
   }
   else {
     m_claw->Set(-1.0);
