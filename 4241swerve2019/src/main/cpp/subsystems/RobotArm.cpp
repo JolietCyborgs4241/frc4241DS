@@ -24,11 +24,21 @@ void RobotArm::InitDefaultCommand() {
 }
 
 void RobotArm::openClaw() {
-  m_claw->Set(1.0);
+  if (RobotMap::limitswitchopen->Get()) {
+    m_claw->Set(0.0);
+  }
+  else {
+    m_claw->Set(1.0);
+  }
 }
 
 void RobotArm::closeClaw() {
-  m_claw->Set(-1.0);
+  if (RobotMap::limitswitchclose->Get()) {
+    m_claw->Set(0.0)
+  }
+  else {
+    m_claw->Set(-1.0);
+  }
 }
 
 void RobotArm::StopClaw() {
