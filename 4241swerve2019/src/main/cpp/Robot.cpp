@@ -2,6 +2,7 @@
 #include "subsystems/Ramp.h"
 #include <iostream>
 #include <frc/Timer.h>
+#include "ctre/Phoenix.h"
 #include <frc/smartdashboard/SmartDashboard.h>
 
 
@@ -136,16 +137,7 @@ void Robot::Autonomous() {
 /**
  * Runs the motors with arcade steering.
  */
-void Robot::OperatorControl() {
-  m_robotDrive.SetSafetyEnabled(true);
-  while (IsOperatorControl() && IsEnabled()) {
-    // Drive with arcade style (use right stick)
-    m_robotDrive.ArcadeDrive(-m_stick.GetX(), m_stick.GetY());
 
-    // The motors will be updated every 5ms
-    frc::Wait(0.005);
-  }
-}
 
  
 
@@ -171,7 +163,8 @@ void Robot::TeleopInit() {
  void Robot::TeleopPeriodic() {
      SmartDashboard::PutNumber("CycleTime", Timer::GetFPGATimestamp() - cycleTime);
      cycleTime = Timer::GetFPGATimestamp();
-     Robot::robotArm->Fulcrum();
+     m_robotDrive.ArcadeDrive(m_stick.GetRawAxis(1), m_stick.GetRawAxis(4));
+     //Robot::robotArm->Fulcrum();
      
 //     // Drive Control
 //     // joystickY is -up, so invert to match +Y -> forward
@@ -205,7 +198,8 @@ void Robot::TeleopInit() {
  }
 
  void Robot::Dashboard() {
-//     // Joystick Variables
+//     // Joystick Variables(
+      SmartDashboard::PutNumber("Claw Motor", RobotMap::robotArmClaw->GetMotorOutputVoltage());
      //SmartDashboard::PutNumber("ControlStickY", oi->getControlLY());
 //     SmartDashboard::PutNumber("DriveStickX", oi->getDriveJoystick()->GetX());
 //     SmartDashboard::PutNumber("DriveStickZ", oi->getDriveJoystick()->GetZ());
