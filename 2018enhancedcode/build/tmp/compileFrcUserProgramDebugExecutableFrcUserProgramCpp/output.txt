@@ -1,4 +1,0 @@
-See file:///C:/Users/cyborgs/Documents/GitHub/frc4241DS/2018enhancedcode/build/tmp/compileFrcUserProgramDebugExecutableFrcUserProgramCpp/output.txt for all output for compileFrcUserProgramDebugExecutableFrcUserProgramCpp.
-compiling OI.cpp successful.
-
-Finished compileFrcUserProgramDebugExecutableFrcUserProgramCpp, see full log file:///C:/Users/cyborgs/Documents/GitHub/frc4241DS/2018enhancedcode/build/tmp/compileFrcUserProgramDebugExecutableFrcUserProgramCpp/output.txt.
