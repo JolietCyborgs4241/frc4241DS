@@ -28,7 +28,7 @@ void RobotArm::openClaw() {
     m_claw->Set(0.0);
   }
   else {*/
-    m_claw->Set(0.2);
+    m_claw->Set(0.45);
   //}
 }
 
@@ -37,7 +37,7 @@ void RobotArm::closeClaw() {
     m_claw->Set(0.0);
   }
   else {*/
-    m_claw->Set(-0.2);
+    m_claw->Set(-0.45);
 //  }
 }
 
