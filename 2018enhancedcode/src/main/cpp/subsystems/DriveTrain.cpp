@@ -3,8 +3,8 @@
 #include "Robot.h"
 #include "Robotmap.h"
 #include "ctre/Phoenix.h"
-#include "WPILib.h"
-#include "SpeedControllerGroup.h"
+#include "frc/WPILib.h"
+#include "frc/SpeedControllerGroup.h"
 using namespace frc;
 
 DriveTrain::DriveTrain() : Subsystem("DriveTrain") {
@@ -419,6 +419,10 @@ void DriveTrain::EnablePIDs() {
 //
 // Currently supporting a US Digital MA3 analog absolute encoder - specs
 // at https://www.usdigital.com/products/encoders/absolute/rotary/shaft/MA3
+
+
+#define	ENCODER_MAX	5.0	// MA3 encoder goes from 0-4.99...VDC
+
 
 float DriveTrain::analogEncoderToAngle(float analogValue, int angleType) {
 

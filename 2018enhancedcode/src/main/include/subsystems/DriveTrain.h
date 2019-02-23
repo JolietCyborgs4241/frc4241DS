@@ -7,6 +7,28 @@ using namespace frc;
 // Code copied and modified from FRC 16's Macy's 2014 DriveTrain
 // https://github.com/FRCTeam16/Macys2014/blob/master/Macys2014/Subsystems/DriveTrain.cpp
 
+
+
+
+// constants related to encoder to angle mapping functions
+
+#define ANGLE_DEGREES    0
+#define ANGLE_RADIANS    1
+
+    // constants for the 4 directional oridinals
+#define ANGLE_FWD_RADS   0
+#define ANGLE_RIGHT_RADS (pi / 2.0)
+#define ANGLE_LEFT_RADS  (pi * 1.5)
+#define ANGLE_REV_RADS   (pi) 
+
+#define ANGLE_FWD_DEGS    0
+#define ANGLE_RIGHT_DEGS  90
+#define ANGLE_LEFT_DEGS   270
+#define ANGLE_REV_DEGS    180
+
+
+
+
 class DriveTrain : public Subsystem {
   private:
     static constexpr double pi = 3.14159;
@@ -98,27 +120,14 @@ class DriveTrain : public Subsystem {
     double CorrectSteerSetpoint(double setpoint);
 
 
-#define ANGLE_DEGREES    0
-#define ANGLE_RADIANS    1
-
-    // constants for the 4 directional oridinals
-#define ANGLE_FWD_RADS   0
-#define ANGLE_RIGHT_RADS (pi / 2.0)
-#define ANGLE_LEFT_RADS  (pi * 1.5)
-#define ANGLE_REV_RADS   (pi) 
-
-#define ANGLE_FWD_DEGS    0
-#define ANGLE_RIGHT_DEGS  90
-#define ANGLE_LEFT_DEGS   270
-#define ANGLE_REV_DEGS    180
 
     // map analog encoder values to radians or degrees
 
-    float analogEncoderToAngles(float analogValue, int angleType);
+    float analogEncoderToAngle(float analogValue, int angleType);
 
     // map radians or degrees to analog encoder values
 
-    float anglesToAnalogEncoder(float angle, int angleType);
+    float angleToAnalogEncoder(float angle, int angleType);
 
 
   public:
