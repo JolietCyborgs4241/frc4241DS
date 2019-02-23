@@ -8,19 +8,23 @@
 using namespace frc;
 
 DriveTrain::DriveTrain() : Subsystem("DriveTrain") {
-   /* frontLeftDrive = RobotMap::driveTrainFrontLeftDrive;
+    frontLeftDrive = RobotMap::driveTrainFrontLeftDrive;
     frontRightDrive = RobotMap::driveTrainFrontRightDrive;
     rearLeftDrive = RobotMap::driveTrainRearLeftDrive;
-    rearRightDrive = RobotMap::driveTrainRearRightDrive; */
+    rearRightDrive = RobotMap::driveTrainRearRightDrive;
+
     frontLeftPos = RobotMap::driveTrainFrontLeftPos;
     frontLeftSteer = RobotMap::driveTrainFrontLeftSteer;
     frontLeft = RobotMap::driveTrainFrontLeft;
+
     frontRightPos = RobotMap::driveTrainFrontRightPos;
     frontRightSteer = RobotMap::driveTrainFrontRightSteer;
     frontRight = RobotMap::driveTrainFrontRight;
+
     rearLeftPos = RobotMap::driveTrainRearLeftPos;
     rearLeftSteer = RobotMap::driveTrainRearLeftSteer;
     rearLeft = RobotMap::driveTrainRearLeft;
+
     rearRightPos = RobotMap::driveTrainRearRightPos;
     rearRightSteer = RobotMap::driveTrainRearRightSteer;
     rearRight = RobotMap::driveTrainRearRight;
@@ -39,9 +43,9 @@ void DriveTrain::InitDefaultCommand() {
 }
 
 void DriveTrain::SetWheelbase(float w, float x, float y) {
-    W = w;
-    X = x;
-    Y = y;
+    TrackRear  = w;
+    Wheelbase  = x;
+    TrackFront = y;
 }
 void DriveTrain::SetOffsets(double FLOff, double FROff, double RLOff, double RROff) {
     FLOffset = FLOff;
@@ -69,12 +73,12 @@ void DriveTrain::Crab(float y, float x, float twist, bool useGyro) {
         strafe = -y * cos(robotangle) + x * sin(robotangle);
     } 
 
-    radius = sqrt(pow(Y, 2) + pow(X, 2));
+    radius = sqrt(pow(TrackFront, 2) + pow(Wheelbase, 2));
 
-    AP = strafe + twist * X / radius;
-    BP = strafe - twist * X / radius;
-    CP = forward + twist * Y / radius;
-    DP = forward - twist * Y / radius;
+    AP = strafe + twist * Wheelbase / radius;
+    BP = strafe - twist * Wheelbase / radius;
+    CP = forward + twist * TrackFront / radius;
+    DP = forward - twist * TrackFront / radius;
 
     sprintf(buffer, "radius=%f, AP=%f, BP=%f, CP=%f, DP=%f", radius, AP, BP, CP, DP);
     SmartDashboard::PutString("Crab2", buffer);
@@ -97,10 +101,10 @@ void DriveTrain::Crab(float y, float x, float twist, bool useGyro) {
     SmartDashboard::PutString("Crab2", buffer);
 
     SetSteerSetpoint(FLSetPoint, FRSetPoint, RLSetPoint, RRSetPoint);
-    FL = sqrt(pow(BP, 2) + pow(DP, 2));
-    FR = sqrt(pow(BP, 2) + pow(CP, 2));
-    RL = sqrt(pow(AP, 2) + pow(DP, 2));
-    RR = sqrt(pow(AP, 2) + pow(CP, 2));
+    FLDistToCOR = sqrt(pow(BP, 2) + pow(DP, 2));
+    FRDistToCOR = sqrt(pow(BP, 2) + pow(CP, 2));
+    RLDistToCOR = sqrt(pow(AP, 2) + pow(DP, 2));
+    RRDistToCOR = sqrt(pow(AP, 2) + pow(CP, 2));
 
     sprintf(buffer, "b4 speedarry FL=%f FR=%f RL=%f RR=%f", FL, FR, RL, RR);
     SmartDashboard::PutString("Crab3", buffer);
@@ -118,22 +122,103 @@ void DriveTrain::Crab(float y, float x, float twist, bool useGyro) {
 
     // Set ratios based on maximum wheel speed
     if (maxspeed > 1 || maxspeed < -1) {
-        FLRatio = FL / maxspeed;
-        FRRatio = FR / maxspeed;
-        RLRatio = RL / maxspeed;
-        RRRatio = RR / maxspeed;
+        FLRatio = FLDistToCOR / maxspeed;
+        FRRatio = FRDistToCOR / maxspeed;
+        RLRatio = RLDistToCOR / maxspeed;
+        RRRatio = RRDistToCOR / maxspeed;
     } else {
-        FLRatio = FL;
-        FRRatio = FR;
-        RLRatio = RL;
-        RRRatio = RR;
+        FLRatio = FLDistToCOR;
+        FRRatio = FRDistToCOR;
+        RLRatio = RLDistToCOR;
+        RRRatio = RRDistToCOR;
     }
 
     // Set drive speeds
     SetDriveSpeed(FLRatio, FRRatio, RLRatio, RRRatio);
 }
 
+<<<<<<< Updated upstream
 void DriveTrain::SwerveArcade() {
+=======
+//void DriveTrain::SwerveArcade(float y, float x, float twist, bool useGyro)
+void DriveTrain::SwerveArcade(float y, float x, float twist) {
+    float forward = y * driveAdjust;
+    float strafe = x * driveAdjust;
+
+    /*if (useGyro) {
+        double robotangle = Robot::pigeon->GetYaw() * M_PI / 180;
+        forward = +y * sin(robotangle) + x * cos(robotangle);
+        strafe = -y * cos(robotangle) + x * sin(robotangle);
+    } */
+
+    AP = strafe;
+    BP = strafe;
+    CP = forward;
+    DP = forward;
+
+    float FLSetPoint = 0;
+    float FRSetPoint = 0;
+    float RLSetPoint = 0;
+    float RRSetPoint = 0;
+
+    if (DP != 0 || BP != 0) {
+        FLSetPoint = (2.5 - 2.5 / pi * atan2(BP, DP));
+    }
+
+    if (BP != 0 || CP != 0) {
+        FRSetPoint = (2.5 - 2.5 / pi * atan2(BP, CP));
+    }
+
+    if (AP != 0 || DP != 0) {
+        RLSetPoint = (2.5 - 2.5 / pi * atan2(AP, DP));
+    }
+
+    if (AP != 0 || CP != 0) {
+        RRSetPoint = (2.5 - 2.5 / pi * atan2(AP, CP));
+    }
+
+    SetSteerSetpoint(FLSetPoint, FRSetPoint, RLSetPoint, RRSetPoint);
+    FLDistToCOR = sqrt(pow(BP, 2) + pow(DP, 2));
+    FRDistToCOR = sqrt(pow(BP, 2) + pow(CP, 2));
+    RLDistToCOR = sqrt(pow(AP, 2) + pow(DP, 2));
+    RRDistToCOR = sqrt(pow(AP, 2) + pow(CP, 2));
+
+    // add in twist like arcade drive
+    FLDistToCOR -= twist * 0.5;
+    RLDistToCOR -= twist * 0.5;
+
+    FRDistToCOR += twist * 0.5;
+    RRDistToCOR += twist * 0.5;
+
+    // Solve for fastest wheel speed
+    double speedarray[] = {fabs(FLDistToCOR), fabs(FRDistToCOR),
+                           fabs(RLDistToCOR), fabs(RRDistToCOR)};
+
+    //   ???? where does this 4 come from?
+    //   ???? Number of elements in speedarray? If so, use sizeof()
+
+    int length = 4;
+    double maxspeed = speedarray[0];
+
+    for (int i = 1; i < length; i++) {
+        if (speedarray[i] > maxspeed) {
+            maxspeed = speedarray[i];
+        }
+    }
+
+    // Set ratios based on maximum wheel speed
+    if (maxspeed > 1 || maxspeed < -1) {
+        FLRatio = FLDistToCOR / maxspeed;
+        FRRatio = FRDistToCOR / maxspeed;
+        RLRatio = RLDistToCOR / maxspeed;
+        RRRatio = RRDistToCOR / maxspeed;
+    } else {
+        FLRatio = FLDistToCOR;
+        FRRatio = FRDistToCOR;
+        RLRatio = RLDistToCOR;
+        RRRatio = RRDistToCOR;
+    }
+>>>>>>> Stashed changes
 
 }
 
