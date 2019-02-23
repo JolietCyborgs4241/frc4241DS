@@ -89,6 +89,9 @@ void DriveTrain::Crab(float y, float x, float twist, bool useGyro) {
     float RLSetPoint = 0;
     float RRSetPoint = 0;
 
+    // ENCODER PROCESSING BELOW!!
+    //
+    // REMOVE THIS COMMENT WHEN IT'S WORKED OUT
     if (DP != 0 || BP != 0)
         FLSetPoint = (2.5 - 2.5 / pi * atan2(BP, DP));
     if (BP != 0 || CP != 0)
@@ -219,6 +222,8 @@ void DriveTrain::SwerveArcade(float y, float x, float twist) {
 
 }
 
+
+// ENCODER VALUES BELOW!!
 double DriveTrain::CorrectSteerSetpoint(double setpoint) {
     // Used to correct steering setpoints to within the 0 to 5 V scale
     if (setpoint < 0) {
@@ -232,6 +237,8 @@ double DriveTrain::CorrectSteerSetpoint(double setpoint) {
     }
 }
 
+
+// ENCODER VALUES BELOW!!
 void DriveTrain::SetSteerSetpoint(float FLSetPoint, float FRSetPoint, float RLSetPoint, float RRSetPoint) {
     frontLeft->SetSetpoint(CorrectSteerSetpoint(FLSetPoint + FLOffset));
     frontRight->SetSetpoint(CorrectSteerSetpoint(FRSetPoint + FROffset));
@@ -307,6 +314,7 @@ void DriveTrain::Lock() {
 }
 
 void DriveTrain::DriveForward(double speed, double twist) {
+    // ENCODER VALUES BELOW!!
     SetSteerSetpoint(2.5, 2.5, 2.5, 2.5);
 
     double leftSpeed = speed - twist;
@@ -327,6 +335,7 @@ void DriveTrain::DriveReverse(double speed, double twist) {
 }
 
 void DriveTrain::DriveLeft(double speed, double twist) {
+    // // ENCODER VALUES BELOW!!
     // 3.75 is pointing left
     SetSteerSetpoint(3.75, 3.75, 3.75, 3.75);
 
@@ -350,6 +359,7 @@ void DriveTrain::DriveRight(double speed, double twist) {
 }
 
 void DriveTrain::DriveAngle(double speed, double angle) {
+// ENCODER VALUES BELOW!!
     double steer = ((angle + 90) / 360) * 5.0;
     SetSteerSetpoint(steer, steer, steer, steer);
     SetDriveSpeed(speed, speed, speed, speed);
