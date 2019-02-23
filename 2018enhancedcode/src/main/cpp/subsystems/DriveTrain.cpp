@@ -195,6 +195,7 @@ void DriveTrain::SwerveArcade(float y, float x, float twist) {
     double speedarray[] = {fabs(FLDistToCOR), fabs(FRDistToCOR),
                            fabs(RLDistToCOR), fabs(RRDistToCOR)};
 
+#pragma message ("warning: why is length 4?")
     //   ???? where does this 4 come from?
     //   ???? Number of elements in speedarray? If so, use sizeof()
 
@@ -222,7 +223,7 @@ void DriveTrain::SwerveArcade(float y, float x, float twist) {
 
 }
 
-
+#pragma message ("warning: possible encoder values referenced below")
 // ENCODER VALUES BELOW!!
 double DriveTrain::CorrectSteerSetpoint(double setpoint) {
     // Used to correct steering setpoints to within the 0 to 5 V scale
@@ -237,7 +238,7 @@ double DriveTrain::CorrectSteerSetpoint(double setpoint) {
     }
 }
 
-
+#pragma message ("warning: possible encoder values referenced below")
 // ENCODER VALUES BELOW!!
 void DriveTrain::SetSteerSetpoint(float FLSetPoint, float FRSetPoint, float RLSetPoint, float RRSetPoint) {
     frontLeft->SetSetpoint(CorrectSteerSetpoint(FLSetPoint + FLOffset));
@@ -304,15 +305,17 @@ void DriveTrain::Lock() {
     // splay the wheels out at different angles so no two wheels can roll
     // in the same direction - this will give the robot the most resistance
     // to moving in any direction
-    SetSteerSetpoint(angleToAnalog(145, ANGLE_DEGREES),
-                     angleToAnalog(55,  ANGLE_DEGREES),
-                     angleToAnalog(235, ANGLE_DEGREES),
-                     angleToAnalog(325, ANGLE_DEGREES));
+    SetSteerSetpoint(angleToAnalogEncoder(145, ANGLE_DEGREES),
+                     angleToAnalogEncoder(55,  ANGLE_DEGREES),
+                     angleToAnalogEncoder(235, ANGLE_DEGREES),
+                     angleToAnalogEncoder(325, ANGLE_DEGREES));
 
     // set speed to 0 to lock in place
     SetDriveSpeed(0, 0, 0, 0);
 }
 
+
+#pragma message ("warning: possible encoder values referenced below")
 void DriveTrain::DriveForward(double speed, double twist) {
     // ENCODER VALUES BELOW!!
     SetSteerSetpoint(2.5, 2.5, 2.5, 2.5);
@@ -334,6 +337,7 @@ void DriveTrain::DriveReverse(double speed, double twist) {
     DriveForward(-speed, twist);
 }
 
+#pragma message ("warning: possible encoder values referenced below")
 void DriveTrain::DriveLeft(double speed, double twist) {
     // // ENCODER VALUES BELOW!!
     // 3.75 is pointing left
@@ -359,6 +363,7 @@ void DriveTrain::DriveRight(double speed, double twist) {
 }
 
 void DriveTrain::DriveAngle(double speed, double angle) {
+#pragma message ("warning: possible encoder values referenced below")
 // ENCODER VALUES BELOW!!
     double steer = ((angle + 90) / 360) * 5.0;
     SetSteerSetpoint(steer, steer, steer, steer);
@@ -401,15 +406,18 @@ void DriveTrain::EnablePIDs() {
 }
 
 
-// analogToAngle
+// analogEncoderToAngle
 //
 // Map an analog sensor value to a specific angle in degrees or radians
 // based on the angleType parameter
 //
 // This way the code always deals with angles and never with raw encoder
 // values (in the event the encoder changes)
+//
+// This function uses absolute encoder values and will need to be adapted to
+// otehr encoders if used!
 
-float DriveTrain::analogToAngle(float analogValue, int angleType) {
+float DriveTrain::analogEncoderToAngle(float analogValue, int angleType) {
 
     switch (angleType) {
 
@@ -425,15 +433,18 @@ float DriveTrain::analogToAngle(float analogValue, int angleType) {
 }
 
 
-// angleToAnalog
+// angleToAnalogEncoder
 //
 // Map an angle in degrees or radians to a specific analog sensor value
 // based on the angleType parameter
 //
 // This way the code always deals with angles and never with raw encoder
 // values (in the event the encoder changes)
+//
+// This function uses absolute encoder values and will need to be adapted to
+// otehr encoders if used!
 
-float DriveTrain::angleToAnalog(float angle, int angleType) {
+float DriveTrain::angleToAnalogEncoder(float angle, int angleType) {
 
     if (angle == 0.0) {
         return (0);

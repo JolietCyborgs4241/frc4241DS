@@ -11,7 +11,7 @@ class DriveTrain : public Subsystem {
   private:
     static constexpr double pi = 3.14159;
 
-    // SetSteerSetPoint takes an encoder value - map angles before calling!
+#pragma message ( "warning: SetSteerSetPoint takes an encoder value - map angles before calling!" )
     //
     // ????? - should it take an angle for each value and an identifier
     // specifying the angle measurement in use instead?  Probably...
@@ -80,6 +80,7 @@ class DriveTrain : public Subsystem {
     double DP = 0.0;
 
 
+#pragma message ( "warning: figure out what radius is" )
     // ????? Radius of the wheel itself?
     // ????? Distance from the contact point to the pivot point?
  
@@ -113,11 +114,11 @@ class DriveTrain : public Subsystem {
 
     // map analog encoder values to radians or degrees
 
-    float analogToAngles(float analogValue, int angleType);
+    float analogEncoderToAngles(float analogValue, int angleType);
 
     // map radians or degrees to analog encoder values
 
-    float anglesToAnalog(float angle, int angleType);
+    float anglesToAnalogEncoder(float angle, int angleType);
 
 
   public:
@@ -160,7 +161,6 @@ class DriveTrain : public Subsystem {
     void SwerveArcade(float y, float x, float twist);
 
     // point each wheel in a different direction
-    // ????? Does this use absolute encoder values?
     void Lock();
 
     void Test();
