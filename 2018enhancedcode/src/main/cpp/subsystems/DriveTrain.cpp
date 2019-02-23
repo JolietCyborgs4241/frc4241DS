@@ -8,6 +8,7 @@
 using namespace frc;
 
 DriveTrain::DriveTrain() : Subsystem("DriveTrain") {
+
     frontLeftDrive = RobotMap::driveTrainFrontLeftDrive;
     frontRightDrive = RobotMap::driveTrainFrontRightDrive;
     rearLeftDrive = RobotMap::driveTrainRearLeftDrive;
@@ -28,8 +29,6 @@ DriveTrain::DriveTrain() : Subsystem("DriveTrain") {
     rearRightPos = RobotMap::driveTrainRearRightPos;
     rearRightSteer = RobotMap::driveTrainRearRightSteer;
     rearRight = RobotMap::driveTrainRearRight;
-    
-
 
     FLInv = 1; 
     FRInv = 1;
@@ -47,12 +46,14 @@ void DriveTrain::SetWheelbase(float w, float x, float y) {
     Wheelbase  = x;
     TrackFront = y;
 }
+
 void DriveTrain::SetOffsets(double FLOff, double FROff, double RLOff, double RROff) {
     FLOffset = FLOff;
     FROffset = FROff;
     RLOffset = RLOff;
     RROffset = RROff;
 }
+
 void DriveTrain::ToggleFrontBack() {
     driveFront = !driveFront;
 }
@@ -137,9 +138,6 @@ void DriveTrain::Crab(float y, float x, float twist, bool useGyro) {
     SetDriveSpeed(FLRatio, FRRatio, RLRatio, RRRatio);
 }
 
-<<<<<<< Updated upstream
-void DriveTrain::SwerveArcade() {
-=======
 //void DriveTrain::SwerveArcade(float y, float x, float twist, bool useGyro)
 void DriveTrain::SwerveArcade(float y, float x, float twist) {
     float forward = y * driveAdjust;
@@ -218,7 +216,6 @@ void DriveTrain::SwerveArcade(float y, float x, float twist) {
         RLRatio = RLDistToCOR;
         RRRatio = RRDistToCOR;
     }
->>>>>>> Stashed changes
 
 }
 
@@ -287,9 +284,25 @@ void DriveTrain::SetDriveSpeed(float FLSpeed, float FRSpeed, float RLSpeed, floa
     rearRightDrive->Set(ControlMode::PercentOutput, RRSpeed * RRInv); */
 }
 
+
+// Lock
+//
+// Point the wheels in different directions to help lock the robot in place
+//
+// Between the wheels being pointed in differnt directions and the resistance
+// the motors being locked, the robot will resist moving in any specific
+// direction
+
 void DriveTrain::Lock() {
-    // locks wheels to prevent robot movement
-    SetSteerSetpoint(2.0, 0.75, 3.25, 4.5);
+    // splay the wheels out at different angles so no two wheels can roll
+    // in the same direction - this will give the robot the most resistance
+    // to moving in any direction
+    SetSteerSetpoint(angleToAnalog(145, ANGLE_DEGREES),
+                     angleToAnalog(55,  ANGLE_DEGREES),
+                     angleToAnalog(235, ANGLE_DEGREES),
+                     angleToAnalog(325, ANGLE_DEGREES));
+
+    // set speed to 0 to lock in place
     SetDriveSpeed(0, 0, 0, 0);
 }
 
@@ -342,6 +355,11 @@ void DriveTrain::DriveAngle(double speed, double angle) {
     SetDriveSpeed(speed, speed, speed, speed);
 }
 
+
+// Stop
+//
+// Set all motors to 0
+
 void DriveTrain::Stop() {
     SetDriveSpeed(0, 0, 0, 0);
 }
@@ -370,4 +388,55 @@ void DriveTrain::EnablePIDs() {
     RobotMap::driveTrainFrontRight->Enable();
     RobotMap::driveTrainRearLeft->Enable();
     RobotMap::driveTrainRearRight->Enable();
+}
+
+
+// analogToAngle
+//
+// Map an analog sensor value to a specific angle in degrees or radians
+// based on the angleType parameter
+//
+// This way the code always deals with angles and never with raw encoder
+// values (in the event the encoder changes)
+
+float DriveTrain::analogToAngle(float analogValue, int angleType) {
+
+    switch (angleType) {
+
+    case ANGLE_DEGREES:    // 360 degrees * analog encoder value
+        return (360.0 * analogValue / ENCODER_MAX);
+        break;
+
+    case ANGLE_RADIANS:    // 2pi * analog encoder value
+        return (2 * pi * analogValue / ENCODER_MAX);
+        break;
+
+    }
+}
+
+
+// angleToAnalog
+//
+// Map an angle in degrees or radians to a specific analog sensor value
+// based on the angleType parameter
+//
+// This way the code always deals with angles and never with raw encoder
+// values (in the event the encoder changes)
+
+float DriveTrain::angleToAnalog(float angle, int angleType) {
+
+    if (angle == 0.0) {
+        return (0);
+    }
+
+    switch (angleType) {
+
+    case ANGLE_DEGREES:
+        return (angle / 360.0 * ENCODER_MAX);
+        break;
+
+    case ANGLE_RADIANS:
+        return (angle / (2 * pi) * ENCODER_MAX);
+        break;
+    }
 }

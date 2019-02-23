@@ -10,7 +10,13 @@ using namespace frc;
 class DriveTrain : public Subsystem {
   private:
     static constexpr double pi = 3.14159;
+
+    // SetSteerSetPoint takes an encoder value - map angles before calling!
+    //
+    // ????? - should it take an angle for each value and an identifier
+    // specifying the angle measurement in use instead?  Probably...
     void SetSteerSetpoint(float FLSet, float FRSet, float RLSet, float RRSet);
+
     void SetDriveSpeed(float FLSpeed, float FRSpeed, float RLSpeed, float RRSpeed);
 
 
@@ -66,23 +72,53 @@ class DriveTrain : public Subsystem {
     double RLOffset = 0.0;
     double RROffset = 0.0;
 
+
     // Crab Variables
     double AP = 0.0;
     double BP = 0.0;
     double CP = 0.0;
     double DP = 0.0;
 
+
     // ????? Radius of the wheel itself?
+    // ????? Distance from the contact point to the pivot point?
  
     double radius = 0.0; // distance from center to each wheel
 
+
+    // ????? What are these - directions for each wheel to turn in?
 
     int FLInv = 0;
     int FRInv = 0;
     int RLInv = 0;
     int RRInv = 0;
 
+
     double CorrectSteerSetpoint(double setpoint);
+
+
+#define ANGLE_DEGREES    0
+#define ANGLE_RADIANS    1
+
+    // constants for the 4 directional oridinals
+#define ANGLE_FWD_RADS   0
+#define ANGLE_RIGHT_RADS (pi / 2.0)
+#define ANGLE_LEFT_RADS  (pi * 1.5)
+#define ANGLE_REV_RADS   (pi) 
+
+#define ANGLE_FWD_DEGS    0
+#define ANGLE_RIGHT_DEGS  90
+#define ANGLE_LEFT_DEGS   270
+#define ANGLE_REV_DEGS    180
+
+    // map analog encoder values to radians or degrees
+
+    float analogToAngles(float analogValue, int angleType);
+
+    // map radians or degrees to analog encoder values
+
+    float anglesToAnalog(float angle, int angleType);
+
 
   public:
     WPI_TalonSRX* frontLeftDrive;
@@ -123,6 +159,8 @@ class DriveTrain : public Subsystem {
     //void SwerveArcade(float y, float x, float twist, bool useGyro);
     void SwerveArcade(float y, float x, float twist);
 
+    // point each wheel in a different direction
+    // ????? Does this use absolute encoder values?
     void Lock();
 
     void Test();
