@@ -415,7 +415,10 @@ void DriveTrain::EnablePIDs() {
 // values (in the event the encoder changes)
 //
 // This function uses absolute encoder values and will need to be adapted to
-// otehr encoders if used!
+// other encoders if used!
+//
+// Currently supporting a US Digital MA3 analog absolute encoder - specs
+// at https://www.usdigital.com/products/encoders/absolute/rotary/shaft/MA3
 
 float DriveTrain::analogEncoderToAngle(float analogValue, int angleType) {
 
@@ -442,7 +445,10 @@ float DriveTrain::analogEncoderToAngle(float analogValue, int angleType) {
 // values (in the event the encoder changes)
 //
 // This function uses absolute encoder values and will need to be adapted to
-// otehr encoders if used!
+// other encoders if used!
+//
+// Currently supporting a US Digital MA3 analog absolute encoder - specs
+// at https://www.usdigital.com/products/encoders/absolute/rotary/shaft/MA3
 
 float DriveTrain::angleToAnalogEncoder(float angle, int angleType) {
 
