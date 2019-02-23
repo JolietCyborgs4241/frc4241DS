@@ -28,9 +28,9 @@ bool Robot::recievedGameData = false;
 Timer* Robot::autoTimer = new Timer();
 */
 //ArcadeDrive Setup
+/*frc::DifferentialDrive driveArcade{m_leftDrive, m_rightDrive};
 frc::SpeedControllerGroup m_leftDrive{RobotMap::driveTrainFrontLeftDrive, RobotMap::driveTrainRearLeftDrive};
-frc::SpeedControllerGroup m_rightDrive{RobotMap::driveTrainFrontRightDrive, RobotMap::driveTrainRearRightDrive};
-frc::DifferentialDrive driveArcade{m_leftDrive, m_rightDrive};
+frc::SpeedControllerGroup m_rightDrive{RobotMap::driveTrainFrontRightDrive, RobotMap::driveTrainRearRightDrive}; */
 
 
 void Robot::RobotInit() {
@@ -69,7 +69,7 @@ void Robot::RobotInit() {
 */
     lw = LiveWindow::GetInstance();
 
-    driveTrain->SetWheelbase(23, 19, 23);
+    driveTrain->SetWheelbase(23, 23);
     FLOffset = 0;
     FROffset = 0;
     RLOffset = 0;
@@ -228,7 +228,8 @@ void Robot::TeleopPeriodic() {
     SmartDashboard::PutNumber("CycleTime", Timer::GetFPGATimestamp() - cycleTime);
     cycleTime = Timer::GetFPGATimestamp();
     //driveTrain->Crab(-oi->getDriveLeftY(), oi->getDriveLeftX(), -oi->getDriveRightX(), fieldCentric);
-    driveTrain->Crab(0.0, 0.0, 0.0, fieldCentric);
+    driveTrain->Crab(0.0, 0.0, 0.0, 0.0); //useGyro is undefined, placed placeholder value, not sure what true value is 
+    // driveTrain->Crab(0.0, 0.0, 0.0, fieldCentric); This function was in here before, but old code does not include fieldcentric
     //driveTrain->Crab(-oi->getDriveLeftY(), oi->getDriveLeftX(), -oi->getDriveRightX(), fieldCentric);
 //     Drive Control
 //     joystickY is -up, so invert to match +Y -> forward

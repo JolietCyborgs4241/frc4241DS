@@ -38,10 +38,10 @@ void DriveTrain::InitDefaultCommand() {
     // SetDefaultCommand(new MySpecialCommand());
 }
 
-void DriveTrain::SetWheelbase(float w, float x, float y) {
-    W = w;
-    X = x;
-    Y = y;
+void DriveTrain::SetWheelbase(float x, float y) {
+    
+    TrackRear = x;
+    TrackFront = y;
 }
 void DriveTrain::SetOffsets(double FLOff, double FROff, double RLOff, double RROff) {
     FLOffset = FLOff;
@@ -69,12 +69,12 @@ void DriveTrain::Crab(float y, float x, float twist, bool useGyro) {
         strafe = -y * cos(robotangle) + x * sin(robotangle);
     } 
 
-    radius = sqrt(pow(Y, 2) + pow(X, 2));
+    radius = sqrt(pow(TrackFront, 2) + pow(TrackRear, 2));
 
-    AP = strafe + twist * X / radius;
-    BP = strafe - twist * X / radius;
-    CP = forward + twist * Y / radius;
-    DP = forward - twist * Y / radius;
+    AP = strafe + twist * TrackRear / radius;
+    BP = strafe - twist * TrackRear / radius;
+    CP = forward + twist * TrackFront/ radius;
+    DP = forward - twist * TrackFront/ radius;
 
     sprintf(buffer, "radius=%f, AP=%f, BP=%f, CP=%f, DP=%f", radius, AP, BP, CP, DP);
     SmartDashboard::PutString("Crab2", buffer);
@@ -133,7 +133,7 @@ void DriveTrain::Crab(float y, float x, float twist, bool useGyro) {
     SetDriveSpeed(FLRatio, FRRatio, RLRatio, RRRatio);
 }
 
-void DriveTrain::SwerveArcade() {
+void DriveTrain::SwerveArcade(float y, float x, float twist) {
 
 }
 
