@@ -1,2 +1,12 @@
 
 *.swp
+
+*.o
+
+*.bin
+
+*.lock
+
+/4241swerve2019/build/*
+
+/4241swerve2019/.gradle/*
