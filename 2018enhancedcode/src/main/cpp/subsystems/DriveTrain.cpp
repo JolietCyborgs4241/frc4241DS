@@ -101,10 +101,10 @@ void DriveTrain::Crab(float y, float x, float twist, bool useGyro) {
     if (AP != 0 || CP != 0)
         RRSetPoint = (2.5 - 2.5 / pi * atan2(AP, CP));
 
-    sprintf(buffer, "prior to SetSteerSetPoint FLSP=%f FRSP=%f RLSP=%f RRSP=%f", FLSetPoint, FRSetPoint, RLSetPoint, RRSetPoint);
+    sprintf(buffer, "prior to SetSteerSetpoint FLSP=%f FRSP=%f RLSP=%f RRSP=%f", FLSetPoint, FRSetPoint, RLSetPoint, RRSetPoint);
     SmartDashboard::PutString("Crab2", buffer);
 
-    SetSteerSetpoint(FLSetPoint, FRSetPoint, RLSetPoint, RRSetPoint);
+    SetSteerSetpoint(FLSetPoint, FRSetPoint, RLSetPoint, RRSetPoint, ANGLE_RADIANS);
     FLDistToCOR = sqrt(pow(BP, 2) + pow(DP, 2));
     FRDistToCOR = sqrt(pow(BP, 2) + pow(CP, 2));
     RLDistToCOR = sqrt(pow(AP, 2) + pow(DP, 2));
@@ -178,7 +178,7 @@ void DriveTrain::SwerveArcade(float y, float x, float twist) {
         RRSetPoint = (2.5 - 2.5 / pi * atan2(AP, CP));
     }
 
-    SetSteerSetpoint(FLSetPoint, FRSetPoint, RLSetPoint, RRSetPoint);
+    SetSteerSetpoint(FLSetPoint, FRSetPoint, RLSetPoint, RRSetPoint, ANGLE_RADIANS);
     FLDistToCOR = sqrt(pow(BP, 2) + pow(DP, 2));
     FRDistToCOR = sqrt(pow(BP, 2) + pow(CP, 2));
     RLDistToCOR = sqrt(pow(AP, 2) + pow(DP, 2));
@@ -238,19 +238,41 @@ double DriveTrain::CorrectSteerSetpoint(double setpoint) {
     }
 }
 
+
+// SetSteerSetpoint
+//
+// set each wheel according to the passed parameters and angle type
+//
+// all passed values are assumed as either degrees or radians - no mixing
+//
+// THIS WHOLE FUNCTION AND THE REST OF TEH FUNCTIONS THAT IT CALLS LIKE
+// SetSetPoint AND CorrectSteerSetpoint ARE A MESS OF ENCODER VALUES
+// PRETENDING TO BE ANGLES AND TRYING TO MAKE ADJUSTMENTS ON THAT BASIS
+//
+// ALL THIS CODE SHOUDL WORK IN AN ANGULAR SPACE AND NOT USE ENCODER VALUES
+// UNTIL IT ACTUALLY NEEDS TO USE ENCODER VALUES
+
 #pragma message ("warning: possible encoder values referenced below")
+#pragma message ("warning: bullshit code below")
 // ENCODER VALUES BELOW!!
-void DriveTrain::SetSteerSetpoint(float FLSetPoint, float FRSetPoint, float RLSetPoint, float RRSetPoint) {
+void DriveTrain::SetSteerSetpoint(float FLSetPoint, float FRSetPoint, float RLSetPoint, float RRSetPoint, int angleType) {
+
     frontLeft->SetSetpoint(CorrectSteerSetpoint(FLSetPoint + FLOffset));
     frontRight->SetSetpoint(CorrectSteerSetpoint(FRSetPoint + FROffset));
     rearLeft->SetSetpoint(CorrectSteerSetpoint(RLSetPoint + RLOffset));
     rearRight->SetSetpoint(CorrectSteerSetpoint(RRSetPoint + RROffset));
 
-    if (fabs(FLSetPoint - frontLeftPos->GetAverageVoltage()) < 1.25 ||
-        fabs(FLSetPoint - frontLeftPos->GetAverageVoltage()) > 3.75) {
+// trying to map this to the encoder mapping routines but it's the wrong
+// way to go!
+
+    if (fabs(FLSetPoint - analogEncoderToAngle(frontLeftPos->GetAverageVoltage(), ANGLE_DEGREES) < 90 ||
+        fabs(FLSetPoint - analogEncoderToAngle(frontLeftPos->GetAverageVoltage(), ANGLE_DEGREES) > 270) {
+
         frontLeft->SetSetpoint(CorrectSteerSetpoint(FLSetPoint));
         FLInv = 1;
+
     } else {
+
         frontLeft->SetSetpoint(CorrectSteerSetpoint(FLSetPoint - 2.5));
         FLInv = -1;
     }
@@ -305,20 +327,16 @@ void DriveTrain::Lock() {
     // splay the wheels out at different angles so no two wheels can roll
     // in the same direction - this will give the robot the most resistance
     // to moving in any direction
-    SetSteerSetpoint(angleToAnalogEncoder(145, ANGLE_DEGREES),
-                     angleToAnalogEncoder(55,  ANGLE_DEGREES),
-                     angleToAnalogEncoder(235, ANGLE_DEGREES),
-                     angleToAnalogEncoder(325, ANGLE_DEGREES));
+    SetSteerSetpoint(145, 55, 235, 325, ANGLE_DEGREES);
 
     // set speed to 0 to lock in place
     SetDriveSpeed(0, 0, 0, 0);
 }
 
 
-#pragma message ("warning: possible encoder values referenced below")
 void DriveTrain::DriveForward(double speed, double twist) {
     // ENCODER VALUES BELOW!!
-    SetSteerSetpoint(2.5, 2.5, 2.5, 2.5);
+    SetSteerSetpoint(180, 180, 180, 180, ANGLE_DEGREES);
 
     double leftSpeed = speed - twist;
     double rightSpeed = speed + twist;
@@ -333,15 +351,19 @@ void DriveTrain::DriveForward(double speed, double twist) {
     SetDriveSpeed(leftSpeed, rightSpeed, leftSpeed, rightSpeed);
 }
 
+
+
+// DriveReverse
+//
+// We use the forward function but invert the speed to change direction
+
 void DriveTrain::DriveReverse(double speed, double twist) {
     DriveForward(-speed, twist);
 }
 
-#pragma message ("warning: possible encoder values referenced below")
+
 void DriveTrain::DriveLeft(double speed, double twist) {
-    // // ENCODER VALUES BELOW!!
-    // 3.75 is pointing left
-    SetSteerSetpoint(3.75, 3.75, 3.75, 3.75);
+    SetSteerSetpoint(270, 270, 270, 270, ANGLE_DEGREES);
 
     double leftSpeed = speed - twist;
     double rightSpeed = speed + twist;
@@ -358,15 +380,27 @@ void DriveTrain::DriveLeft(double speed, double twist) {
     SetDriveSpeed(rightSpeed, rightSpeed, leftSpeed, leftSpeed);
 }
 
+
+// DriveLeft
+//
+// We use the left function but invert the speed to change direction
+
 void DriveTrain::DriveRight(double speed, double twist) {
     DriveLeft(-speed, twist);
 }
 
+
+// DriveAngle
+//
+// set the steer point to the given angle and then start driving
+//
+// note:
+
 void DriveTrain::DriveAngle(double speed, double angle) {
 #pragma message ("warning: possible encoder values referenced below")
-// ENCODER VALUES BELOW!!
+#pragma message ("warning: why the 90 degree offset in the calculation below?")
     double steer = ((angle + 90) / 360) * 5.0;
-    SetSteerSetpoint(steer, steer, steer, steer);
+    SetSteerSetpoint(steer, steer, steer, steer, ANGLE_DEGREES);
     SetDriveSpeed(speed, speed, speed, speed);
 }
 
@@ -378,6 +412,14 @@ void DriveTrain::DriveAngle(double speed, double angle) {
 void DriveTrain::Stop() {
     SetDriveSpeed(0, 0, 0, 0);
 }
+
+
+// TogglePrecisionDrive
+//
+// when enabled, apply a factor which cuts down the control sensitivity to
+// allow more "precision" driving by making the robot slower to respond to
+// speed and turn commands so it is easier to turn small amount and drive
+// more slowly
 
 void DriveTrain::TogglePrecisionDrive() {
     if (!precisionDrive) {
@@ -391,12 +433,23 @@ void DriveTrain::TogglePrecisionDrive() {
     precisionDrive = !precisionDrive;
 }
 
+
+// DisablePIDs
+//
+// Turn off PID processing (position - intergral - derivative) in regards
+// to the steering angle
+
 void DriveTrain::DisablePIDs() {
     RobotMap::driveTrainFrontLeft->Disable();
     RobotMap::driveTrainFrontRight->Disable();
     RobotMap::driveTrainRearLeft->Disable();
     RobotMap::driveTrainRearRight->Disable();
 }
+
+
+// EnablePIDs
+//
+// use feedback from the encoders to set and maintain steering angles
 
 void DriveTrain::EnablePIDs() {
     RobotMap::driveTrainFrontLeft->Enable();
