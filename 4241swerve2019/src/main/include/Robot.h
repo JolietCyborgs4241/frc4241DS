@@ -81,7 +81,7 @@ class Robot : public frc::TimedRobot {
     virtual void DisabledInit();
     virtual void DisabledPeriodic();
     void Autonomous();
-    void OperatorControl();
+  
   private:
     void Dashboard();
 
@@ -91,12 +91,12 @@ class Robot : public frc::TimedRobot {
     double RROffset;
 
     float cycleTime;
-  WPI_TalonSRX frontLeft{1};
-  WPI_TalonSRX frontRight{3};
-  WPI_TalonSRX rearLeft{9};
-  WPI_TalonSRX rearRight{6};
+  WPI_TalonSRX frontLeft{5};
+  WPI_TalonSRX frontRight{6};
+  WPI_TalonSRX rearLeft{3};
+  WPI_TalonSRX rearRight{7};
   frc::RobotDrive m_robotDrive{frontLeft, rearLeft, frontRight, rearRight};
-  frc::Joystick m_stick{0};
+  
 
   frc::SendableChooser<std::string> m_chooser;
   const std::string kAutoNameDefault = "Default";

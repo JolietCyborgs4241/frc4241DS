@@ -106,46 +106,9 @@ void Robot::Autonomous() {
   // "Auto Selector", kAutoNameDefault);
   std::cout << "Auto selected: " << autoSelected << std::endl;
 
-  // MotorSafety improves safety when motors are updated in loops but is
-  // disabled here because motor updates are not looped in this autonomous mode.
-  m_robotDrive.SetSafetyEnabled(false);
 
-  if (autoSelected == kAutoNameCustom) {
-    // Custom Auto goes here
-    std::cout << "Running custom Autonomous" << std::endl;
-
-    // Spin at half speed for two seconds
-    m_robotDrive.ArcadeDrive(0.0, 0.5);
-    frc::Wait(2.0);
-
-    // Stop robot
-    m_robotDrive.ArcadeDrive(0.0, 0.0);
-  } else {
-    // Default Auto goes here
-    std::cout << "Running default Autonomous" << std::endl;
-
-    // Drive forwards at half speed for two seconds
-    m_robotDrive.ArcadeDrive(-0.5, 0.0);
-    frc::Wait(2.0);
-
-    // Stop robot
-    m_robotDrive.ArcadeDrive(0.0, 0.0);
-  }
 }
 
-/**
- * Runs the motors with arcade steering.
- */
-void Robot::OperatorControl() {
-  m_robotDrive.SetSafetyEnabled(true);
-  while (IsOperatorControl() && IsEnabled()) {
-    // Drive with arcade style (use right stick)
-    m_robotDrive.ArcadeDrive(-m_stick.GetX(), m_stick.GetY());
-
-    // The motors will be updated every 5ms
-    frc::Wait(0.005);
-  }
-}
 
  
 
@@ -172,6 +135,7 @@ void Robot::TeleopInit() {
      SmartDashboard::PutNumber("CycleTime", Timer::GetFPGATimestamp() - cycleTime);
      cycleTime = Timer::GetFPGATimestamp();
      Robot::robotArm->Fulcrum();
+     m_robotDrive.ArcadeDrive(oi->getDriveLY(), oi->getDriveRX());
      
 //     // Drive Control
 //     // joystickY is -up, so invert to match +Y -> forward

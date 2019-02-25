@@ -21,11 +21,11 @@ void Lift::InitDefaultCommand() {
 // here. Call these from Commands.
 
 void Lift::LiftUp() {
-  LiftWinch->Set(.5);
+  LiftWinch->Set(-8);
 }
 
 void Lift::LiftDown() {
-  LiftWinch->Set(-.5);
+  LiftWinch->Set(8);
 }
 
 void Lift::LiftStop() {
