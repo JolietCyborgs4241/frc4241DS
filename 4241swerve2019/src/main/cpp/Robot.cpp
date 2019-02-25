@@ -21,7 +21,7 @@ void Robot::RobotInit() {
 }
  static void VisionThread()
     {
-        cs::UsbCamera camera = CameraServer::GetInstance()->StartAutomaticCapture();
+        cs::UsbCamera camera = CameraServer::GetInstance()->StartAutomaticCapture(0);
         camera.SetResolution(640, 480);P
         cs::CvSink cvSink = CameraServer::GetInstance()->GetVideo();
         cs::CvSource outputStreamStd = CameraServer::GetInstance()->PutVideo("Gray", 640, 480);
