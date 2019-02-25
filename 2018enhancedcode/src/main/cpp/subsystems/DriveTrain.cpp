@@ -179,11 +179,20 @@ void DriveTrain::SwerveArcade(float y, float x, float twist) {
     }
 
     SetSteerSetpoint(FLSetPoint, FRSetPoint, RLSetPoint, RRSetPoint, ANGLE_RADIANS);
+
+    // Center Of Rotation is the center of the robot in terms of wheel
+    // location (which may not be the actual center of the robot itself)
+    //
+    // We caclulate how far we are using the wheelbase / track information
+    // as the two perpendicular angles of a right triangle (the legs)
+    // and use the pythagorean algorithm for solve for the hypotenuse
+
     FLDistToCOR = sqrt(pow(BP, 2) + pow(DP, 2));
     FRDistToCOR = sqrt(pow(BP, 2) + pow(CP, 2));
     RLDistToCOR = sqrt(pow(AP, 2) + pow(DP, 2));
     RRDistToCOR = sqrt(pow(AP, 2) + pow(CP, 2));
 
+#pragma message ("Warning: why is twist used like this??")
     // add in twist like arcade drive
     FLDistToCOR -= twist * 0.5;
     RLDistToCOR -= twist * 0.5;
@@ -195,20 +204,27 @@ void DriveTrain::SwerveArcade(float y, float x, float twist) {
     double speedarray[] = {fabs(FLDistToCOR), fabs(FRDistToCOR),
                            fabs(RLDistToCOR), fabs(RRDistToCOR)};
 
-#pragma message ("warning: why is length 4?")
-    //   ???? where does this 4 come from?
-    //   ???? Number of elements in speedarray? If so, use sizeof()
+    double maxspeed = speedarray[0];    // set it to the first one to start
 
-    int length = 4;
-    double maxspeed = speedarray[0];
-
-    for (int i = 1; i < length; i++) {
+    for (int i = 1; i < sizeof(speedarray)/sizeof(speedarray[0]); i++) {
         if (speedarray[i] > maxspeed) {
-            maxspeed = speedarray[i];
+            maxspeed = speedarray[i];   // found a higher max speed
         }
     }
 
     // Set ratios based on maximum wheel speed
+    //
+    // "maxspeed" now contains the speed of the fastest rotating wheel
+    // based on calculations (since we haven't actually set the speed of the
+    // wheel yet)
+    //
+    // This will set the maxspeed wheel to a speed of 1.0 and adjust all
+    // the slower wheels in proportion (since we can't set a wheel speed
+    // faster than 1.0)
+    //
+    // The goal is to have the wheel that is turning the fastest be turning
+    // at max speed for best response
+
     if (maxspeed > 1 || maxspeed < -1) {
         FLRatio = FLDistToCOR / maxspeed;
         FRRatio = FRDistToCOR / maxspeed;
@@ -222,6 +238,7 @@ void DriveTrain::SwerveArcade(float y, float x, float twist) {
     }
 
 }
+
 
 #pragma message ("warning: possible encoder values referenced below")
 // ENCODER VALUES BELOW!!
