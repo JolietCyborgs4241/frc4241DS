@@ -21,20 +21,16 @@ void Lift::InitDefaultCommand() {
 // here. Call these from Commands.
 
 void Lift::LiftUp() {
-  LiftWinch->Set(.5);
+  LiftWinch->Set(-8);
 }
 
 void Lift::LiftDown() {
-<<<<<<< HEAD
   LiftWinch->Set(8);
   LiftWinch->Set(1.0);
 }
 
 void Lift::LiftDown() {
   LiftWinch->Set(-1.0);
-=======
-  LiftWinch->Set(-.5);
->>>>>>> parent of 46c576a... Undo this
 }
 
 void Lift::LiftStop() {
