@@ -11,7 +11,7 @@ using namespace frc;
 OI::OI() {
     // Process operator interface input here.
     xBoxControl = new Joystick(0);
-    xBoxDrive = new Joystick(1);
+
     // Xbox
     //ControlA = new JoystickButton(xBoxControl, 1);
     //ControlB = new JoystickButton(xBoxControl, 2);
@@ -89,17 +89,9 @@ Joystick* OI::getControlJoystick() {
     return xBoxControl;
 }
 
- double OI::getControlLY()  {
-     return adjustJoystick(xBoxControl->GetRawAxis(1));
+double OI::getControlLY()  {
+    return adjustJoystick(xBoxControl->GetRawAxis(1));
     
- }
-
-double OI::getDriveLY() {
-    return adjustJoystick(xBoxDrive->GetRawAxis(1));
-}
-
-double OI::getDriveRX() {
-    return adjustJoystick(xBoxDrive->GetRawAxis(4));
 }
 
  double OI::adjustJoystick(double value) {
