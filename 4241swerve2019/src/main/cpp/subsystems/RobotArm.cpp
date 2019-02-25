@@ -13,7 +13,7 @@
 using namespace frc;
 
 RobotArm::RobotArm() : Subsystem("ExampleSubsystem") {
-  m_fulcrum = RobotMap::robotArmFulcrum;
+  //m_fulcrum = RobotMap::robotArmFulcrum;
   m_extension = RobotMap::robotArmExtension;
   m_claw = RobotMap::robotArmClaw;
 }
@@ -29,6 +29,11 @@ void RobotArm::openClaw() {
   // }
   //else {
     m_claw->Set(1.0);
+  /*if (RobotMap::limitswitchopen->Get()) {
+    m_claw->Set(0.0);
+  }
+  else {*/
+    m_claw->Set(0.45);
   //}
 }
 
@@ -39,6 +44,12 @@ void RobotArm::closeClaw() {
   // else {
     m_claw->Set(-1.0);
   //}
+ /* if (RobotMap::limitswitchclose->Get()) {
+    m_claw->Set(0.0);
+  }
+  else {*/
+    m_claw->Set(-0.45);
+//  }
 }
 
 void RobotArm::StopClaw() {
@@ -59,8 +70,10 @@ void RobotArm::StopExtension() {
 
 void RobotArm::Fulcrum() {
    double motorValue =  -Robot::oi->getControlLY(); // INVERT the value!
+/*void RobotArm::Fulcrum() {
+   double motorValue = - (Robot::oi->getControlLY()); // INVERT the value!
    m_fulcrum->Set(motorValue);
-}
+} */
 
 // Put methods for controlling this subsystem
 // here. Call these from Commands.

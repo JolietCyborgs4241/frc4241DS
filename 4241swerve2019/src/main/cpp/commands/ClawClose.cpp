@@ -9,8 +9,6 @@
 #include "Robot.h"
 
 ClawClose::ClawClose() {
-  Requires(Robot::robotArm);
-  SetTimeout(1);
   
   // Use Requires() here to declare subsystem dependencies
   // eg. Requires(Robot::chassis.get());

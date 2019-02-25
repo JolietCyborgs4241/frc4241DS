@@ -98,6 +98,11 @@ class Robot : public frc::TimedRobot {
   frc::RobotDrive m_robotDrive{frontLeft, rearLeft, frontRight, rearRight};
   
 
+  WPI_TalonSRX frontRight{9};
+  WPI_TalonSRX rearLeft{3};
+  WPI_TalonSRX rearRight{7};
+  frc::RobotDrive m_robotDrive{frontLeft, rearLeft, frontRight, rearRight};
+  frc::Joystick m_stick{1};
   frc::SendableChooser<std::string> m_chooser;
   const std::string kAutoNameDefault = "Default";
   const std::string kAutoNameCustom = "My Auto";

@@ -2,6 +2,7 @@
 #include "subsystems/Ramp.h"
 #include <iostream>
 #include <frc/Timer.h>
+#include "ctre/Phoenix.h"
 #include <frc/smartdashboard/SmartDashboard.h>
 
 
@@ -108,6 +109,10 @@ void Robot::Autonomous() {
 
 
 }
+/**
+ * Runs the motors with arcade steering.
+ */
+
 
 
  
@@ -136,6 +141,8 @@ void Robot::TeleopInit() {
      cycleTime = Timer::GetFPGATimestamp();
      Robot::robotArm->Fulcrum();
      m_robotDrive.ArcadeDrive(oi->getDriveLY(), oi->getDriveRX());
+     m_robotDrive.ArcadeDrive(m_stick.GetRawAxis(1), m_stick.GetRawAxis(4));
+     //Robot::robotArm->Fulcrum();
      
 //     // Drive Control
 //     // joystickY is -up, so invert to match +Y -> forward
@@ -169,7 +176,8 @@ void Robot::TeleopInit() {
  }
 
  void Robot::Dashboard() {
-//     // Joystick Variables
+//     // Joystick Variables(
+      SmartDashboard::PutNumber("Claw Motor", RobotMap::robotArmClaw->GetMotorOutputVoltage());
      //SmartDashboard::PutNumber("ControlStickY", oi->getControlLY());
 //     SmartDashboard::PutNumber("DriveStickX", oi->getDriveJoystick()->GetX());
 //     SmartDashboard::PutNumber("DriveStickZ", oi->getDriveJoystick()->GetZ());
