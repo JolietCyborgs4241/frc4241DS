@@ -44,9 +44,7 @@ void Robot::RobotInit() {
 
     
     robotArm = new RobotArm();
-    m_chooser.SetDefaultOption(kAutoNameDefault, kAutoNameDefault);
-  m_chooser.AddOption(kAutoNameCustom, kAutoNameCustom);
-  frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
+  //frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
 
 //     pigeon = new Pigeon();
 
@@ -102,7 +100,7 @@ void Robot::RobotInit() {
 }
 
 void Robot::Autonomous() {
-  std::string autoSelected = m_chooser.GetSelected();
+  /*std::string autoSelected = m_chooser.GetSelected();
   // std::string autoSelected = frc::SmartDashboard::GetString(
   // "Auto Selector", kAutoNameDefault);
   std::cout << "Auto selected: " << autoSelected << std::endl;
@@ -131,7 +129,7 @@ void Robot::Autonomous() {
 
     // Stop robot
     m_robotDrive.ArcadeDrive(0.0, 0.0);
-  }
+  } */
 }
 /**
  * Runs the motors with arcade steering.
@@ -177,12 +175,7 @@ void Robot::TeleopInit() {
      SmartDashboard::PutNumber("CycleTime", Timer::GetFPGATimestamp() - cycleTime);
      cycleTime = Timer::GetFPGATimestamp();
      Robot::robotArm->Fulcrum();
-<<<<<<< HEAD
-     m_robotDrive.ArcadeDrive(oi->getDriveLY(), oi->getDriveRX());
-     m_robotDrive.ArcadeDrive(m_stick.GetRawAxis(1), m_stick.GetRawAxis(4));
      //Robot::robotArm->Fulcrum();
-=======
->>>>>>> parent of 46c576a... Undo this
      
 //     // Drive Control
 //     // joystickY is -up, so invert to match +Y -> forward

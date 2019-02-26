@@ -81,7 +81,7 @@ class Robot : public frc::TimedRobot {
     virtual void DisabledInit();
     virtual void DisabledPeriodic();
     void Autonomous();
-    void OperatorControl();
+    virtual void OperatorControl();
   private:
     void Dashboard();
 
@@ -98,14 +98,7 @@ class Robot : public frc::TimedRobot {
   frc::RobotDrive m_robotDrive{frontLeft, rearLeft, frontRight, rearRight};
   frc::Joystick m_stick{0};
 
-  WPI_TalonSRX frontRight{9};
-  WPI_TalonSRX rearLeft{3};
-  WPI_TalonSRX rearRight{7};
-  frc::RobotDrive m_robotDrive{frontLeft, rearLeft, frontRight, rearRight};
-  frc::Joystick m_stick{1};
-  frc::SendableChooser<std::string> m_chooser;
-  const std::string kAutoNameDefault = "Default";
-  const std::string kAutoNameCustom = "My Auto";
+
    /* std::unique_ptr<frc::Command> autonomousCommand;
     frc::SendableChooser<int> chooser;
 

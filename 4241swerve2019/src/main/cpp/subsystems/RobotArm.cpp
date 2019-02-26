@@ -24,40 +24,24 @@ void RobotArm::InitDefaultCommand() {
 }
 
 void RobotArm::openClaw() {
-  if (RobotMap::limitswitchopen->Get()) {
-    m_claw->Set(0.0);
-  }
-  else {
-    m_claw->Set(1.0);
-<<<<<<< HEAD
-  /*if (RobotMap::limitswitchopen->Get()) {
-    m_claw->Set(0.0);
-  }
-  else {*/
-    m_claw->Set(0.45);
-  //}
-=======
-  }
->>>>>>> parent of 46c576a... Undo this
+  m_claw->Set(.45);
+  //  (RobotMap::limitswitchopen->Get()) {
+  //   m_claw->Set(0.0);
+  // }
+  // else {i
+  //   m_claw->Set(1.0);
+  // }
 }
 
 void RobotArm::closeClaw() {
-  if (RobotMap::limitswitchclose->Get()) {
-    m_claw->Set(0.0)
-  }
-  else {
-    m_claw->Set(-1.0);
-<<<<<<< HEAD
+  m_claw->Set(.45);
   //}
  /* if (RobotMap::limitswitchclose->Get()) {
     m_claw->Set(0.0);
   }
   else {*/
-    m_claw->Set(-0.45);
-//  }
-=======
-  }
->>>>>>> parent of 46c576a... Undo this
+    //m_claw->Set(-0.45);
+  //}
 }
 
 void RobotArm::StopClaw() {
@@ -77,14 +61,12 @@ void RobotArm::StopExtension() {
 }
 
 void RobotArm::Fulcrum() {
-<<<<<<< HEAD
    double motorValue =  -Robot::oi->getControlLY(); // INVERT the value!
 /*void RobotArm::Fulcrum() {
-=======
->>>>>>> parent of 46c576a... Undo this
    double motorValue = - (Robot::oi->getControlLY()); // INVERT the value!
    m_fulcrum->Set(motorValue);
 } */
 
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
+}
