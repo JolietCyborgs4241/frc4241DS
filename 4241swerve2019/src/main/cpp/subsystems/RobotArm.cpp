@@ -24,25 +24,14 @@ void RobotArm::InitDefaultCommand() {
 }
 
 void RobotArm::openClaw() {
+  WPI_TalonSRX->ConfigForwardLimitSwitch(LimitSwitchSource::LimitSwitchSource_FeedbackConnector, LimitSwitchNormal::LimitSwitchNormal_NormallyOpen, 10);
   m_claw->Set(.45);
-  //  (RobotMap::limitswitchopen->Get()) {
-  //   m_claw->Set(0.0);
-  // }
-  // else {i
-  //   m_claw->Set(1.0);
-  // }
 }
 
 void RobotArm::closeClaw() {
+  WPI_TalonSRX->ConfigReverseLimitSwitch(LimitSwitchSource::LimitSwitchSource_FeedbackConnector, LimitSwitchNormal::LimitSwitchNormal_NormallyOpen, 10);
   m_claw->Set(.45);
-  //}
- /* if (RobotMap::limitswitchclose->Get()) {
-    m_claw->Set(0.0);
-  }
-  else {*/
-    //m_claw->Set(-0.45);
-  //}
-}
+ }
 
 void RobotArm::StopClaw() {
   m_claw->Set(0.0);
