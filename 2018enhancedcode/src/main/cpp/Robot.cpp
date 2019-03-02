@@ -16,7 +16,7 @@ LIDARLite* Robot::rightLidarLite = NULL;
 bool Robot::gyroAssist = false; 
 //PigeonPID* Robot::gyroAssistPID = NULL;
 
-bool Robot::fieldCentric = false;
+bool Robot::fieldCentric = true;
 /*bool Robot::elevatorPositionControl = false;
 bool Robot::useUpperLimitSwitch = true;
 
@@ -227,8 +227,8 @@ void Robot::TeleopInit() {
 void Robot::TeleopPeriodic() {
     SmartDashboard::PutNumber("CycleTime", Timer::GetFPGATimestamp() - cycleTime);
     cycleTime = Timer::GetFPGATimestamp();
-    //driveTrain->Crab(-oi->getDriveLeftY(), oi->getDriveLeftX(), -oi->getDriveRightX(), fieldCentric);
-    driveTrain->Crab(0.0, 0.0, 0.0, 0.0); //useGyro is undefined, placed placeholder value, not sure what true value is 
+    driveTrain->Crab(-oi->getDriveLeftY(), oi->getDriveLeftX(), -oi->getDriveRightX(), fieldCentric);
+    //driveTrain->Crab(0.0, 0.0, 0.0, 0.0); //useGyro is undefined, placed placeholder value, not sure what true value is 
     // driveTrain->Crab(0.0, 0.0, 0.0, fieldCentric); This function was in here before, but old code does not include fieldcentric
     //driveTrain->Crab(-oi->getDriveLeftY(), oi->getDriveLeftX(), -oi->getDriveRightX(), fieldCentric);
 //     Drive Control
@@ -294,7 +294,7 @@ void Robot::Dashboard() {
     //SmartDashboard::PutBoolean("LimitSwitch", RobotMap::elevatorUpperLimitSwitch->Get());
 
 
-    // SmartDashboard::PutNumber("Pigeon-Yaw", pigeon->GetYaw());
+    SmartDashboard::PutNumber("Pigeon-Yaw", pigeon->GetYaw());
     // SmartDashboard::PutBoolean("Pigeon-AmTilted", pigeon->AmTilted());
     // SmartDashboard::PutBoolean("Pigeon-COLLIDED", pigeon->WasCollision());
 

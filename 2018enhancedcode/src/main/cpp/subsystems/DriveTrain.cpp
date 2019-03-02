@@ -8,10 +8,10 @@
 using namespace frc;
 
 DriveTrain::DriveTrain() : Subsystem("DriveTrain") {
-   /* frontLeftDrive = RobotMap::driveTrainFrontLeftDrive;
+    frontLeftDrive = RobotMap::driveTrainFrontLeftDrive;
     frontRightDrive = RobotMap::driveTrainFrontRightDrive;
     rearLeftDrive = RobotMap::driveTrainRearLeftDrive;
-    rearRightDrive = RobotMap::driveTrainRearRightDrive; */
+    rearRightDrive = RobotMap::driveTrainRearRightDrive; 
     frontLeftPos = RobotMap::driveTrainFrontLeftPos;
     frontLeftSteer = RobotMap::driveTrainFrontLeftSteer;
     frontLeft = RobotMap::driveTrainFrontLeft;
