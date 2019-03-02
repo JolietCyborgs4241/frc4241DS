@@ -1,3 +1,6 @@
+
+*.bin
+
 # Created by https://www.gitignore.io/api/c++,java,linux,macos,gradle,windows,visualstudiocode
 
 ### C++ ###
@@ -135,8 +138,8 @@ $RECYCLE.BIN/
 *.lnk
 
 ### Gradle ###
-.gradle
-/build/
+.gradle/
+build/
 
 # Ignore Gradle GUI config
 gradle-app.setting
