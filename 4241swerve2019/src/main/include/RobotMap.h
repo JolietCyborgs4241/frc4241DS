@@ -36,10 +36,6 @@ class RobotMap {
     static AnalogInput* driveTrainRearRightPos;
     static WPI_TalonSRX* driveTrainRearRightSteer;
     static PIDController* driveTrainRearRight;
-    static WPI_TalonSRX* elevatorMotor;
-    static WPI_TalonSRX* rampWinchMotor;
-    static DigitalInput* elevatorUpperLimitSwitch;
-    static DigitalInput* elevatorBottomLimitSwitch;
     static Pigeon* pigeon;
     // static CameraServer* Cam;
 

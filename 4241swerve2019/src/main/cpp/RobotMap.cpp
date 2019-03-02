@@ -40,6 +40,11 @@ AnalogInput* RobotMap::driveTrainRearRightPos = NULL;
 WPI_TalonSRX* RobotMap::driveTrainRearRightSteer = NULL;
 PIDController* RobotMap::driveTrainRearRight = NULL;
 Pigeon* RobotMap::pigeon = NULL;
+WPI_TalonSRX* RobotMap::ramp = NULL;
+WPI_TalonSRX* RobotMap::lift = NULL;
+WPI_TalonSRX* RobotMap::robotArmClaw = NULL;
+WPI_TalonSRX* RobotMap::robotArmExtension = NULL;
+
 
 /*WPI_TalonSRX* RobotMap::elevatorMotor = NULL;
 DigitalInput* RobotMap::elevatorUpperLimitSwitch = NULL;
@@ -47,13 +52,10 @@ DigitalInput* RobotMap::elevatorBottomLimitSwitch = NULL; */
 
 void RobotMap::init() {
     LiveWindow* lw = LiveWindow::GetInstance();
-
-    /*elevatorMotor = new WPI_TalonSRX(4);
-    elevatorMotor->ConfigOpenloopRamp(0.5, 10);
-    elevatorMotor->ConfigClosedloopRamp(0.5, 10);
-
-    elevatorUpperLimitSwitch = new DigitalInput(22);
-    elevatorBottomLimitSwitch = new DigitalInput(1); */
+    ramp = new WPI_TalonSRX(60);
+    lift = new WPI_TalonSRX(61);
+    robotArmClaw = new WPI_TalonSRX(62);
+    robotArmExtension = new WPI_TalonSRX(63);
 
     driveTrainFrontLeftDrive = new WPI_TalonSRX(TALON_FL_DRIVE);
     driveTrainFrontLeftSteer = new WPI_TalonSRX(TALON_FL_STEER);
