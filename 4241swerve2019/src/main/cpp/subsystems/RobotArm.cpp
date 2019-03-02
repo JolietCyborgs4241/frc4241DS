@@ -10,12 +10,17 @@
 #include "Robotmap.h"
 #include "ctre/Phoenix.h"
 
+#define  TALON_CONFIG_TIMEOUT       30  // ms
+
 using namespace frc;
 
 RobotArm::RobotArm() : Subsystem("ExampleSubsystem") {
   //m_fulcrum = RobotMap::robotArmFulcrum;
   m_extension = RobotMap::robotArmExtension;
   m_claw = RobotMap::robotArmClaw;
+  m_claw->ConfigForwardLimitSwitchSource(LimitSwitchSource::LimitSwitchSource_FeedbackConnector, LimitSwitchNormal::LimitSwitchNormal_NormallyOpen, TALON_CONFIG_TIMEOUT);
+  m_claw->ConfigReverseLimitSwitchSource(LimitSwitchSource::LimitSwitchSource_FeedbackConnector, LimitSwitchNormal::LimitSwitchNormal_NormallyOpen, TALON_CONFIG_TIMEOUT);
+
 }
 
 void RobotArm::InitDefaultCommand() {
@@ -25,24 +30,11 @@ void RobotArm::InitDefaultCommand() {
 
 void RobotArm::openClaw() {
   m_claw->Set(.45);
-  //  (RobotMap::limitswitchopen->Get()) {
-  //   m_claw->Set(0.0);
-  // }
-  // else {i
-  //   m_claw->Set(1.0);
-  // }
 }
 
 void RobotArm::closeClaw() {
   m_claw->Set(.45);
-  //}
- /* if (RobotMap::limitswitchclose->Get()) {
-    m_claw->Set(0.0);
-  }
-  else {*/
-    //m_claw->Set(-0.45);
-  //}
-}
+ }
 
 void RobotArm::StopClaw() {
   m_claw->Set(0.0);
