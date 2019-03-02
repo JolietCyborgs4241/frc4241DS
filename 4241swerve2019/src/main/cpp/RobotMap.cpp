@@ -27,12 +27,7 @@ void RobotMap::init() {
     //robotArmFulcrum = new WPI_TalonSRX(10);
     robotArmExtension = new WPI_TalonSRX(2);
     robotArmClaw = new WPI_TalonSRX(3);
-    
-    lift = new WPI_TalonSRX(4);
-    ramp = new WPI_TalonSRX(3);
     //robotArmFulcrum = new WPI_TalonSRX(10);
-    robotArmExtension = new WPI_TalonSRX(11);
-    robotArmClaw = new WPI_TalonSRX(12);
     lift = new WPI_TalonSRX(10);
     ramp = new WPI_TalonSRX(1);
     limitswitchopen = new DigitalInput(1);
