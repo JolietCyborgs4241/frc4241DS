@@ -33,7 +33,7 @@ void RobotArm::openClaw() {
 }
 
 void RobotArm::closeClaw() {
-  m_claw->Set(.45);
+  m_claw->Set(-.45);
  }
 
 void RobotArm::StopClaw() {
