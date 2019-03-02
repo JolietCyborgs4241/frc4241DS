@@ -1,11 +1,25 @@
 #include "OI.h"
+
 using namespace frc;
 OI::OI() {
     // Process operator interface input here.
-    //xBoxControl = new Joystick(0);
+    xBoxControl = new Joystick(0);
     xBoxDrive = new Joystick(1);
 
-    //Xbox
+    // Xbox
+    //ControlA = new JoystickButton(xBoxControl, 1);
+    //ControlB = new JoystickButton(xBoxControl, 2);
+    
+    
+    
+    // Xbox controller set up
+    
+
+    
+
+
+
+
     /*DriveA = new JoystickButton(xBoxDrive, 1);
     DriveB = new JoystickButton(xBoxDrive, 2);
     DriveX = new JoystickButton(xBoxDrive, 3);
@@ -26,8 +40,7 @@ OI::OI() {
     ControlRB = new JoystickButton(xBoxControl, 6);
     ControlBack = new JoystickButton(xBoxControl, 7);
     ControlStart = new JoystickButton(xBoxControl, 8);
-    ControlLeftStick = new JoystickButton(xBoxControl, 9);
-    ControlRightStick = new JoystickButton(xBoxControl, 10); */
+   
     // Used For controlling main subsystems excluding drive
 
     // XboxDrive
@@ -60,16 +73,16 @@ OI::OI() {
     ControlA->WhenPressed(new EjectCube); */
 }
 
-// Joystick* OI::getControlJoystick() {
-//     return xBoxControl;
-// }
+Joystick* OI::getControlJoystick() {
+    return xBoxControl;
+}
 Joystick* OI::getDriveJoystick() {
     return xBoxDrive;
 }
 
-// bool OI::getLB() {
-//     return xBoxDrive->GetRawButton(5);
-// }
+bool OI::getLB() {
+    return xBoxDrive->GetRawButton(5);
+}
 
 double OI::getJoystickMagnitude() {
     if (xBoxDrive->GetMagnitude() < .1) {
@@ -85,7 +98,6 @@ double OI::getJoystickMagnitude() {
 
 double OI::getDriveRightX() {
     return adjustJoystick(xBoxDrive->GetRawAxis(4));
-    // return adjustJoystick(xBoxDrive->GetRawAxis(4));
 }
 
 double OI::getDriveLeftX() {
@@ -96,16 +108,16 @@ double OI::getDriveLeftY() {
     return adjustJoystick(xBoxDrive->GetY());
 }
 
-// double OI::getControlJoy() {
-//     return adjustJoystick(xBoxControl->GetY());
-// }
+double OI::getControlJoy() {
+    return adjustJoystick(xBoxControl->GetY());
+}
 
 double OI::adjustJoystick(double value) {
     // cube output
     double adjV = pow(value, 3);
 
     // add deadzone
-    if (fabs(adjV) < 0.05) {
+    if (fabs(adjV) < 0.20) {
         return 0;
     } else {
         return adjV;

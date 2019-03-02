@@ -3,13 +3,15 @@
 #include "Robot.h"
 #include "Robotmap.h"
 #include "ctre/Phoenix.h"
+#include "WPILib.h"
+#include "SpeedControllerGroup.h"
 using namespace frc;
 
 DriveTrain::DriveTrain() : Subsystem("DriveTrain") {
-    frontLeftDrive = RobotMap::driveTrainFrontLeftDrive;
+   /* frontLeftDrive = RobotMap::driveTrainFrontLeftDrive;
     frontRightDrive = RobotMap::driveTrainFrontRightDrive;
     rearLeftDrive = RobotMap::driveTrainRearLeftDrive;
-    rearRightDrive = RobotMap::driveTrainRearRightDrive;
+    rearRightDrive = RobotMap::driveTrainRearRightDrive; */
     frontLeftPos = RobotMap::driveTrainFrontLeftPos;
     frontLeftSteer = RobotMap::driveTrainFrontLeftSteer;
     frontLeft = RobotMap::driveTrainFrontLeft;
@@ -22,6 +24,8 @@ DriveTrain::DriveTrain() : Subsystem("DriveTrain") {
     rearRightPos = RobotMap::driveTrainRearRightPos;
     rearRightSteer = RobotMap::driveTrainRearRightSteer;
     rearRight = RobotMap::driveTrainRearRight;
+    
+
 
     FLInv = 1; 
     FRInv = 1;
@@ -34,10 +38,10 @@ void DriveTrain::InitDefaultCommand() {
     // SetDefaultCommand(new MySpecialCommand());
 }
 
-void DriveTrain::SetWheelbase(float w, float x, float y) {
-    W = w;
-    X = x;
-    Y = y;
+void DriveTrain::SetWheelbase(float x, float y) {
+    
+    TrackRear = x;
+    TrackFront = y;
 }
 void DriveTrain::SetOffsets(double FLOff, double FROff, double RLOff, double RROff) {
     FLOffset = FLOff;
@@ -54,6 +58,10 @@ void DriveTrain::Crab(float y, float x, float twist, bool useGyro) {
     // float strafe = x * driveAdjust; //doesn't match github
     float forward = y; 
     float strafe = x;
+ 
+    char buffer[1000];
+    sprintf(buffer, "Crab(y=%f, x=%f, z=%f, useGyro=%d)", y, x, twist, useGyro);
+    SmartDashboard::PutString("Crab", buffer);
 
     if (useGyro) {
         double robotangle = Robot::pigeon->GetYaw() * M_PI / 180;
@@ -61,12 +69,15 @@ void DriveTrain::Crab(float y, float x, float twist, bool useGyro) {
         strafe = -y * cos(robotangle) + x * sin(robotangle);
     } 
 
-    radius = sqrt(pow(Y, 2) + pow(X, 2));
+    radius = sqrt(pow(TrackFront, 2) + pow(TrackRear, 2));
 
-    AP = strafe + twist * X / radius;
-    BP = strafe - twist * X / radius;
-    CP = forward + twist * Y / radius;
-    DP = forward - twist * Y / radius;
+    AP = strafe + twist * TrackRear / radius;
+    BP = strafe - twist * TrackRear / radius;
+    CP = forward + twist * TrackFront/ radius;
+    DP = forward - twist * TrackFront/ radius;
+
+    sprintf(buffer, "radius=%f, AP=%f, BP=%f, CP=%f, DP=%f", radius, AP, BP, CP, DP);
+    SmartDashboard::PutString("Crab2", buffer);
 
     float FLSetPoint = 0;
     float FRSetPoint = 0;
@@ -82,11 +93,17 @@ void DriveTrain::Crab(float y, float x, float twist, bool useGyro) {
     if (AP != 0 || CP != 0)
         RRSetPoint = (2.5 - 2.5 / pi * atan2(AP, CP));
 
+    sprintf(buffer, "prior to SetSteerSetPoint FLSP=%f FRSP=%f RLSP=%f RRSP=%f", FLSetPoint, FRSetPoint, RLSetPoint, RRSetPoint);
+    SmartDashboard::PutString("Crab2", buffer);
+
     SetSteerSetpoint(FLSetPoint, FRSetPoint, RLSetPoint, RRSetPoint);
     FL = sqrt(pow(BP, 2) + pow(DP, 2));
     FR = sqrt(pow(BP, 2) + pow(CP, 2));
     RL = sqrt(pow(AP, 2) + pow(DP, 2));
     RR = sqrt(pow(AP, 2) + pow(CP, 2));
+
+    sprintf(buffer, "b4 speedarry FL=%f FR=%f RL=%f RR=%f", FL, FR, RL, RR);
+    SmartDashboard::PutString("Crab3", buffer);
 
     // Solve for fastest wheel speed
     double speedarray[] = {fabs(FL), fabs(FR), fabs(RL), fabs(RR)};
@@ -116,81 +133,8 @@ void DriveTrain::Crab(float y, float x, float twist, bool useGyro) {
     SetDriveSpeed(FLRatio, FRRatio, RLRatio, RRRatio);
 }
 
-void DriveTrain::SwerveArcade(float y, float x, float twist, bool useGyro) {
-    float forward = y * driveAdjust;
-    float strafe = x * driveAdjust;
+void DriveTrain::SwerveArcade(float y, float x, float twist) {
 
-    /*if (useGyro) {
-        double robotangle = Robot::pigeon->GetYaw() * M_PI / 180;
-        forward = +y * sin(robotangle) + x * cos(robotangle);
-        strafe = -y * cos(robotangle) + x * sin(robotangle);
-    } */
-
-    AP = strafe;
-    BP = strafe;
-    CP = forward;
-    DP = forward;
-
-    float FLSetPoint = 0;
-    float FRSetPoint = 0;
-    float RLSetPoint = 0;
-    float RRSetPoint = 0;
-
-    if (DP != 0 || BP != 0) {
-        FLSetPoint = (2.5 - 2.5 / pi * atan2(BP, DP));
-    }
-
-    if (BP != 0 || CP != 0) {
-        FRSetPoint = (2.5 - 2.5 / pi * atan2(BP, CP));
-    }
-
-    if (AP != 0 || DP != 0) {
-        RLSetPoint = (2.5 - 2.5 / pi * atan2(AP, DP));
-    }
-
-    if (AP != 0 || CP != 0) {
-        RRSetPoint = (2.5 - 2.5 / pi * atan2(AP, CP));
-    }
-
-    SetSteerSetpoint(FLSetPoint, FRSetPoint, RLSetPoint, RRSetPoint);
-    FL = sqrt(pow(BP, 2) + pow(DP, 2));
-    FR = sqrt(pow(BP, 2) + pow(CP, 2));
-    RL = sqrt(pow(AP, 2) + pow(DP, 2));
-    RR = sqrt(pow(AP, 2) + pow(CP, 2));
-
-    // add in twist like arcade drive
-    FL -= twist * 0.5;
-    RL -= twist * 0.5;
-
-    FR += twist * 0.5;
-    RR += twist * 0.5;
-
-    // Solve for fastest wheel speed
-    double speedarray[] = {fabs(FL), fabs(FR), fabs(RL), fabs(RR)};
-
-    int length = 4;
-    double maxspeed = speedarray[0];
-    for (int i = 1; i < length; i++) {
-        if (speedarray[i] > maxspeed) {
-            maxspeed = speedarray[i];
-        }
-    }
-
-    // Set ratios based on maximum wheel speed
-    if (maxspeed > 1 || maxspeed < -1) {
-        FLRatio = FL / maxspeed;
-        FRRatio = FR / maxspeed;
-        RLRatio = RL / maxspeed;
-        RRRatio = RR / maxspeed;
-    } else {
-        FLRatio = FL;
-        FRRatio = FR;
-        RLRatio = RL;
-        RRRatio = RR;
-    }
-
-    // Set drive speeds
-    SetDriveSpeed(FLRatio, FRRatio, RLRatio, RRRatio);
 }
 
 double DriveTrain::CorrectSteerSetpoint(double setpoint) {
@@ -252,10 +196,10 @@ void DriveTrain::SetSteerSetpoint(float FLSetPoint, float FRSetPoint, float RLSe
 
 void DriveTrain::SetDriveSpeed(float FLSpeed, float FRSpeed, float RLSpeed, float RRSpeed) {
     // applies inversion variables defined in SetSteerSetPoint function
-    frontLeftDrive->Set(ControlMode::PercentOutput, FLSpeed * FLInv);
+  /*  frontLeftDrive->Set(ControlMode::PercentOutput, FLSpeed * FLInv);
     frontRightDrive->Set(ControlMode::PercentOutput, FRSpeed * FRInv);
     rearLeftDrive->Set(ControlMode::PercentOutput, RLSpeed * RLInv);
-    rearRightDrive->Set(ControlMode::PercentOutput, RRSpeed * RRInv);
+    rearRightDrive->Set(ControlMode::PercentOutput, RRSpeed * RRInv); */
 }
 
 void DriveTrain::Lock() {
