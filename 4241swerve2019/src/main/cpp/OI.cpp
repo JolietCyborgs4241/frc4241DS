@@ -32,6 +32,26 @@ OI::OI() {
     ControlA->WhileHeld(new LiftDown());
     Select->WhileHeld(new CommandRamp());
     
+using namespace frc;
+OI::OI() {
+    // Process operator interface input here.
+    xBoxControl = new Joystick(0);
+    xBoxDrive = new Joystick(1);
+
+    // Xbox
+    //ControlA = new JoystickButton(xBoxControl, 1);
+    //ControlB = new JoystickButton(xBoxControl, 2);
+    
+    
+    
+    // Xbox controller set up
+    
+
+    
+
+
+
+
     /*DriveA = new JoystickButton(xBoxDrive, 1);
     DriveB = new JoystickButton(xBoxDrive, 2);
     DriveX = new JoystickButton(xBoxDrive, 3);
@@ -92,6 +112,52 @@ Joystick* OI::getControlJoystick() {
 double OI::getControlLY()  {
     return adjustJoystick(xBoxControl->GetRawAxis(1));
     
+Joystick* OI::getDriveJoystick() {
+    return xBoxDrive;
+}
+
+bool OI::getLB() {
+    return xBoxDrive->GetRawButton(5);
+}
+
+double OI::getJoystickMagnitude() {
+    if (xBoxDrive->GetMagnitude() < .1) {
+        return 0;
+    } else {
+        if (xBoxDrive->GetY() < 0) {
+            return -xBoxDrive->GetMagnitude();
+        } else {
+            return xBoxDrive->GetMagnitude();
+        }
+    }
+}
+
+double OI::getDriveRightX() {
+    return adjustJoystick(xBoxDrive->GetRawAxis(4));
+}
+
+double OI::getDriveLeftX() {
+    return adjustJoystick(xBoxDrive->GetX());
+}
+
+double OI::getDriveLeftY() {
+    return adjustJoystick(xBoxDrive->GetY());
+}
+
+double OI::getControlJoy() {
+    return adjustJoystick(xBoxControl->GetY());
+}
+
+double OI::adjustJoystick(double value) {
+    // cube output
+    double adjV = pow(value, 3);
+
+    // add deadzone
+    if (fabs(adjV) < 0.20) {
+        return 0;
+    } else {
+        return adjV;
+    }
 }
 
  double OI::adjustJoystick(double value) {

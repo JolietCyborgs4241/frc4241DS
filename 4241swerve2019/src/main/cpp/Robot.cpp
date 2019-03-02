@@ -4,7 +4,7 @@
 #include <frc/Timer.h>
 #include "ctre/Phoenix.h"
 #include <frc/smartdashboard/SmartDashboard.h>
-
+#include "WPILib.h"
 
 using namespace frc;
 
@@ -12,6 +12,18 @@ OI* Robot::oi = NULL;
 RobotArm* Robot::robotArm = NULL;
 Lift* Robot::lift = NULL;
 Ramp* Robot::ramp = NULL;
+DriveTrain* Robot::driveTrain = NULL;
+Pigeon* Robot::pigeon = NULL;
+/*Elevator* Robot::elevator = NULL;
+Pneumatics* Robot::pneumatics = NULL;
+
+LIDARLite* Robot::leftLidarLite = NULL;
+LIDARLite* Robot::rightLidarLite = NULL;
+*/
+bool Robot::gyroAssist = false; 
+//PigeonPID* Robot::gyroAssistPID = NULL;
+
+bool Robot::fieldCentric = true;
 
 // Pigeon* Robot::pigeon = NULL;
 // Elevator* Robot::elevator = NULL;
@@ -39,6 +51,8 @@ void Robot::RobotInit() {
     oi = new OI();
     lift = new Lift();
     ramp = new Ramp();
+    driveTrain = new DriveTrain();
+    pigeon = new Pigeon();
     // elevator = new Elevator();
     // pneumatics = new Pneumatics();
 
@@ -72,6 +86,20 @@ void Robot::RobotInit() {
 
      lw = LiveWindow::GetInstance();
 
+      driveTrain->SetWheelbase(23, 23);
+    FLOffset = 0;
+    FROffset = 0;
+    RLOffset = 0;
+    RROffset = 0;
+
+    // FL, FR, RL, RR
+    driveTrain->SetOffsets(FLOffset, FROffset, RLOffset, RROffset);
+
+    driveTrain->frontLeft->Enable();
+    driveTrain->frontRight->Enable();
+    driveTrain->rearLeft->Enable();
+    driveTrain->rearRight->Enable();
+
 //     driveTrain->SetWheelbase(24, 22, 24);
 //     FLOffset = 0;
 //     FROffset = 0;
@@ -97,6 +125,18 @@ void Robot::RobotInit() {
  }
 
  void Robot::DisabledPeriodic() {
+}
+
+void Robot::AutonomousInit() {
+    pigeon->Update();
+    pigeon->SaveTilt();
+
+    driveTrain->EnablePIDs();
+
+   //gameData = frc::DriverStation::GetInstance().GetGameSpecificMessage();
+
+    //autoTimer->Reset();
+    //autoTimer->Start();
 }
 
 void Robot::Autonomous() {
@@ -139,7 +179,7 @@ void Robot::Autonomous() {
 /**
  * Runs the motors with arcade steering.
  */
-void Robot::OperatorControl() {
+/*void Robot::OperatorControl() {
   m_robotDrive.SetSafetyEnabled(true);
   while (IsOperatorControl() && IsEnabled()) {
     // Drive with arcade style (use right stick)
@@ -148,7 +188,7 @@ void Robot::OperatorControl() {
     // The motors will be updated every 5ms
     frc::Wait(0.005);
   }
-}
+} */
 
  
 
@@ -175,6 +215,20 @@ void Robot::TeleopInit() {
      SmartDashboard::PutNumber("CycleTime", Timer::GetFPGATimestamp() - cycleTime);
      cycleTime = Timer::GetFPGATimestamp();
      Robot::robotArm->Fulcrum();
+     driveTrain->Crab(-oi->getDriveLeftY(), oi->getDriveLeftX(), -oi->getDriveRightX(), fieldCentric);
+    //driveTrain->Crab(0.0, 0.0, 0.0, 0.0); //useGyro is undefined, placed placeholder value, not sure what true value is 
+    // driveTrain->Crab(0.0, 0.0, 0.0, fieldCentric); This function was in here before, but old code does not include fieldcentric
+    //driveTrain->Crab(-oi->getDriveLeftY(), oi->getDriveLeftX(), -oi->getDriveRightX(), fieldCentric);
+//     Drive Control
+//     joystickY is -up, so invert to match +Y -> forward
+//     joystickX is +right, so do nothing to match +X -> right
+//     joystickZ is +right, so invert to match -twist -> clockwise (decrement angle on unit circle)
+
+//     if (gyroAssist) {
+//        driveTrain->Crab(-oi->getDriveLeftY(), oi->getDriveLeftX(), gyroAssistPID->GetOutput(), true);
+//     } else {
+//         driveTrain->Crab(-oi->getDriveLeftY(), oi->getDriveLeftX(), -oi->getDriveRightX(), fieldCentric);
+//    }
      //Robot::robotArm->Fulcrum();
      
 //     // Drive Control
@@ -211,6 +265,40 @@ void Robot::TeleopInit() {
  void Robot::Dashboard() {
 //     // Joystick Variables(
       SmartDashboard::PutNumber("Claw Motor", RobotMap::robotArmClaw->GetMotorOutputVoltage());
+      // Joystick Variables
+    SmartDashboard::PutNumber("DriveStickY", oi->getDriveLeftY());
+    SmartDashboard::PutNumber("DriveStickX", oi->getDriveLeftX());
+    SmartDashboard::PutNumber("DriveStickZ", oi->getDriveRightX());
+
+    // Wheel Module Voltages
+    SmartDashboard::PutNumber("FrontLeftVol", driveTrain->frontLeftPos->GetAverageVoltage());
+    SmartDashboard::PutNumber("FrontRightVol", driveTrain->frontRightPos->GetAverageVoltage());
+    SmartDashboard::PutNumber("RearLeftVol", driveTrain->rearLeftPos->GetAverageVoltage());
+    SmartDashboard::PutNumber("RearRightVol", driveTrain->rearRightPos->GetAverageVoltage());
+    // Wheel Module Errors
+    SmartDashboard::PutNumber("FLError", driveTrain->frontLeft->GetError());
+    SmartDashboard::PutNumber("FRError", driveTrain->frontRight->GetError());
+    SmartDashboard::PutNumber("RLError", driveTrain->rearLeft->GetError());
+    SmartDashboard::PutNumber("RRError", driveTrain->rearRight->GetError());
+    // Wheel Module Setpoints
+    SmartDashboard::PutNumber("FLSetPoint", driveTrain->frontLeft->GetSetpoint());
+    SmartDashboard::PutNumber("FRSetPoint", driveTrain->frontRight->GetSetpoint());
+    SmartDashboard::PutNumber("RLSetPoint", driveTrain->rearLeft->GetSetpoint());
+    SmartDashboard::PutNumber("RRSetPoint", driveTrain->rearRight->GetSetpoint());
+
+    // Driver Motor Voltages 
+    SmartDashboard::PutNumber("FLDrive", RobotMap::driveTrainFrontLeftDrive->GetMotorOutputVoltage());
+    SmartDashboard::PutNumber("FRDrive", RobotMap::driveTrainFrontRightDrive->GetMotorOutputVoltage());
+    SmartDashboard::PutNumber("RRDrive", RobotMap::driveTrainRearRightDrive->GetMotorOutputVoltage());
+    SmartDashboard::PutNumber("RLDrive", RobotMap::driveTrainRearLeftDrive->GetMotorOutputVoltage());
+
+    //SmartDashboard::PutBoolean("LimitSwitch", RobotMap::elevatorUpperLimitSwitch->Get());
+
+
+    SmartDashboard::PutNumber("Pigeon-Yaw", pigeon->GetYaw());
+    // SmartDashboard::PutBoolean("Pigeon-AmTilted", pigeon->AmTilted());
+    // SmartDashboard::PutBoolean("Pigeon-COLLIDED", pigeon->WasCollision());
+
      //SmartDashboard::PutNumber("ControlStickY", oi->getControlLY());
 //     SmartDashboard::PutNumber("DriveStickX", oi->getDriveJoystick()->GetX());
 //     SmartDashboard::PutNumber("DriveStickZ", oi->getDriveJoystick()->GetZ());

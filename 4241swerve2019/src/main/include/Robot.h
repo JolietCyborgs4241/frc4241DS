@@ -13,6 +13,9 @@
 #include <frc/smartdashboard/SendableChooser.h>
 #include "ctre/Phoenix.h"
 #include "frc/WPILib.h"
+#include "subsystems/DriveTrain.h"
+#include "subsystems/Pigeon.h"
+#include "subsystems/PigeonPID.h"
 using namespace frc;
 
 class Robot : public IterativeRobot {
@@ -63,6 +66,21 @@ class Robot : public frc::TimedRobot {
     static bool elevatorPositionControl;
     static bool useUpperLimitSwitch;
 
+    static DriveTrain* driveTrain;
+    static Pigeon* pigeon;
+    //static double twistPID_Value;
+	  //static bool twistPID_Enabled;
+    /*static Elevator* elevator;
+    static Pneumatics* pneumatics;
+    static Elevator2* elevator2;
+    */
+    static bool gyroAssist; 
+    //static PigeonPID* gyroAssistPID;
+
+    static bool fieldCentric;
+    /*static bool elevatorPositionControl;
+    static bool useUpperLimitSwitch;
+
     static MB1013Sensor* mb1013Sensor;
 
     static LIDARLite* leftLidarLite;
@@ -72,9 +90,11 @@ class Robot : public frc::TimedRobot {
     static bool recievedGameData;
 
     static Timer* autoTimer;
-
-   */LiveWindow* lw; 
+*/
+    LiveWindow* lw;
     virtual void RobotInit();
+    virtual void AutonomousInit();
+    virtual void AutonomousPeriodic();
     virtual void TeleopInit();
     virtual void TeleopPeriodic();
     virtual void TestPeriodic();
@@ -91,15 +111,8 @@ class Robot : public frc::TimedRobot {
     double RROffset;
 
     float cycleTime;
-  WPI_TalonSRX frontLeft{1};
-  WPI_TalonSRX frontRight{3};
-  WPI_TalonSRX rearLeft{9};
-  WPI_TalonSRX rearRight{6};
-  frc::RobotDrive m_robotDrive{frontLeft, rearLeft, frontRight, rearRight};
-  frc::Joystick m_stick{0};
 
-
-   /* std::unique_ptr<frc::Command> autonomousCommand;
+    std::unique_ptr<frc::Command> autonomousCommand;
     frc::SendableChooser<int> chooser;
 
     
@@ -110,6 +123,4 @@ class Robot : public frc::TimedRobot {
       int turnDirection;
       float driveForwardAngle;
       
-};
-      */
 };
