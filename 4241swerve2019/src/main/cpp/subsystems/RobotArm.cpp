@@ -10,9 +10,10 @@
 #include "Robotmap.h"
 #include "ctre/Phoenix.h"
 
-#define  TALON_CONFIG_TIMEOUT       30  // ms
+#include "cyborgs_talon.h"
 
 using namespace frc;
+
 
 RobotArm::RobotArm() : Subsystem("ExampleSubsystem") {
   //m_fulcrum = RobotMap::robotArmFulcrum;
