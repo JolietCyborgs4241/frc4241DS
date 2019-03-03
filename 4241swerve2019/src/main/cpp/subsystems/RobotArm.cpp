@@ -9,6 +9,7 @@
 #include "Robot.h"
 #include "Robotmap.h"
 #include "ctre/Phoenix.h"
+#include "cyborg_talons.h"
 
 #include "cyborg_talons.h"
 
