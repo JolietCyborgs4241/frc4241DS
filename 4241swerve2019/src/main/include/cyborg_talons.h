@@ -2,7 +2,7 @@
 //
 // This is where we identify all of the talons by function
 //
-// Only use the Talon functiona name in the code - not the number!
+// Only use the Talon functional name in the code - not the number!
 
 
 // drivetrain -----------------------------------------------------
