@@ -28,7 +28,7 @@
 
 #define TALON_RAMPS		5	// placeholder! - confirm!
 
-#define TALON_CLAW		10	// placeholder! - confirm!
+#define TALON_ARM_CLAW		10	// placeholder! - confirm!
 
 #define TALON_LIFT		11	// placeholder! - confirm!
 

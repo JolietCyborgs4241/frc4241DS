@@ -5,19 +5,12 @@
 
 #include "frc/liveWindow/LiveWindow.h"
 
-#define TALON_FR_STEER 8
-#define TALON_FR_DRIVE 9
-
-#define TALON_FL_STEER 4
-#define TALON_FL_DRIVE 3
-
-#define TALON_RR_STEER 7
-#define TALON_RR_DRIVE 6
-
-#define TALON_RL_STEER 2
-#define TALON_RL_DRIVE 1
+#include "cyborg_talons.h"	// all Talon constants live here
 
 using namespace frc;
+
+
+
 
 WPI_TalonSRX* RobotMap::driveTrainFrontLeftDrive = NULL;
 WPI_TalonSRX* RobotMap::driveTrainFrontRightDrive = NULL;
@@ -52,27 +45,27 @@ DigitalInput* RobotMap::elevatorBottomLimitSwitch = NULL; */
 
 void RobotMap::init() {
     LiveWindow* lw = LiveWindow::GetInstance();
-    ramp = new WPI_TalonSRX(60);
-    lift = new WPI_TalonSRX(61);
-    robotArmClaw = new WPI_TalonSRX(62);
-    robotArmExtension = new WPI_TalonSRX(63);
+    ramp = new WPI_TalonSRX(TALON_RAMPS);
+    lift = new WPI_TalonSRX(TALON_LIFT);
+    robotArmClaw = new WPI_TalonSRX(TALON_ARM_CLAW);
+    robotArmExtension = new WPI_TalonSRX(TALON_ARM_EXTEND);
 
     driveTrainFrontLeftDrive = new WPI_TalonSRX(TALON_FL_DRIVE);
     driveTrainFrontLeftSteer = new WPI_TalonSRX(TALON_FL_STEER);
-    // driveTrainFrontLeftDrive->ConfigOpenloopRamp(RAMP_TIME_TO_FULL, 10);
+    // driveTrainFrontLeftDrive->ConfigOpenloopRamp(TALON_DRIVE_RAMP_TIME, TALON_CONFIG_TIMEOUT);
 
     driveTrainFrontRightDrive = new WPI_TalonSRX(TALON_FR_DRIVE);
     driveTrainFrontRightSteer = new WPI_TalonSRX(TALON_FR_STEER);
 
-    // driveTrainFrontRightDrive->ConfigOpenloopRamp(RAMP_TIME_TO_FULL, 10);
+    // driveTrainFrontRightDrive->ConfigOpenloopRamp(TALON_DRIVE_RAMP_TIME, TALON_CONFIG_TIMEOUT);
 
     driveTrainRearLeftDrive = new WPI_TalonSRX(TALON_RL_DRIVE);
     driveTrainRearLeftSteer = new WPI_TalonSRX(TALON_RL_STEER);
-    // driveTrainRearLeftDrive->ConfigOpenloopRamp(RAMP_TIME_TO_FULL, 10);
+    // driveTrainRearLeftDrive->ConfigOpenloopRamp(TALON_DRIVE_RAMP_TIME, TALON_CONFIG_TIMEOUT);
 
     driveTrainRearRightDrive = new WPI_TalonSRX(TALON_RR_DRIVE);
      driveTrainRearRightSteer = new WPI_TalonSRX(TALON_RR_STEER);
-    // driveTrainRearRightDrive->ConfigOpenloopRamp(RAMP_TIME_TO_FULL, 10);
+    // driveTrainRearRightDrive->ConfigOpenloopRamp(TALON_DRIVE_RAMP_TIME, TALON_CONFIG_TIMEOUT);
 
     driveTrainRearRightPos = new AnalogInput(2);
     /*lw->AddSensor("DriveTrain", "RearRightPos", driveTrainRearRightPos);*/  
