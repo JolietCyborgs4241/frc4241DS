@@ -196,10 +196,10 @@ void DriveTrain::SetSteerSetpoint(float FLSetPoint, float FRSetPoint, float RLSe
 
 void DriveTrain::SetDriveSpeed(float FLSpeed, float FRSpeed, float RLSpeed, float RRSpeed) {
     // applies inversion variables defined in SetSteerSetPoint function
-  /*  frontLeftDrive->Set(ControlMode::PercentOutput, FLSpeed * FLInv);
+   frontLeftDrive->Set(ControlMode::PercentOutput, FLSpeed * FLInv);
     frontRightDrive->Set(ControlMode::PercentOutput, FRSpeed * FRInv);
     rearLeftDrive->Set(ControlMode::PercentOutput, RLSpeed * RLInv);
-    rearRightDrive->Set(ControlMode::PercentOutput, RRSpeed * RRInv); */
+    rearRightDrive->Set(ControlMode::PercentOutput, RRSpeed * RRInv); 
 }
 
 void DriveTrain::Lock() {
