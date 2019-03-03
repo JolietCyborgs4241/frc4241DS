@@ -205,7 +205,7 @@ void Robot::TeleopInit() {
 //     pigeon->Update();
 //     pigeon->SaveTilt();
 
-//     driveTrain->EnablePIDs();
+    driveTrain->EnablePIDs();
 
 //     pneumatics->CloseClaw();
 //     pneumatics->RetractPiston();

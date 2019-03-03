@@ -11,7 +11,6 @@
 #include "ctre/Phoenix.h"
 #include "cyborg_talons.h"
 
-#include "cyborg_talons.h"
 
 using namespace frc;
 
@@ -35,7 +34,7 @@ void RobotArm::openClaw() {
 }
 
 void RobotArm::closeClaw() {
-  m_claw->Set(.45);
+  m_claw->Set(-.45);
  }
 
 void RobotArm::StopClaw() {
