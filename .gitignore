@@ -138,6 +138,8 @@ $RECYCLE.BIN/
 *.lnk
 
 ### Gradle ###
+.gradle/
+4241swerve2019/.gradle/
 build/
 
 # Ignore Gradle GUI config
