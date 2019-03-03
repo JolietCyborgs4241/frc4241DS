@@ -10,7 +10,7 @@
 #include "Robotmap.h"
 #include "ctre/Phoenix.h"
 
-#include "cyborgs_talons.h"
+#include "cyborg_talons.h"
 
 using namespace frc;
 
