@@ -79,8 +79,7 @@ class Robot : public frc::TimedRobot {
     //static PigeonPID* gyroAssistPID;
 
     static bool fieldCentric;
-    /*static bool elevatorPositionControl;
-    static bool useUpperLimitSwitch;
+    /*
 
     static MB1013Sensor* mb1013Sensor;
 
@@ -116,11 +115,11 @@ class Robot : public frc::TimedRobot {
     frc::SendableChooser<int> chooser;
 
     
-      void LEDSet(int led);
+      /*void LEDSet(int led);
       bool prevTrigger;
       Preferences* Prefs;
       int turnDegree;
       int turnDirection;
-      float driveForwardAngle;
+      float driveForwardAngle; */
       
 };

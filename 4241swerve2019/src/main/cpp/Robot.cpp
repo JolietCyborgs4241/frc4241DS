@@ -128,10 +128,10 @@ void Robot::RobotInit() {
 }
 
 void Robot::AutonomousInit() {
-    pigeon->Update();
-    pigeon->SaveTilt();
+    // pigeon->Update();
+    // pigeon->SaveTilt();
 
-    driveTrain->EnablePIDs();
+    // driveTrain->EnablePIDs();
 
    //gameData = frc::DriverStation::GetInstance().GetGameSpecificMessage();
 
@@ -202,8 +202,8 @@ void Robot::TeleopInit() {
 
      cycleTime = Timer::GetFPGATimestamp();
 
-//     pigeon->Update();
-//     pigeon->SaveTilt();
+     pigeon->Update();
+     pigeon->SaveTilt();
 
     driveTrain->EnablePIDs();
 
@@ -214,8 +214,8 @@ void Robot::TeleopInit() {
  void Robot::TeleopPeriodic() {
      SmartDashboard::PutNumber("CycleTime", Timer::GetFPGATimestamp() - cycleTime);
      cycleTime = Timer::GetFPGATimestamp();
-     Robot::robotArm->Fulcrum();
-     driveTrain->Crab(-oi->getDriveLeftY(), oi->getDriveLeftX(), -oi->getDriveRightX(), fieldCentric);
+     //Robot::robotArm->Fulcrum();
+     driveTrain->Crab(-oi->getDriveLeftY(), oi->getDriveLeftX(), -oi->getDriveRightX(), 0);
     //driveTrain->Crab(0.0, 0.0, 0.0, 0.0); //useGyro is undefined, placed placeholder value, not sure what true value is 
     // driveTrain->Crab(0.0, 0.0, 0.0, fieldCentric); This function was in here before, but old code does not include fieldcentric
     //driveTrain->Crab(-oi->getDriveLeftY(), oi->getDriveLeftX(), -oi->getDriveRightX(), fieldCentric);
@@ -252,7 +252,7 @@ void Robot::TeleopInit() {
 
 //     elevator->MoveElevator();
 
-//     Dashboard();
+     Dashboard();
 
      Scheduler::GetInstance()->Run();
  }
