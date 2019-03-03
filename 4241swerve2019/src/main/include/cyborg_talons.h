@@ -26,13 +26,13 @@
 
 // other subsystems ------------------------------------------------
 
-#define TALON_RAMPS		5	// placeholder! - confirm!
+#define TALON_RAMPS		5
 
-#define TALON_ARM_CLAW		10	// placeholder! - confirm!
+#define TALON_LIFT		10
 
-#define TALON_LIFT		11	// placeholder! - confirm!
+#define	TALON_ARM_EXTEND	11
 
-#define	TALON_ARM_EXTEND	12	// placeholder! - confirm!
+#define TALON_ARM_CLAW		12
 
 
 
