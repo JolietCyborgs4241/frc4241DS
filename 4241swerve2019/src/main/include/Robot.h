@@ -25,14 +25,15 @@ class Robot : public IterativeRobot {
     static RobotArm* robotArm;
     static Lift* lift;
     static Ramp* ramp;
-  
+    static Pigeon* pigeon;
+    static DriveTrain* driveTrain;
     /*static Pigeon* pigeon;
     static Elevator* elevator;
     static Pneumatics* pneumatics;
     static Elevator2* elevator2;
 
 
-#include "OI.h"
+
 
 
 
@@ -94,14 +95,13 @@ class Robot : public frc::TimedRobot {
     LiveWindow* lw;
     virtual void RobotInit();
     virtual void AutonomousInit();
-    virtual void AutonomousPeriodic();
+    //virtual void AutonomousPeriodic();
     virtual void TeleopInit();
     virtual void TeleopPeriodic();
     virtual void TestPeriodic();
     virtual void DisabledInit();
     virtual void DisabledPeriodic();
     void Autonomous();
-    virtual void OperatorControl();
   private:
     void Dashboard();
 

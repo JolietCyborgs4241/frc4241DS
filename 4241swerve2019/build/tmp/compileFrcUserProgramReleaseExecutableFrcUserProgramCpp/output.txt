@@ -1,13 +1,5 @@
 See file:///C:/Users/cyborgs/Documents/GitHub/frc4241DS/4241swerve2019/build/tmp/compileFrcUserProgramReleaseExecutableFrcUserProgramCpp/output.txt for all output for compileFrcUserProgramReleaseExecutableFrcUserProgramCpp.
-compiling ClawClose.cpp failed.
-In file included from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/Robot.h:2:0,
-                 from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\commands\ClawClose.cpp:9:
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/OI.h:64:12: error: 'double OI::getControlJoy()' cannot be overloaded
-     double getControlJoy();
-            ^~~~~~~~~~~~~
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/OI.h:56:12: error: with 'double OI::getControlJoy()'
-     double getControlJoy();
-            ^~~~~~~~~~~~~
+compiling ClawClose.cpp successful.
 In file included from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/Robot.h:16:0,
                  from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\commands\ClawClose.cpp:9:
 C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/subsystems/DriveTrain.h:14:99: note: #pragma message: warning: SetSteerSetPoint takes an encoder value - map angles before calling!
@@ -17,15 +9,7 @@ C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/subs
  #pragma message ( "warning: figure out what radius is" )
                                                         ^
 
-compiling ClawExtend.cpp failed.
-In file included from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/Robot.h:2:0,
-                 from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\commands\ClawExtend.cpp:9:
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/OI.h:64:12: error: 'double OI::getControlJoy()' cannot be overloaded
-     double getControlJoy();
-            ^~~~~~~~~~~~~
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/OI.h:56:12: error: with 'double OI::getControlJoy()'
-     double getControlJoy();
-            ^~~~~~~~~~~~~
+compiling ClawExtend.cpp successful.
 In file included from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/Robot.h:16:0,
                  from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\commands\ClawExtend.cpp:9:
 C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/subsystems/DriveTrain.h:14:99: note: #pragma message: warning: SetSteerSetPoint takes an encoder value - map angles before calling!
@@ -35,15 +19,7 @@ C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/subs
  #pragma message ( "warning: figure out what radius is" )
                                                         ^
 
-compiling ClawOpen.cpp failed.
-In file included from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/Robot.h:2:0,
-                 from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\commands\ClawOpen.cpp:9:
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/OI.h:64:12: error: 'double OI::getControlJoy()' cannot be overloaded
-     double getControlJoy();
-            ^~~~~~~~~~~~~
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/OI.h:56:12: error: with 'double OI::getControlJoy()'
-     double getControlJoy();
-            ^~~~~~~~~~~~~
+compiling ClawOpen.cpp successful.
 In file included from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/Robot.h:16:0,
                  from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\commands\ClawOpen.cpp:9:
 C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/subsystems/DriveTrain.h:14:99: note: #pragma message: warning: SetSteerSetPoint takes an encoder value - map angles before calling!
@@ -53,15 +29,7 @@ C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/subs
  #pragma message ( "warning: figure out what radius is" )
                                                         ^
 
-compiling ClawRetract.cpp failed.
-In file included from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/Robot.h:2:0,
-                 from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\commands\ClawRetract.cpp:9:
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/OI.h:64:12: error: 'double OI::getControlJoy()' cannot be overloaded
-     double getControlJoy();
-            ^~~~~~~~~~~~~
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/OI.h:56:12: error: with 'double OI::getControlJoy()'
-     double getControlJoy();
-            ^~~~~~~~~~~~~
+compiling ClawRetract.cpp successful.
 In file included from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/Robot.h:16:0,
                  from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\commands\ClawRetract.cpp:9:
 C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/subsystems/DriveTrain.h:14:99: note: #pragma message: warning: SetSteerSetPoint takes an encoder value - map angles before calling!
@@ -71,15 +39,7 @@ C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/subs
  #pragma message ( "warning: figure out what radius is" )
                                                         ^
 
-compiling CommandRamp.cpp failed.
-In file included from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/Robot.h:2:0,
-                 from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\commands\CommandRamp.cpp:7:
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/OI.h:64:12: error: 'double OI::getControlJoy()' cannot be overloaded
-     double getControlJoy();
-            ^~~~~~~~~~~~~
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/OI.h:56:12: error: with 'double OI::getControlJoy()'
-     double getControlJoy();
-            ^~~~~~~~~~~~~
+compiling CommandRamp.cpp successful.
 In file included from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/Robot.h:16:0,
                  from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\commands\CommandRamp.cpp:7:
 C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/subsystems/DriveTrain.h:14:99: note: #pragma message: warning: SetSteerSetPoint takes an encoder value - map angles before calling!
@@ -89,33 +49,7 @@ C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/subs
  #pragma message ( "warning: figure out what radius is" )
                                                         ^
 
-compiling LiftUp.cpp failed.
-In file included from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/Robot.h:2:0,
-                 from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\commands\LiftUp.cpp:7:
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/OI.h:64:12: error: 'double OI::getControlJoy()' cannot be overloaded
-     double getControlJoy();
-            ^~~~~~~~~~~~~
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/OI.h:56:12: error: with 'double OI::getControlJoy()'
-     double getControlJoy();
-            ^~~~~~~~~~~~~
-In file included from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/Robot.h:16:0,
-                 from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\commands\LiftUp.cpp:7:
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/subsystems/DriveTrain.h:14:99: note: #pragma message: warning: SetSteerSetPoint takes an encoder value - map angles before calling!
- #pragma message ( "warning: SetSteerSetPoint takes an encoder value - map angles before calling!" )
-                                                                                                   ^
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/subsystems/DriveTrain.h:94:56: note: #pragma message: warning: figure out what radius is
- #pragma message ( "warning: figure out what radius is" )
-                                                        ^
-
-compiling LiftDown.cpp failed.
-In file included from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/Robot.h:2:0,
-                 from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\commands\LiftDown.cpp:7:
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/OI.h:64:12: error: 'double OI::getControlJoy()' cannot be overloaded
-     double getControlJoy();
-            ^~~~~~~~~~~~~
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/OI.h:56:12: error: with 'double OI::getControlJoy()'
-     double getControlJoy();
-            ^~~~~~~~~~~~~
+compiling LiftDown.cpp successful.
 In file included from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/Robot.h:16:0,
                  from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\commands\LiftDown.cpp:7:
 C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/subsystems/DriveTrain.h:14:99: note: #pragma message: warning: SetSteerSetPoint takes an encoder value - map angles before calling!
@@ -125,15 +59,7 @@ C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/subs
  #pragma message ( "warning: figure out what radius is" )
                                                         ^
 
-compiling ResetPigeonYaw.cpp failed.
-In file included from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/Robot.h:2:0,
-                 from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\commands\ResetPigeonYaw.cpp:2:
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/OI.h:64:12: error: 'double OI::getControlJoy()' cannot be overloaded
-     double getControlJoy();
-            ^~~~~~~~~~~~~
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/OI.h:56:12: error: with 'double OI::getControlJoy()'
-     double getControlJoy();
-            ^~~~~~~~~~~~~
+compiling ResetPigeonYaw.cpp successful.
 In file included from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/Robot.h:16:0,
                  from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\commands\ResetPigeonYaw.cpp:2:
 C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/subsystems/DriveTrain.h:14:99: note: #pragma message: warning: SetSteerSetPoint takes an encoder value - map angles before calling!
@@ -142,63 +68,67 @@ C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/subs
 C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/subsystems/DriveTrain.h:94:56: note: #pragma message: warning: figure out what radius is
  #pragma message ( "warning: figure out what radius is" )
                                                         ^
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\commands\ResetPigeonYaw.cpp: In constructor 'ResetPigeonYaw::ResetPigeonYaw(double)':
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\commands\ResetPigeonYaw.cpp:4:11: error: 'pigeon' is not a member of 'Robot'
-  Requires(Robot::pigeon);
-           ^~~~~
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\commands\ResetPigeonYaw.cpp: In member function 'virtual void ResetPigeonYaw::Execute()':
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\commands\ResetPigeonYaw.cpp:13:5: error: 'pigeon' is not a member of 'Robot'
-     Robot::pigeon->ResetYaw(offset);
-     ^~~~~
 
-compiling OI.cpp failed.
-In file included from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\OI.cpp:1:0:
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/OI.h:64:12: error: 'double OI::getControlJoy()' cannot be overloaded
-     double getControlJoy();
-            ^~~~~~~~~~~~~
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/OI.h:56:12: error: with 'double OI::getControlJoy()'
-     double getControlJoy();
-            ^~~~~~~~~~~~~
+compiling UpdatePigeon.cpp successful.
 In file included from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/Robot.h:16:0,
-                 from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\OI.cpp:9:
+                 from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\commands\UpdatePigeon.cpp:2:
 C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/subsystems/DriveTrain.h:14:99: note: #pragma message: warning: SetSteerSetPoint takes an encoder value - map angles before calling!
  #pragma message ( "warning: SetSteerSetPoint takes an encoder value - map angles before calling!" )
                                                                                                    ^
 C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/subsystems/DriveTrain.h:94:56: note: #pragma message: warning: figure out what radius is
  #pragma message ( "warning: figure out what radius is" )
                                                         ^
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\OI.cpp: In constructor 'OI::OI()':
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\OI.cpp:36:8: error: cannot call constructor 'OI::OI' directly [-fpermissive]
- OI::OI() {
-        ^
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\OI.cpp:36:8: note: for a function-style cast, remove the redundant '::OI'
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\OI.cpp:36:10: error: expected ';' before '{' token
- OI::OI() {
-          ^
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\OI.cpp:108:33: error: qualified-id in declaration before '(' token
- Joystick* OI::getControlJoystick() {
-                                 ^
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\OI.cpp:112:24: error: qualified-id in declaration before '(' token
- double OI::getControlLY()  {
-                        ^
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\OI.cpp:173:2: error: expected '}' at end of input
-  }
-  ^
 
-compiling Robot.cpp failed.
+compiling LiftUp.cpp successful.
+In file included from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/Robot.h:16:0,
+                 from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\commands\LiftUp.cpp:7:
+C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/subsystems/DriveTrain.h:14:99: note: #pragma message: warning: SetSteerSetPoint takes an encoder value - map angles before calling!
+ #pragma message ( "warning: SetSteerSetPoint takes an encoder value - map angles before calling!" )
+                                                                                                   ^
+C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/subsystems/DriveTrain.h:94:56: note: #pragma message: warning: figure out what radius is
+ #pragma message ( "warning: figure out what radius is" )
+                                                        ^
+
+compiling DriveTrain.cpp successful.
+In file included from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\subsystems\DriveTrain.cpp:6:0:
+C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b/WPILib.h:14:2: warning: #warning is a GCC extension
+ #warning "WPILib.h is deprecated; include frc/WPILib.h instead"
+  ^~~~~~~
+C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b/WPILib.h:14:2: warning: #warning "WPILib.h is deprecated; include frc/WPILib.h instead" [-Wcpp]
+In file included from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\subsystems\DriveTrain.cpp:7:0:
+C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b/SpeedControllerGroup.h:14:2: warning: #warning is a GCC extension
+ #warning "SpeedControllerGroup.h is deprecated; include frc/SpeedControllerGroup.h instead"
+  ^~~~~~~
+C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b/SpeedControllerGroup.h:14:2: warning: #warning "SpeedControllerGroup.h is deprecated; include frc/SpeedControllerGroup.h instead" [-Wcpp]
+In file included from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\subsystems\DriveTrain.cpp:1:0:
+C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/subsystems/DriveTrain.h:14:99: note: #pragma message: warning: SetSteerSetPoint takes an encoder value - map angles before calling!
+ #pragma message ( "warning: SetSteerSetPoint takes an encoder value - map angles before calling!" )
+                                                                                                   ^
+C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/subsystems/DriveTrain.h:94:56: note: #pragma message: warning: figure out what radius is
+ #pragma message ( "warning: figure out what radius is" )
+                                                        ^
+
+compiling PigeonPID.cpp successful.
+In file included from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\subsystems\PigeonPID.cpp:3:0:
+C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b/SmartDashboard/SmartDashboard.h:14:2: warning: #warning is a GCC extension
+ #warning "smartdashboard/SmartDashboard.h is deprecated; include frc/smartdashboard/SmartDashboard.h instead"
+  ^~~~~~~
+C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b/SmartDashboard/SmartDashboard.h:14:2: warning: #warning "smartdashboard/SmartDashboard.h is deprecated; include frc/smartdashboard/SmartDashboard.h instead" [-Wcpp]
+In file included from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/Robot.h:16:0,
+                 from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\subsystems\PigeonPID.cpp:6:
+C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/subsystems/DriveTrain.h:14:99: note: #pragma message: warning: SetSteerSetPoint takes an encoder value - map angles before calling!
+ #pragma message ( "warning: SetSteerSetPoint takes an encoder value - map angles before calling!" )
+                                                                                                   ^
+C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/subsystems/DriveTrain.h:94:56: note: #pragma message: warning: figure out what radius is
+ #pragma message ( "warning: figure out what radius is" )
+                                                        ^
+
+compiling Robot.cpp successful.
 In file included from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\Robot.cpp:7:0:
 C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b/WPILib.h:14:2: warning: #warning is a GCC extension
  #warning "WPILib.h is deprecated; include frc/WPILib.h instead"
   ^~~~~~~
 C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b/WPILib.h:14:2: warning: #warning "WPILib.h is deprecated; include frc/WPILib.h instead" [-Wcpp]
-In file included from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/Robot.h:2:0,
-                 from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\Robot.cpp:1:
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/OI.h:64:12: error: 'double OI::getControlJoy()' cannot be overloaded
-     double getControlJoy();
-            ^~~~~~~~~~~~~
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/OI.h:56:12: error: with 'double OI::getControlJoy()'
-     double getControlJoy();
-            ^~~~~~~~~~~~~
 In file included from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/Robot.h:16:0,
                  from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\Robot.cpp:1:
 C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/subsystems/DriveTrain.h:14:99: note: #pragma message: warning: SetSteerSetPoint takes an encoder value - map angles before calling!
@@ -207,37 +137,6 @@ C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/subs
 C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/subsystems/DriveTrain.h:94:56: note: #pragma message: warning: figure out what radius is
  #pragma message ( "warning: figure out what radius is" )
                                                         ^
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\Robot.cpp:15:20: error: 'DriveTrain* Robot::driveTrain' is not a static data member of 'class Robot'
- DriveTrain* Robot::driveTrain = NULL;
-                    ^~~~~~~~~~
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\Robot.cpp:16:16: error: 'Pigeon* Robot::pigeon' is not a static data member of 'class Robot'
- Pigeon* Robot::pigeon = NULL;
-                ^~~~~~
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\Robot.cpp: In member function 'virtual void Robot::RobotInit()':
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\Robot.cpp:54:5: error: 'driveTrain' was not declared in this scope
-     driveTrain = new DriveTrain();
-     ^~~~~~~~~~
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\Robot.cpp:55:5: error: 'pigeon' was not declared in this scope
-     pigeon = new Pigeon();
-     ^~~~~~
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\Robot.cpp: In member function 'virtual void Robot::AutonomousInit()':
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\Robot.cpp:131:5: error: 'pigeon' was not declared in this scope
-     pigeon->Update();
-     ^~~~~~
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\Robot.cpp:134:5: error: 'driveTrain' was not declared in this scope
-     driveTrain->EnablePIDs();
-     ^~~~~~~~~~
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\Robot.cpp: In member function 'virtual void Robot::TeleopPeriodic()':
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\Robot.cpp:218:6: error: 'driveTrain' was not declared in this scope
-      driveTrain->Crab(-oi->getDriveLeftY(), oi->getDriveLeftX(), -oi->getDriveRightX(), fieldCentric);
-      ^~~~~~~~~~
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\Robot.cpp: In member function 'void Robot::Dashboard()':
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\Robot.cpp:274:47: error: 'driveTrain' was not declared in this scope
-     SmartDashboard::PutNumber("FrontLeftVol", driveTrain->frontLeftPos->GetAverageVoltage());
-                                               ^~~~~~~~~~
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\Robot.cpp:298:45: error: 'pigeon' was not declared in this scope
-     SmartDashboard::PutNumber("Pigeon-Yaw", pigeon->GetYaw());
-                                             ^~~~~~
 In file included from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b/frc/IterativeRobotBase.h:10:0,
                  from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b/frc/IterativeRobot.h:10,
                  from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b/frc/WPILib.h:40,
@@ -293,75 +192,7 @@ C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\build\tmp\expandedArc
    static Robot robot;
                 ^~~~~
 
-compiling RobotMap.cpp successful.
-
-compiling Lift.cpp successful.
-
-compiling Pigeon.cpp successful.
-
-compiling PigeonPID.cpp failed.
-In file included from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\subsystems\PigeonPID.cpp:3:0:
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b/SmartDashboard/SmartDashboard.h:14:2: warning: #warning is a GCC extension
- #warning "smartdashboard/SmartDashboard.h is deprecated; include frc/smartdashboard/SmartDashboard.h instead"
-  ^~~~~~~
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b/SmartDashboard/SmartDashboard.h:14:2: warning: #warning "smartdashboard/SmartDashboard.h is deprecated; include frc/smartdashboard/SmartDashboard.h instead" [-Wcpp]
-In file included from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/Robot.h:2:0,
-                 from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\subsystems\PigeonPID.cpp:6:
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/OI.h:64:12: error: 'double OI::getControlJoy()' cannot be overloaded
-     double getControlJoy();
-            ^~~~~~~~~~~~~
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/OI.h:56:12: error: with 'double OI::getControlJoy()'
-     double getControlJoy();
-            ^~~~~~~~~~~~~
-In file included from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/Robot.h:16:0,
-                 from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\subsystems\PigeonPID.cpp:6:
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/subsystems/DriveTrain.h:14:99: note: #pragma message: warning: SetSteerSetPoint takes an encoder value - map angles before calling!
- #pragma message ( "warning: SetSteerSetPoint takes an encoder value - map angles before calling!" )
-                                                                                                   ^
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/subsystems/DriveTrain.h:94:56: note: #pragma message: warning: figure out what radius is
- #pragma message ( "warning: figure out what radius is" )
-                                                        ^
-
-compiling DriveTrain.cpp failed.
-In file included from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\subsystems\DriveTrain.cpp:6:0:
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b/WPILib.h:14:2: warning: #warning is a GCC extension
- #warning "WPILib.h is deprecated; include frc/WPILib.h instead"
-  ^~~~~~~
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b/WPILib.h:14:2: warning: #warning "WPILib.h is deprecated; include frc/WPILib.h instead" [-Wcpp]
-In file included from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\subsystems\DriveTrain.cpp:7:0:
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b/SpeedControllerGroup.h:14:2: warning: #warning is a GCC extension
- #warning "SpeedControllerGroup.h is deprecated; include frc/SpeedControllerGroup.h instead"
-  ^~~~~~~
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\build\tmp\expandedArchives\wpilibc-cpp-2019.4.1-headers.zip_b81507b0c50c581f7502538d67c4b01b/SpeedControllerGroup.h:14:2: warning: #warning "SpeedControllerGroup.h is deprecated; include frc/SpeedControllerGroup.h instead" [-Wcpp]
-In file included from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\subsystems\DriveTrain.cpp:1:0:
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/subsystems/DriveTrain.h:14:99: note: #pragma message: warning: SetSteerSetPoint takes an encoder value - map angles before calling!
- #pragma message ( "warning: SetSteerSetPoint takes an encoder value - map angles before calling!" )
-                                                                                                   ^
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/subsystems/DriveTrain.h:94:56: note: #pragma message: warning: figure out what radius is
- #pragma message ( "warning: figure out what radius is" )
-                                                        ^
-In file included from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/Robot.h:2:0,
-                 from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\subsystems\DriveTrain.cpp:3:
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/OI.h:64:12: error: 'double OI::getControlJoy()' cannot be overloaded
-     double getControlJoy();
-            ^~~~~~~~~~~~~
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/OI.h:56:12: error: with 'double OI::getControlJoy()'
-     double getControlJoy();
-            ^~~~~~~~~~~~~
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\subsystems\DriveTrain.cpp: In member function 'void DriveTrain::Crab(float, float, float, bool)':
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\subsystems\DriveTrain.cpp:67:29: error: 'pigeon' is not a member of 'Robot'
-         double robotangle = Robot::pigeon->GetYaw() * M_PI / 180;
-                             ^~~~~
-
-compiling Ramp.cpp failed.
-In file included from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/Robot.h:2:0,
-                 from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\subsystems\Ramp.cpp:10:
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/OI.h:64:12: error: 'double OI::getControlJoy()' cannot be overloaded
-     double getControlJoy();
-            ^~~~~~~~~~~~~
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/OI.h:56:12: error: with 'double OI::getControlJoy()'
-     double getControlJoy();
-            ^~~~~~~~~~~~~
+compiling Ramp.cpp successful.
 In file included from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/Robot.h:16:0,
                  from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\subsystems\Ramp.cpp:10:
 C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/subsystems/DriveTrain.h:14:99: note: #pragma message: warning: SetSteerSetPoint takes an encoder value - map angles before calling!
@@ -371,17 +202,9 @@ C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/subs
  #pragma message ( "warning: figure out what radius is" )
                                                         ^
 
-compiling RobotArm.cpp failed.
-In file included from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/Robot.h:2:0,
-                 from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\subsystems\RobotArm.cpp:9:
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/OI.h:64:12: error: 'double OI::getControlJoy()' cannot be overloaded
-     double getControlJoy();
-            ^~~~~~~~~~~~~
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/OI.h:56:12: error: with 'double OI::getControlJoy()'
-     double getControlJoy();
-            ^~~~~~~~~~~~~
+compiling OI.cpp successful.
 In file included from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/Robot.h:16:0,
-                 from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\subsystems\RobotArm.cpp:9:
+                 from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\OI.cpp:9:
 C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/subsystems/DriveTrain.h:14:99: note: #pragma message: warning: SetSteerSetPoint takes an encoder value - map angles before calling!
  #pragma message ( "warning: SetSteerSetPoint takes an encoder value - map angles before calling!" )
                                                                                                    ^
@@ -389,30 +212,14 @@ C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/subs
  #pragma message ( "warning: figure out what radius is" )
                                                         ^
 
-compiling UpdatePigeon.cpp failed.
-In file included from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/Robot.h:2:0,
-                 from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\commands\UpdatePigeon.cpp:2:
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/OI.h:64:12: error: 'double OI::getControlJoy()' cannot be overloaded
-     double getControlJoy();
-            ^~~~~~~~~~~~~
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/OI.h:56:12: error: with 'double OI::getControlJoy()'
-     double getControlJoy();
-            ^~~~~~~~~~~~~
+compiling RobotArm.cpp successful.
 In file included from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/Robot.h:16:0,
-                 from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\commands\UpdatePigeon.cpp:2:
+                 from C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\subsystems\RobotArm.cpp:9:
 C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/subsystems/DriveTrain.h:14:99: note: #pragma message: warning: SetSteerSetPoint takes an encoder value - map angles before calling!
  #pragma message ( "warning: SetSteerSetPoint takes an encoder value - map angles before calling!" )
                                                                                                    ^
 C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\include/subsystems/DriveTrain.h:94:56: note: #pragma message: warning: figure out what radius is
  #pragma message ( "warning: figure out what radius is" )
                                                         ^
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\commands\UpdatePigeon.cpp: In constructor 'UpdatePigeon::UpdatePigeon()':
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\commands\UpdatePigeon.cpp:4:14: error: 'pigeon' is not a member of 'Robot'
-     Requires(Robot::pigeon);
-              ^~~~~
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\commands\UpdatePigeon.cpp: In member function 'virtual void UpdatePigeon::Execute()':
-C:\Users\cyborgs\Documents\GitHub\frc4241DS\4241swerve2019\src\main\cpp\commands\UpdatePigeon.cpp:13:5: error: 'pigeon' is not a member of 'Robot'
-     Robot::pigeon->Update();
-     ^~~~~
 
 Finished compileFrcUserProgramReleaseExecutableFrcUserProgramCpp, see full log file:///C:/Users/cyborgs/Documents/GitHub/frc4241DS/4241swerve2019/build/tmp/compileFrcUserProgramReleaseExecutableFrcUserProgramCpp/output.txt.
