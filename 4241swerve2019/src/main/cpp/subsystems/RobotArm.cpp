@@ -30,11 +30,11 @@ void RobotArm::InitDefaultCommand() {
 }
 
 void RobotArm::openClaw() {
-  m_claw->Set(.45);
+  m_claw->Set(1.0);
 }
 
 void RobotArm::closeClaw() {
-  m_claw->Set(-.45);
+  m_claw->Set(-1.0);
  }
 
 void RobotArm::StopClaw() {
