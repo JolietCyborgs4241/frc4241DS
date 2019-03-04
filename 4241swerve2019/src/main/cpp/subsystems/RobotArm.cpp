@@ -56,11 +56,4 @@ void RobotArm::StopExtension() {
 void RobotArm::Fulcrum() {
    double motorValue =  -Robot::oi->getControlLY(); // INVERT the value!
    m_fulcrum->Set(motorValue); //Working Version
-
-  //  if (motorValue = 0) {
-  //    m_fulcrum->Set(.1);
-  //  }
-  //  else {
-  //    m_fulcrum->Set(motorValue);
-  //  }
 }
