@@ -55,12 +55,12 @@ void RobotArm::StopExtension() {
 
 void RobotArm::Fulcrum() {
    double motorValue =  -Robot::oi->getControlLY(); // INVERT the value!
-   m_fulcrum->Set(motorValue);
-/*void RobotArm::Fulcrum() {
-   double motorValue = - (Robot::oi->getControlLY()); // INVERT the value!
-   m_fulcrum->Set(motorValue);
-} */
+   m_fulcrum->Set(motorValue); //Working Version
 
-// Put methods for controlling this subsystem
-// here. Call these from Commands.
+  //  if (motorValue = 0) {
+  //    m_fulcrum->Set(.1);
+  //  }
+  //  else {
+  //    m_fulcrum->Set(motorValue);
+  //  }
 }
