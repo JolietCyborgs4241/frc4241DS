@@ -13,7 +13,7 @@
 using namespace frc;
 class RobotArm : public frc::Subsystem {
  private:
- //WPI_TalonSRX* m_fulcrum;
+ WPI_TalonSRX* m_fulcrum;
 
  WPI_TalonSRX* m_extension;
  WPI_TalonSRX* m_claw;

@@ -17,7 +17,7 @@ void LiftUp::Initialize() {}
 
 // Called repeatedly when this Command is scheduled to run
 void LiftUp::Execute() {
-  Robot::lift->LiftUp();
+  //Robot::lift->LiftUp();
 }
 
 // Make this return true when this Command no longer needs to run execute()
@@ -29,5 +29,5 @@ void LiftUp::End() {}
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void LiftUp::Interrupted() {
-    Robot::lift->LiftStop();
+    //Robot::lift->LiftStop();
 }

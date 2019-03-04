@@ -17,7 +17,7 @@ void LiftDown::Initialize() {}
 
 // Called repeatedly when this Command is scheduled to run
 void LiftDown::Execute() {
-  Robot::lift->LiftDown();
+  //Robot::lift->LiftDown();
 }
 
 // Make this return true when this Command no longer needs to run execute()
@@ -29,5 +29,5 @@ void LiftDown::End() {}
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void LiftDown::Interrupted() {
-    Robot::lift->LiftStop();
+    //Robot::lift->LiftStop();
 }

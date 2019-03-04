@@ -28,8 +28,8 @@ OI::OI() {
     ControlY->WhileHeld(new ClawClose());
     ControlLB->WhileHeld(new ClawExtend());
     ControlRB->WhileHeld(new ClawRetract());
-    ControlB->WhileHeld(new LiftUp());
-    ControlA->WhileHeld(new LiftDown());
+    // ControlB->WhileHeld(new LiftUp());
+    // ControlA->WhileHeld(new LiftDown());
     Select->WhileHeld(new CommandRamp());
 }
 

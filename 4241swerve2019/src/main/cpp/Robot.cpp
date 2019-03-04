@@ -10,7 +10,7 @@ using namespace frc;
 
 OI* Robot::oi = NULL;
 RobotArm* Robot::robotArm = NULL;
-Lift* Robot::lift = NULL;
+//Lift* Robot::lift = NULL;
 Ramp* Robot::ramp = NULL;
 DriveTrain* Robot::driveTrain = NULL;
 Pigeon* Robot::pigeon = NULL;
@@ -49,7 +49,7 @@ void Robot::RobotInit() {
     RobotMap::init();
     CameraServer::GetInstance()->StartAutomaticCapture(0);
     oi = new OI();
-    lift = new Lift();
+   //lift = new Lift();
     ramp = new Ramp();
     driveTrain = new DriveTrain();
     pigeon = new Pigeon();
@@ -214,7 +214,7 @@ void Robot::TeleopInit() {
  void Robot::TeleopPeriodic() {
      SmartDashboard::PutNumber("CycleTime", Timer::GetFPGATimestamp() - cycleTime);
      cycleTime = Timer::GetFPGATimestamp();
-     //Robot::robotArm->Fulcrum();
+     Robot::robotArm->Fulcrum();
      driveTrain->Crab(-oi->getDriveLeftY(), oi->getDriveLeftX(), -oi->getDriveRightX(), 0);
     //driveTrain->Crab(0.0, 0.0, 0.0, 0.0); //useGyro is undefined, placed placeholder value, not sure what true value is 
     // driveTrain->Crab(0.0, 0.0, 0.0, fieldCentric); This function was in here before, but old code does not include fieldcentric

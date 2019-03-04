@@ -37,6 +37,7 @@ WPI_TalonSRX* RobotMap::ramp = NULL;
 WPI_TalonSRX* RobotMap::lift = NULL;
 WPI_TalonSRX* RobotMap::robotArmClaw = NULL;
 WPI_TalonSRX* RobotMap::robotArmExtension = NULL;
+WPI_TalonSRX* RobotMap::robotArmFulcrum = NULL;
 
 
 /*WPI_TalonSRX* RobotMap::elevatorMotor = NULL;
@@ -46,9 +47,10 @@ DigitalInput* RobotMap::elevatorBottomLimitSwitch = NULL; */
 void RobotMap::init() {
     LiveWindow* lw = LiveWindow::GetInstance();
     ramp = new WPI_TalonSRX(TALON_RAMPS);
-    lift = new WPI_TalonSRX(TALON_LIFT);
+    //lift = new WPI_TalonSRX(TALON_LIFT);
     robotArmClaw = new WPI_TalonSRX(TALON_ARM_CLAW);
     robotArmExtension = new WPI_TalonSRX(TALON_ARM_EXTEND);
+    robotArmFulcrum = new WPI_TalonSRX(TALON_LIFT);
 
     driveTrainFrontLeftDrive = new WPI_TalonSRX(TALON_FL_DRIVE);
     driveTrainFrontLeftSteer = new WPI_TalonSRX(TALON_FL_STEER);

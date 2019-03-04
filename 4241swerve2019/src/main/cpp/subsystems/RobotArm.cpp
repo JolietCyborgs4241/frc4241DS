@@ -16,7 +16,7 @@ using namespace frc;
 
 
 RobotArm::RobotArm() : Subsystem("ExampleSubsystem") {
-  //m_fulcrum = RobotMap::robotArmFulcrum;
+  m_fulcrum = RobotMap::robotArmFulcrum;
   m_extension = RobotMap::robotArmExtension;
   m_claw = RobotMap::robotArmClaw;
   m_claw->ConfigForwardLimitSwitchSource(LimitSwitchSource::LimitSwitchSource_FeedbackConnector, LimitSwitchNormal::LimitSwitchNormal_NormallyOpen, TALON_CONFIG_TIMEOUT);
@@ -55,6 +55,7 @@ void RobotArm::StopExtension() {
 
 void RobotArm::Fulcrum() {
    double motorValue =  -Robot::oi->getControlLY(); // INVERT the value!
+   m_fulcrum->Set(motorValue);
 /*void RobotArm::Fulcrum() {
    double motorValue = - (Robot::oi->getControlLY()); // INVERT the value!
    m_fulcrum->Set(motorValue);

@@ -23,7 +23,7 @@ class Robot : public IterativeRobot {
     // Command *autonomousCommand;
     static OI* oi;
     static RobotArm* robotArm;
-    static Lift* lift;
+    //static Lift* lift;
     static Ramp* ramp;
     static Pigeon* pigeon;
     static DriveTrain* driveTrain;
