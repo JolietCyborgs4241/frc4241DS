@@ -10,7 +10,7 @@ using namespace frc;
 
 OI* Robot::oi = NULL;
 RobotArm* Robot::robotArm = NULL;
-//Lift* Robot::lift = NULL;
+//Lift* Robot::lift = NUL L;
 Ramp* Robot::ramp = NULL;
 DriveTrain* Robot::driveTrain = NULL;
 Pigeon* Robot::pigeon = NULL;
@@ -23,7 +23,7 @@ LIDARLite* Robot::rightLidarLite = NULL;
 bool Robot::gyroAssist = false; 
 //PigeonPID* Robot::gyroAssistPID = NULL;
 
-bool Robot::fieldCentric = true;
+bool Robot::fieldCentric = false;
 
 // Pigeon* Robot::pigeon = NULL;
 // Elevator* Robot::elevator = NULL;
@@ -128,10 +128,10 @@ void Robot::RobotInit() {
 }
 
 void Robot::AutonomousInit() {
-    // pigeon->Update();
-    // pigeon->SaveTilt();
+     pigeon->Update();
+     pigeon->SaveTilt();
 
-    // driveTrain->EnablePIDs();
+     driveTrain->EnablePIDs();
 
    //gameData = frc::DriverStation::GetInstance().GetGameSpecificMessage();
 
@@ -140,6 +140,11 @@ void Robot::AutonomousInit() {
 }
 
 void Robot::Autonomous() {
+  //Same Teleop functionality will run in autonomous
+  SmartDashboard::PutNumber("CycleTime", Timer::GetFPGATimestamp() - cycleTime);
+  cycleTime = Timer::GetFPGATimestamp();
+  Robot::robotArm->Fulcrum();
+  driveTrain->Crab(-oi->getDriveLeftY(), oi->getDriveLeftX(), -oi->getDriveRightX(), fieldCentric);
   /*std::string autoSelected = m_chooser.GetSelected();
   // std::string autoSelected = frc::SmartDashboard::GetString(
   // "Auto Selector", kAutoNameDefault);
@@ -171,24 +176,7 @@ void Robot::Autonomous() {
     m_robotDrive.ArcadeDrive(0.0, 0.0);
   } */
 }
-/**
- * Runs the motors with arcade steering.
- */
 
-
-/**
- * Runs the motors with arcade steering.
- */
-/*void Robot::OperatorControl() {
-  m_robotDrive.SetSafetyEnabled(true);
-  while (IsOperatorControl() && IsEnabled()) {
-    // Drive with arcade style (use right stick)
-    m_robotDrive.ArcadeDrive(-m_stick.GetX(), m_stick.GetY());
-
-    // The motors will be updated every 5ms
-    frc::Wait(0.005);
-  }
-} */
 
  
 
@@ -229,7 +217,7 @@ void Robot::TeleopInit() {
 //     } else {
 //         driveTrain->Crab(-oi->getDriveLeftY(), oi->getDriveLeftX(), -oi->getDriveRightX(), fieldCentric);
 //    }
-     //Robot::robotArm->Fulcrum();
+    
      
 //     // Drive Control
 //     // joystickY is -up, so invert to match +Y -> forward

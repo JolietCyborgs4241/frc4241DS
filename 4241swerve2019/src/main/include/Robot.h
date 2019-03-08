@@ -27,7 +27,7 @@ class Robot : public IterativeRobot {
     static Ramp* ramp;
     static Pigeon* pigeon;
     static DriveTrain* driveTrain;
-    /*static Pigeon* pigeon;
+    /*
     static Elevator* elevator;
     static Pneumatics* pneumatics;
     static Elevator2* elevator2;
@@ -94,7 +94,7 @@ class Robot : public frc::TimedRobot {
     LiveWindow* lw;
     virtual void RobotInit();
     virtual void AutonomousInit();
-    //virtual void AutonomousPeriodic();
+    virtual void AutonomousPeriodic();
     virtual void TeleopInit();
     virtual void TeleopPeriodic();
     virtual void TestPeriodic();
