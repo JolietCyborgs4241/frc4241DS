@@ -7,14 +7,14 @@
 
 // drivetrain -----------------------------------------------------
 
-#define TALON_RL_DRIVE          1
+#define TALON_RL_DRIVE          3
 #define TALON_RL_STEER          2
 
-#define TALON_FL_DRIVE          3
+#define TALON_FL_DRIVE          5
 #define TALON_FL_STEER          4
 
-#define TALON_RR_DRIVE          6
-#define TALON_RR_STEER          7
+#define TALON_RR_DRIVE          7
+#define TALON_RR_STEER          6
 
 #define TALON_FR_STEER          8
 #define TALON_FR_DRIVE          9
@@ -26,7 +26,7 @@
 
 // other subsystems ------------------------------------------------
 
-#define TALON_RAMPS		5
+#define TALON_RAMPS		1
 
 #define TALON_LIFT		10
 
