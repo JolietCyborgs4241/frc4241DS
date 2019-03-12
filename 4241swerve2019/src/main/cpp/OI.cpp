@@ -24,13 +24,13 @@ OI::OI() {
     Select = new JoystickButton(xBoxControl, 7);
 
     // Xbox controller set up
-    ControlX->WhileHeld(new ClawOpen());
-    ControlY->WhileHeld(new ClawClose());
+    ControlB->WhileHeld(new ClawOpen());
+    ControlA->WhileHeld(new ClawClose());
     ControlLB->WhileHeld(new ClawExtend());
     ControlRB->WhileHeld(new ClawRetract());
     // ControlB->WhileHeld(new LiftUp());
     // ControlA->WhileHeld(new LiftDown());
-    Select->WhileHeld(new CommandRamp());
+    // Select->WhileHeld(new CommandRamp());
 }
 
 

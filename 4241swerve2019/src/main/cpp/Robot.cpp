@@ -48,6 +48,7 @@ bool Robot::fieldCentric = false;
 void Robot::RobotInit() {
     RobotMap::init();
     CameraServer::GetInstance()->StartAutomaticCapture(0);
+     CameraServer::GetInstance()->StartAutomaticCapture(1);
     oi = new OI();
    //lift = new Lift();
     ramp = new Ramp();
@@ -139,12 +140,13 @@ void Robot::AutonomousInit() {
     //autoTimer->Start();
 }
 
-void Robot::Autonomous() {
+void Robot::AutonomousPeriodic() {
   //Same Teleop functionality will run in autonomous
   SmartDashboard::PutNumber("CycleTime", Timer::GetFPGATimestamp() - cycleTime);
   cycleTime = Timer::GetFPGATimestamp();
   Robot::robotArm->Fulcrum();
   driveTrain->Crab(-oi->getDriveLeftY(), oi->getDriveLeftX(), -oi->getDriveRightX(), fieldCentric);
+  Scheduler::GetInstance()->Run();
   /*std::string autoSelected = m_chooser.GetSelected();
   // std::string autoSelected = frc::SmartDashboard::GetString(
   // "Auto Selector", kAutoNameDefault);
