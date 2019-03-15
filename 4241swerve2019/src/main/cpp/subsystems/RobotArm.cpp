@@ -21,7 +21,7 @@ RobotArm::RobotArm() : Subsystem("ExampleSubsystem") {
   m_claw = RobotMap::robotArmClaw;
   m_claw->ConfigForwardLimitSwitchSource(LimitSwitchSource::LimitSwitchSource_FeedbackConnector, LimitSwitchNormal::LimitSwitchNormal_NormallyOpen, TALON_CONFIG_TIMEOUT);
   m_claw->ConfigReverseLimitSwitchSource(LimitSwitchSource::LimitSwitchSource_FeedbackConnector, LimitSwitchNormal::LimitSwitchNormal_NormallyOpen, TALON_CONFIG_TIMEOUT);
-
+  armangle = RobotMap::armangle;
 }
 
 void RobotArm::InitDefaultCommand() {
@@ -57,3 +57,5 @@ void RobotArm::Fulcrum() {
    double motorValue =  -Robot::oi->getControlLY(); // INVERT the value!
    m_fulcrum->Set(motorValue); //Working Version
 }
+
+

@@ -38,6 +38,7 @@ WPI_TalonSRX* RobotMap::lift = NULL;
 WPI_TalonSRX* RobotMap::robotArmClaw = NULL;
 WPI_TalonSRX* RobotMap::robotArmExtension = NULL;
 WPI_TalonSRX* RobotMap::robotArmFulcrum = NULL;
+Potentiometer* RobotMap::armangle = NULL;
 
 
 /*WPI_TalonSRX* RobotMap::elevatorMotor = NULL;
@@ -51,6 +52,7 @@ void RobotMap::init() {
     robotArmClaw = new WPI_TalonSRX(TALON_ARM_CLAW);
     robotArmExtension = new WPI_TalonSRX(TALON_ARM_EXTEND);
     robotArmFulcrum = new WPI_TalonSRX(TALON_LIFT);
+    armangle = new AnalogPotentiometer(0, 270, 0);
 
     driveTrainFrontLeftDrive = new WPI_TalonSRX(TALON_FL_DRIVE);
     driveTrainFrontLeftSteer = new WPI_TalonSRX(TALON_FL_STEER);

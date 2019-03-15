@@ -14,13 +14,14 @@ using namespace frc;
 class RobotArm : public frc::Subsystem {
  private:
  WPI_TalonSRX* m_fulcrum;
-
+ Potentiometer *armangle;
  WPI_TalonSRX* m_extension;
  WPI_TalonSRX* m_claw;
  //WPI_TalonSRX* ramp;
  //WPI_TalonSRX* lift;
  DigitalInput* limitswitchopen;
  DigitalInput* limitswitchclose;
+ 
   // It's desirable that everything possible under private except
   // for methods that implement subsystem capabilities
 
@@ -34,5 +35,4 @@ class RobotArm : public frc::Subsystem {
   void extendClaw();
   void retractClaw();
   void Fulcrum();
-
 };
