@@ -69,7 +69,7 @@ void RobotMap::init() {
      driveTrainRearRightSteer = new WPI_TalonSRX(TALON_RR_STEER);
     // driveTrainRearRightDrive->ConfigOpenloopRamp(TALON_DRIVE_RAMP_TIME, TALON_CONFIG_TIMEOUT);
 
-    driveTrainRearRightPos = new AnalogInput(2);
+    driveTrainRearRightPos = new AnalogInput(RR_ENCODER);
     /*lw->AddSensor("DriveTrain", "RearRightPos", driveTrainRearRightPos);*/  
    
     driveTrainRearRight = new PIDController(0.6, 0.0, 0.0, driveTrainRearRightPos, driveTrainRearRightSteer, 0.02);
@@ -79,17 +79,17 @@ void RobotMap::init() {
     driveTrainRearRight->SetInputRange(0.0, 5.0);
     driveTrainRearRight->SetOutputRange(-1, 1);
 
-    driveTrainFrontLeftPos = new AnalogInput(0);
+    driveTrainFrontLeftPos = new AnalogInput(FL_ENCODER);
     /*lw->AddSensor("DriveTrain", "FrontLeftPos", driveTrainFrontLeftPos);*/
     
-    driveTrainFrontLeft = new PIDController(0.6, 0.0, 0.0, driveTrainFrontLeftPos, driveTrainFrontLeftSteer, 0.02);
+    driveTrainFrontLeft = new PIDController(0.6, 0.05, 0.0, driveTrainFrontLeftPos, driveTrainFrontLeftSteer, 0.02);
     /*lw->AddActuator("DriveTrain", "FrontLeft", driveTrainFrontLeft);*/
     driveTrainFrontLeft->SetContinuous(true);
     driveTrainFrontLeft->SetAbsoluteTolerance(0.1);
     driveTrainFrontLeft->SetInputRange(0.0, 5.0);
     driveTrainFrontLeft->SetOutputRange(-1, 1);
 
-    driveTrainFrontRightPos = new AnalogInput(1);
+    driveTrainFrontRightPos = new AnalogInput(FR_ENCODER);
     /*lw->AddSensor("DriveTrain", "FrontRightPos", driveTrainFrontRightPos);*/
     driveTrainFrontRight = new PIDController(0.6, 0.0, 0.0, driveTrainFrontRightPos, driveTrainFrontRightSteer, 0.02);
     /*lw->AddActuator("DriveTrain", "FrontRight", driveTrainFrontRight);*/
@@ -98,7 +98,7 @@ void RobotMap::init() {
     driveTrainFrontRight->SetInputRange(0.0, 5.0);
     driveTrainFrontRight->SetOutputRange(-1, 1);
 
-    driveTrainRearLeftPos = new AnalogInput(3);
+    driveTrainRearLeftPos = new AnalogInput(RL_ENCODER);
     /*lw->AddSensor("DriveTrain", "RearLeftPos", driveTrainRearLeftPos);*/
     
     driveTrainRearLeft = new PIDController(0.6, 0.0, 0.0, driveTrainRearLeftPos, driveTrainRearLeftSteer, 0.02);

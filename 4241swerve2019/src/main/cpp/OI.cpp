@@ -24,8 +24,8 @@ OI::OI() {
     Select = new JoystickButton(xBoxControl, 7);
 
     // Xbox controller set up
-    ControlX->WhileHeld(new ClawOpen());
-    ControlY->WhileHeld(new ClawClose());
+    ControlA->WhileHeld(new ClawOpen());
+    ControlB->WhileHeld(new ClawClose());
     ControlLB->WhileHeld(new ClawExtend());
     ControlRB->WhileHeld(new ClawRetract());
     // ControlB->WhileHeld(new LiftUp());
