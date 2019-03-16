@@ -10,6 +10,7 @@
 #include <frc/commands/Subsystem.h>
 #include "ctre/Phoenix.h"
 #include "frc/WPILib.h"
+
 using namespace frc;
 class RobotArm : public frc::Subsystem {
  private:
@@ -17,10 +18,11 @@ class RobotArm : public frc::Subsystem {
  Potentiometer *armangle;
  WPI_TalonSRX* m_extension;
  WPI_TalonSRX* m_claw;
- //WPI_TalonSRX* ramp;
- //WPI_TalonSRX* lift;
  DigitalInput* limitswitchopen;
  DigitalInput* limitswitchclose;
+
+ double StartingPosition = 0;
+
  
   // It's desirable that everything possible under private except
   // for methods that implement subsystem capabilities
@@ -35,4 +37,6 @@ class RobotArm : public frc::Subsystem {
   void extendClaw();
   void retractClaw();
   void Fulcrum();
+  void ArmSetStartingPosition();
+  double ArmGetPosition();
 };

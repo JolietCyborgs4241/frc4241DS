@@ -6,6 +6,7 @@
 #include "frc/liveWindow/LiveWindow.h"
 
 #include "cyborg_talons.h"	// all Talon constants live here
+#include "subsytem_definitions.h" //Definitions for Sensor Values
 
 using namespace frc;
 
@@ -52,7 +53,7 @@ void RobotMap::init() {
     robotArmClaw = new WPI_TalonSRX(TALON_ARM_CLAW);
     robotArmExtension = new WPI_TalonSRX(TALON_ARM_EXTEND);
     robotArmFulcrum = new WPI_TalonSRX(TALON_LIFT);
-    armangle = new AnalogPotentiometer(0, 270, 0);
+    armangle = new AnalogPotentiometer(POT_ANALOG_INPUT, POT_ANGULAR_RANGE, POT_ANGLE_HORIZ_OFFSET); //Set analog input slot for potentiometer, Angle set for between 0 and 270 degrees
 
     driveTrainFrontLeftDrive = new WPI_TalonSRX(TALON_FL_DRIVE);
     driveTrainFrontLeftSteer = new WPI_TalonSRX(TALON_FL_STEER);

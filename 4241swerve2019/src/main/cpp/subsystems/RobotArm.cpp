@@ -22,6 +22,9 @@ RobotArm::RobotArm() : Subsystem("ExampleSubsystem") {
   m_claw->ConfigForwardLimitSwitchSource(LimitSwitchSource::LimitSwitchSource_FeedbackConnector, LimitSwitchNormal::LimitSwitchNormal_NormallyOpen, TALON_CONFIG_TIMEOUT);
   m_claw->ConfigReverseLimitSwitchSource(LimitSwitchSource::LimitSwitchSource_FeedbackConnector, LimitSwitchNormal::LimitSwitchNormal_NormallyOpen, TALON_CONFIG_TIMEOUT);
   armangle = RobotMap::armangle;
+
+  m_extension->ConfigSelectedFeedbackSensor(FeedbackDevice::CTRE_MagEncoder_Relative);
+  
 }
 
 void RobotArm::InitDefaultCommand() {
@@ -56,6 +59,14 @@ void RobotArm::StopExtension() {
 void RobotArm::Fulcrum() {
    double motorValue =  -Robot::oi->getControlLY(); // INVERT the value!
    m_fulcrum->Set(motorValue); //Working Version
+}
+
+void RobotArm::ArmSetStartingPosition() {
+  StartingPosition = m_extension->GetSelectedSensorPosition();
+}
+
+double RobotArm::ArmGetPosition() {
+  return m_extension->GetSelectedSensorPosition() - StartingPosition;
 }
 
 

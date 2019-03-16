@@ -296,7 +296,11 @@ void Robot::TeleopInit() {
 
 
     SmartDashboard::PutNumber("Pigeon-Yaw", pigeon->GetYaw());
+    
+    //Arm Extenstion Sensors
     SmartDashboard::PutNumber("Arm Degrees", RobotMap::armangle->Get());
+    SmartDashboard::PutNumber("Extension Length", robotArm->ArmGetPosition());
+    
     // SmartDashboard::PutBoolean("Pigeon-AmTilted", pigeon->AmTilted());
     // SmartDashboard::PutBoolean("Pigeon-COLLIDED", pigeon->WasCollision());
 
