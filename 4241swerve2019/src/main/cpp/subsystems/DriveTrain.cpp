@@ -155,7 +155,7 @@ void DriveTrain::SetSteerSetpoint(float FLSetPoint, float FRSetPoint, float RLSe
     frontRight->SetSetpoint(CorrectSteerSetpoint(FRSetPoint + FROffset));
     rearLeft->SetSetpoint(CorrectSteerSetpoint(RLSetPoint + RLOffset));
     rearRight->SetSetpoint(CorrectSteerSetpoint(RRSetPoint + RROffset));
-
+/*
     if (fabs(FLSetPoint - frontLeftPos->GetAverageVoltage()) < 1.25 ||
         fabs(FLSetPoint - frontLeftPos->GetAverageVoltage()) > 3.75) {
         frontLeft->SetSetpoint(CorrectSteerSetpoint(FLSetPoint));
@@ -191,7 +191,7 @@ void DriveTrain::SetSteerSetpoint(float FLSetPoint, float FRSetPoint, float RLSe
     } else {
         rearRight->SetSetpoint(CorrectSteerSetpoint(RRSetPoint - 2.5));
         RRInv = -1;
-    }
+    } */
 }
 
 void DriveTrain::SetDriveSpeed(float FLSpeed, float FRSpeed, float RLSpeed, float RRSpeed) {
