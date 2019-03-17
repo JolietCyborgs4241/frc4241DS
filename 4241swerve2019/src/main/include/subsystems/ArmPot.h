@@ -6,45 +6,19 @@
 /*----------------------------------------------------------------------------*/
 
 #pragma once
-
+#include "WPILib.h"
 #include <frc/commands/Subsystem.h>
-#include "ctre/Phoenix.h"
-#include "frc/WPILib.h"
-
 using namespace frc;
-class RobotArm : public frc::Subsystem {
+
+class ArmPot : public frc::Subsystem {
  private:
- WPI_TalonSRX* m_fulcrum;
- Potentiometer *armangle;
- WPI_TalonSRX* m_extension;
- WPI_TalonSRX* m_claw;
- DigitalInput* limitswitchopen;
- DigitalInput* limitswitchclose;
-
- double StartingPosition = 0;
-
- const double kP = 0.1;
- const double kI = 0.0;
- const double kD = 0.0;
- const double kF = 0.0;
-
- const int kTimeoutMs = 10;
-
- const int kPIDLoopIdx = 0; //Talon PID Value 0
- 
+ Potentiometer* armPotent;
   // It's desirable that everything possible under private except
   // for methods that implement subsystem capabilities
 
  public:
-  RobotArm();
+  ArmPot();
   void InitDefaultCommand() override;
-  void openClaw();
-  void closeClaw();
-  void StopClaw();
-  void StopExtension();
-  void extendClaw();
-  void retractClaw();
-  void Fulcrum();
-  void ArmSetStartingPosition();
-  double ArmGetPosition();
+  int ReturnAngleIndex();
+
 };

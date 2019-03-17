@@ -172,12 +172,11 @@ void Robot::TeleopInit() {
      SmartDashboard::PutNumber("CycleTime", Timer::GetFPGATimestamp() - cycleTime);
      cycleTime = Timer::GetFPGATimestamp();
      Robot::robotArm->Fulcrum();
-
-     driveTrain->Crab(-oi->getDriveLeftY(), oi->getDriveLeftX(), -oi->getDriveRightX(), fieldCentric);  
-
-     //Used to test werid behavior on Talon's 
-   // driveTrain->Crab(0.0, 0.0, 0.0, fieldCentric);
-    
+     driveTrain->Crab(-oi->getDriveLeftY(), oi->getDriveLeftX(), -oi->getDriveRightX(), fieldCentric);
+     robotArm->ArmGetPosition();
+    //driveTrain->Crab(0.0, 0.0, 0.0, 0.0); //useGyro is undefined, placed placeholder value, not sure what true value is 
+    // driveTrain->Crab(0.0, 0.0, 0.0, fieldCentric); This function was in here before, but old code does not include fieldcentric
+    //driveTrain->Crab(-oi->getDriveLeftY(), oi->getDriveLeftX(), -oi->getDriveRightX(), fieldCentric);
 //     Drive Control
 //     joystickY is -up, so invert to match +Y -> forward
 //     joystickX is +right, so do nothing to match +X -> right
@@ -258,6 +257,54 @@ void Robot::TeleopInit() {
     SmartDashboard::PutNumber("Talon 4 Output", RobotMap::driveTrainFrontLeftSteer->GetMotorOutputVoltage());
     SmartDashboard::PutNumber("Talon 2 Output", RobotMap::driveTrainRearLeftSteer->GetMotorOutputVoltage());
      SmartDashboard::PutNumber("Talon 6 Output", RobotMap::driveTrainRearRightSteer->GetMotorOutputVoltage());
+    
+    //Arm Extenstion Sensors
+    SmartDashboard::PutNumber("Arm Degrees", RobotMap::armangle->Get());
+    SmartDashboard::PutNumber("Extension Length", robotArm->ArmGetPosition());
+    
+    // SmartDashboard::PutBoolean("Pigeon-AmTilted", pigeon->AmTilted());
+    // SmartDashboard::PutBoolean("Pigeon-COLLIDED", pigeon->WasCollision());
+
+     //SmartDashboard::PutNumber("ControlStickY", oi->getControlLY());
+//     SmartDashboard::PutNumber("DriveStickX", oi->getDriveJoystick()->GetX());
+//     SmartDashboard::PutNumber("DriveStickZ", oi->getDriveJoystick()->GetZ());
+
+//     // Wheel Module Voltages
+//     SmartDashboard::PutNumber("FrontLeftVol", driveTrain->frontLeftPos->GetAverageVoltage());
+//     SmartDashboard::PutNumber("FrontRightVol", driveTrain->frontRightPos->GetAverageVoltage());
+//     SmartDashboard::PutNumber("RearLeftVol", driveTrain->rearLeftPos->GetAverageVoltage());
+//     SmartDashboard::PutNumber("RearRightVol", driveTrain->rearRightPos->GetAverageVoltage());
+//     // Wheel Module Errors
+//     SmartDashboard::PutNumber("FLError", driveTrain->frontLeft->GetError());
+//     SmartDashboard::PutNumber("FRError", driveTrain->frontRight->GetError());
+//     SmartDashboard::PutNumber("RLError", driveTrain->rearLeft->GetError());
+//     SmartDashboard::PutNumber("RRError", driveTrain->rearRight->GetError());
+//     // Wheel Module Setpoints
+//     SmartDashboard::PutNumber("FLSetPoint", driveTrain->frontLeft->GetSetpoint());
+//     SmartDashboard::PutNumber("FRSetPoint", driveTrain->frontRight->GetSetpoint());
+//     SmartDashboard::PutNumber("RLSetPoint", driveTrain->rearLeft->GetSetpoint());
+//     SmartDashboard::PutNumber("RRSetPoint", driveTrain->rearRight->GetSetpoint());
+
+//     SmartDashboard::PutBoolean("LimitSwitch", RobotMap::elevatorUpperLimitSwitch->Get());
+
+//     SmartDashboard::PutNumber("Pigeon-Yaw", pigeon->GetYaw());
+//     SmartDashboard::PutBoolean("Pigeon-AmTilted", pigeon->AmTilted());
+//     SmartDashboard::PutBoolean("Pigeon-COLLIDED", pigeon->WasCollision());
+
+//     SmartDashboard::PutBoolean("Gyro-Assist", gyroAssist);
+//     SmartDashboard::PutNumber("GyroPID-Pos", gyroAssistPID->GetPosition());
+//     SmartDashboard::PutBoolean("GyroPID-OnTarget", gyroAssistPID->OnTarget());
+//     SmartDashboard::PutNumber("GyroPID-Twist", gyroAssistPID->GetOutput());
+//     SmartDashboard::PutNumber("GyroPID-Error", gyroAssistPID->GetDegError());
+
+//     SmartDashboard::PutNumber("Elevator-Distance", elevator->GetDistance());
+//     SmartDashboard::PutNumber("Elevator-Error", elevator->GetPIDError());
+
+//     SmartDashboard::PutNumber("LidarLite-Left", leftLidarLite->SmoothedDistanceFeet());
+//     SmartDashboard::PutNumber("LidarLite-Right", rightLidarLite->SmoothedDistanceFeet());
+
+//     SmartDashboard::PutNumber("Back-Distance", mb1013Sensor->SmoothedDistanceFeet());
+
 //     SmartDashboard::PutBoolean("FieldCentric", fieldCentric);
 
    
