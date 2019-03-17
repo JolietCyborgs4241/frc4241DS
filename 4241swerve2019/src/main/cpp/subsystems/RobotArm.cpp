@@ -23,8 +23,18 @@ RobotArm::RobotArm() : Subsystem("ExampleSubsystem") {
   m_claw->ConfigReverseLimitSwitchSource(LimitSwitchSource::LimitSwitchSource_FeedbackConnector, LimitSwitchNormal::LimitSwitchNormal_NormallyOpen, TALON_CONFIG_TIMEOUT);
   armangle = RobotMap::armangle;
 
-  m_extension->ConfigSelectedFeedbackSensor(FeedbackDevice::CTRE_MagEncoder_Relative);
+  m_extension->ConfigSelectedFeedbackSensor(FeedbackDevice::CTRE_MagEncoder_Relative, kPIDLoopIdx, kTimeoutMs);
   
+  m_extension->Config_kF(kPIDLoopIdx, kF, kTimeoutMs);
+  m_extension->Config_kP(kPIDLoopIdx, kP, kTimeoutMs);
+  m_extension->Config_kI(kPIDLoopIdx, kI, kTimeoutMs);
+  m_extension->Config_kD(kPIDLoopIdx, kD, kTimeoutMs);
+
+  m_extension->ConfigNominalOutputForward(0, kTimeoutMs);
+  m_extension->ConfigNominalOutputReverse(0, kTimeoutMs);
+
+  m_extension->SetSensorPhase(true);
+
 }
 
 void RobotArm::InitDefaultCommand() {
@@ -62,11 +72,11 @@ void RobotArm::Fulcrum() {
 }
 
 void RobotArm::ArmSetStartingPosition() {
-  StartingPosition = m_extension->GetSelectedSensorPosition();
+  StartingPosition = m_extension->GetSelectedSensorPosition(0);
 }
 
 double RobotArm::ArmGetPosition() {
-  return m_extension->GetSelectedSensorPosition() - StartingPosition;
+  return m_extension->GetSelectedSensorPosition(0) - StartingPosition;
 }
 
 

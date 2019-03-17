@@ -23,6 +23,14 @@ class RobotArm : public frc::Subsystem {
 
  double StartingPosition = 0;
 
+ const double kP = 0.1;
+ const double kI = 0.0;
+ const double kD = 0.0;
+ const double kF = 0.0;
+
+ const int kTimeoutMs = 10;
+
+ const int kPIDLoopIdx = 0; //Talon PID Value 0
  
   // It's desirable that everything possible under private except
   // for methods that implement subsystem capabilities

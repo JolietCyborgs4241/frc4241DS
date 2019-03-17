@@ -216,6 +216,7 @@ void Robot::TeleopInit() {
      cycleTime = Timer::GetFPGATimestamp();
      Robot::robotArm->Fulcrum();
      driveTrain->Crab(-oi->getDriveLeftY(), oi->getDriveLeftX(), -oi->getDriveRightX(), fieldCentric);
+     robotArm->ArmGetPosition();
     //driveTrain->Crab(0.0, 0.0, 0.0, 0.0); //useGyro is undefined, placed placeholder value, not sure what true value is 
     // driveTrain->Crab(0.0, 0.0, 0.0, fieldCentric); This function was in here before, but old code does not include fieldcentric
     //driveTrain->Crab(-oi->getDriveLeftY(), oi->getDriveLeftX(), -oi->getDriveRightX(), fieldCentric);
