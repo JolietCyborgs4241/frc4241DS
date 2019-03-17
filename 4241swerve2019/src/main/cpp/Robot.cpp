@@ -234,10 +234,10 @@ void Robot::TeleopInit() {
     SmartDashboard::PutNumber("RearLeftVol", driveTrain->rearLeftPos->GetAverageVoltage());
     SmartDashboard::PutNumber("RearRightVol", driveTrain->rearRightPos->GetAverageVoltage());
     // Wheel Module Errors
-    SmartDashboard::PutNumber("FLError", driveTrain->frontLeft->GetError());
+    /*SmartDashboard::PutNumber("FLError", driveTrain->frontLeft->GetError());
     SmartDashboard::PutNumber("FRError", driveTrain->frontRight->GetError());
     SmartDashboard::PutNumber("RLError", driveTrain->rearLeft->GetError());
-    SmartDashboard::PutNumber("RRError", driveTrain->rearRight->GetError());
+    SmartDashboard::PutNumber("RRError", driveTrain->rearRight->GetError()); */
     // Wheel Module Setpoints
     SmartDashboard::PutNumber("FLSetPoint", driveTrain->frontLeft->GetSetpoint());
     SmartDashboard::PutNumber("FRSetPoint", driveTrain->frontRight->GetSetpoint());
@@ -259,7 +259,7 @@ void Robot::TeleopInit() {
      SmartDashboard::PutNumber("Talon 6 Output", RobotMap::driveTrainRearRightSteer->GetMotorOutputVoltage());
     
     //Arm Extenstion Sensors
-    SmartDashboard::PutNumber("Arm Degrees", RobotMap::armangle->Get());
+    SmartDashboard::PutNumber("Arm Degrees", round(RobotMap::armangle->Get()));
     SmartDashboard::PutNumber("Extension Length", robotArm->ArmGetPosition());
     
     // SmartDashboard::PutBoolean("Pigeon-AmTilted", pigeon->AmTilted());
