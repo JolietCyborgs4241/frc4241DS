@@ -59,10 +59,6 @@ void DriveTrain::Crab(float y, float x, float twist, bool useGyro) {
     float forward = y; 
     float strafe = x;
  
-    char buffer[1000];
-    sprintf(buffer, "Crab(y=%f, x=%f, z=%f, useGyro=%d)", y, x, twist, useGyro);
-    SmartDashboard::PutString("Crab", buffer);
-
     if (useGyro) {
         double robotangle = Robot::pigeon->GetYaw() * M_PI / 180;
         forward = +y * sin(robotangle) + x * cos(robotangle);
@@ -75,9 +71,6 @@ void DriveTrain::Crab(float y, float x, float twist, bool useGyro) {
     BP = strafe - twist * TrackRear / radius;
     CP = forward + twist * TrackFront/ radius;
     DP = forward - twist * TrackFront/ radius;
-
-    sprintf(buffer, "radius=%f, AP=%f, BP=%f, CP=%f, DP=%f", radius, AP, BP, CP, DP);
-    SmartDashboard::PutString("Crab2", buffer);
 
     float FLSetPoint = 0;
     float FRSetPoint = 0;
@@ -93,17 +86,11 @@ void DriveTrain::Crab(float y, float x, float twist, bool useGyro) {
     if (AP != 0 || CP != 0)
         RRSetPoint = (2.5 - 2.5 / pi * atan2(AP, CP));
 
-    sprintf(buffer, "prior to SetSteerSetPoint FLSP=%f FRSP=%f RLSP=%f RRSP=%f", FLSetPoint, FRSetPoint, RLSetPoint, RRSetPoint);
-    SmartDashboard::PutString("Crab2", buffer);
-
     SetSteerSetpoint(FLSetPoint, FRSetPoint, RLSetPoint, RRSetPoint);
     FL = sqrt(pow(BP, 2) + pow(DP, 2));
     FR = sqrt(pow(BP, 2) + pow(CP, 2));
     RL = sqrt(pow(AP, 2) + pow(DP, 2));
     RR = sqrt(pow(AP, 2) + pow(CP, 2));
-
-    sprintf(buffer, "b4 speedarry FL=%f FR=%f RL=%f RR=%f", FL, FR, RL, RR);
-    SmartDashboard::PutString("Crab3", buffer);
 
     // Solve for fastest wheel speed
     double speedarray[] = {fabs(FL), fabs(FR), fabs(RL), fabs(RR)};
