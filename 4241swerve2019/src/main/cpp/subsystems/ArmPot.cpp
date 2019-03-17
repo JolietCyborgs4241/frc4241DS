@@ -8,16 +8,27 @@
 #include "subsystems/ArmPot.h"
 #include "RobotMap.h"
 #include "Robot.h"
+#include "math.h"
 #include "WPILib.h"
 using namespace frc;
 
-ArmPot::ArmPot() : Subsystem("ExampleSubsystem") {}
-
+ArmPot::ArmPot() : Subsystem("ExampleSubsystem") {
 armPotent = RobotMap::armangle;
+}
+
+
 
 void ArmPot::InitDefaultCommand() {
   // Set the default command for a subsystem here.
   // SetDefaultCommand(new MySpecialCommand());
+}
+
+int ArmPot::ReturnAngleIndex() {
+    int indexAngle;
+
+    indexAngle = round(armPotent->Get());
+    return indexAngle;
+
 }
 
 // Put methods for controlling this subsystem
