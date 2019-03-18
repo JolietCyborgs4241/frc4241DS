@@ -259,8 +259,9 @@ void Robot::TeleopInit() {
      SmartDashboard::PutNumber("Talon 6 Output", RobotMap::driveTrainRearRightSteer->GetMotorOutputVoltage());
     
     //Arm Extenstion Sensors
-    SmartDashboard::PutNumber("Arm Degrees", round(RobotMap::armangle->Get()));
-    SmartDashboard::PutNumber("Extension Length", robotArm->ArmGetPosition());
+    SmartDashboard::PutNumber("Arm Angle (degrees)", round(RobotMap::armangle->Get()));
+    SmartDashboard::PutNumber("Ext Offset (inches)", robotArm->ArmRackPosition());
+    SmartDashboard::PutNumber("Max Allowed Ext Offset (inches)", robotArm->ArmRackMaxAllowed());
     
     // SmartDashboard::PutBoolean("Pigeon-AmTilted", pigeon->AmTilted());
     // SmartDashboard::PutBoolean("Pigeon-COLLIDED", pigeon->WasCollision());

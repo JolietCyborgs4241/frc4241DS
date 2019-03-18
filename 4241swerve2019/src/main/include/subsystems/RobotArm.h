@@ -12,6 +12,9 @@
 #include "frc/WPILib.h"
 
 using namespace frc;
+
+#define ARM_EXTENSION_TOLERANCE     0.25
+
 class RobotArm : public frc::Subsystem {
  private:
  WPI_TalonSRX* m_fulcrum;
@@ -47,4 +50,6 @@ class RobotArm : public frc::Subsystem {
   void Fulcrum();
   void ArmSetStartingPosition();
   double ArmGetPosition();
+  double ArmRackPosition();
+  double ArmRackMaxAllowed();
 };

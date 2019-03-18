@@ -10,7 +10,7 @@
 #include "Robotmap.h"
 #include "ctre/Phoenix.h"
 #include "cyborg_talons.h"
-
+#include "subsytem_definitions.h"
 
 using namespace frc;
 
@@ -55,11 +55,19 @@ void RobotArm::StopClaw() {
 }
 
 void RobotArm::extendClaw() {
-  m_extension->Set(1.0);
+  if (RobotArm::ArmRackPosition() > MAX_ARM_EXTEND) {
+    RobotArm::StopExtension();
+  } else {
+    m_extension->Set(1.0);
+  }
 }
 
 void RobotArm::retractClaw() {
-  m_extension->Set(-1.0);
+  if (RobotArm::ArmRackPosition() < 0) {
+    RobotArm::StopExtension();
+  } else {
+    m_extension->Set(-1.0);
+  }
 }
 
 void RobotArm::StopExtension() {
@@ -67,8 +75,51 @@ void RobotArm::StopExtension() {
 }
 
 void RobotArm::Fulcrum() {
+   
    double motorValue =  -Robot::oi->getControlLY(); // INVERT the value!
-   m_fulcrum->Set(motorValue); //Working Version
+   
+   if (motorValue == 0) {
+     
+     // even if the lift isn't moving, we check the arm length
+     //
+     // we have a tolerance for how closely we track the arm length (since we
+     // are under the overall length by a couple of inches based on our calcs,
+     // we can be over our target length by the tolerance amount and still be
+     // FRC legal
+     //
+     // if we are out of tolerance, figure out whether we need to extend or retract
+     //
+     // otherwise stop the extension
+     if (fabs(RobotArm::ArmRackPosition() - RobotArm::ArmRackMaxAllowed()) > ARM_EXTENSION_TOLERANCE) {
+       if (RobotArm::ArmRackPosition() > RobotArm::ArmRackMaxAllowed()) { // we're too long
+         RobotArm::retractClaw();
+       } else {
+         RobotArm::extendClaw();
+       }
+     } else {
+      RobotArm::StopExtension();   // we're within tolerance so make sure it's stopped
+     }
+     
+     m_fulcrum->Set(0.0);     // make sure the lift motor is stopped no matter what
+
+     return;
+   }
+
+   if (motorValue < 0) {  // Lift Going Down
+     if (RobotArm::ArmRackPosition() > RobotArm::ArmRackMaxAllowed()) {
+       RobotArm::retractClaw();
+     } else {
+       RobotArm::StopExtension();
+     }
+   } else {    // Lift going up
+      if (RobotArm::ArmRackPosition() < RobotArm::ArmRackMaxAllowed()) {
+        RobotArm::extendClaw();
+      } else {
+        RobotArm::StopExtension();
+      }
+   }
+   
+   m_fulcrum->Set(motorValue);
 }
 
 void RobotArm::ArmSetStartingPosition() {
@@ -79,4 +130,114 @@ double RobotArm::ArmGetPosition() {
   return m_extension->GetSelectedSensorPosition(0) - StartingPosition;
 }
 
+double RobotArm::ArmRackPosition() {
+  double racklength;
+  racklength = m_extension->GetSelectedSensorPosition(0) / PULSES_PER_REVOLUTION * (RACK_MOTOR_GEAR_TEETH / RACK_TEETH_PER_INCH);
+  return racklength;
+}
 
+double RobotArm::ArmRackMaxAllowed() {
+
+  float	armExtension[] = {
+    0.0,
+    0.0,
+    0.0,
+    0.1,
+    0.1,
+    0.2,
+    0.3,
+    0.4,
+    0.6,
+    0.7,
+    0.9,
+    1.1,
+    1.3,
+    1.5,
+    1.7,
+    2.0,
+    2.3,
+    2.6,
+    2.9,
+    3.2,
+    3.6,
+    4.0,
+    4.4,
+    4.9,
+    5.3,
+    5.8,
+    6.3,
+    6.9,
+    7.5,
+    8.1,
+    8.7,
+    9.4,
+    10.1,
+    10.8,
+    11.6,
+    12.4,
+    13.3,
+    14.2,
+    15.1,
+    16.1,
+    17.2,
+    18.3,
+    19.4,
+    20.7,
+    21.9,
+    23.3,
+    24.7,
+    26.2,
+    27.8,
+    29.5,
+    31.3,
+    33.1,
+    35.1,
+    37.2,
+    39.4,
+    41.8,
+    44.3,
+    47.0,
+    49.9,
+    53.0,
+    56.3,
+    59.8,
+    63.6,
+    67.7,
+    72.1,
+    76.8,
+    82.0,
+    87.7,
+    93.9,
+    100.7,
+    108.2,
+    116.5,
+    125.8,
+    136.1,
+    147.8,
+    161.1,
+    176.3,
+    193.8,
+    214.3,
+    238.5,
+    267.7,
+    303.3,
+    347.9,
+    405.3,
+    481.9,
+    589.1,
+    750.1,
+    1018.5,
+    1555.5,
+    3166.8,
+  };
+
+  int angleIndex;
+
+  angleIndex = (int)(round(RobotMap::armangle->Get()));
+
+  if (angleIndex < 0 || angleIndex > (sizeof(armExtension) / sizeof(armExtension[0]))) {
+    return 0;
+  } else {
+    return armExtension[angleIndex];
+  }
+}
