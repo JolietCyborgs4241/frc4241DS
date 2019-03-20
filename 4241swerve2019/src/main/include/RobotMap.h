@@ -37,6 +37,7 @@ class RobotMap {
     static WPI_TalonSRX* driveTrainRearRightSteer;
     static PIDController* driveTrainRearRight;
     static Pigeon* pigeon;
+    static Potentiometer* armangle;
     // static CameraServer* Cam;
 
     static void init();
