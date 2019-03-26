@@ -2,7 +2,7 @@
 
 # Robot Configuration
 ## PDP Port to function
-0. xxx (40A)
+0. Talon X controlling Y (40A)
 1. xxx (40A)
 2. xxx (40A)
 3. xxx (40A)
