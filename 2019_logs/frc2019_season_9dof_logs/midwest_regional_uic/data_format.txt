@@ -1,0 +1,15 @@
+Unless otherwise documented, this is the basic data format for the 9dof data:
+
+Time (ms) - the sensor typically takes about 1400ms to start logging
+
+Accelerometer (x, y, z)
+
+Gyroscope (x, y, z) - rate of rotation
+
+Magnetometer (x, y, z) - orientation; take this with a grain of salt, it's trying to determine orientation using the earth's magnetic field while being surrounded by motors and their associated magnetic fields
+
+Quaternion (qw, qx, qy, qz)
+
+Euler angle calculations (pitch, roll, yaw)
+
+Heading (degrees?)
