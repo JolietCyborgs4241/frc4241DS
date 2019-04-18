@@ -24,13 +24,13 @@ OI::OI() {
     Select = new JoystickButton(xBoxControl, 7);
 
     // Xbox controller set up
-    ControlB->WhileHeld(new ClawOpen());
-    ControlA->WhileHeld(new ClawClose());
+    ControlA->WhileHeld(new ClawOpen());
+    ControlB->WhileHeld(new ClawClose());
     ControlLB->WhileHeld(new ClawExtend());
     ControlRB->WhileHeld(new ClawRetract());
     // ControlB->WhileHeld(new LiftUp());
     // ControlA->WhileHeld(new LiftDown());
-    // Select->WhileHeld(new CommandRamp());
+    Select->WhileHeld(new CommandRamp());
 }
 
 
@@ -42,6 +42,9 @@ double OI::getControlLY()  {
     return adjustJoystick(xBoxControl->GetRawAxis(1));
 }
 
+double OI::getControlRY() {
+    return adjustJoystick(xBoxControl->GetRawAxis(5));
+}
 Joystick* OI::getDriveJoystick() {
     return xBoxDrive;
 }

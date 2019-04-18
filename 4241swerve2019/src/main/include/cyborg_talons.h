@@ -19,7 +19,7 @@
 #define TALON_FR_STEER          8
 #define TALON_FR_DRIVE          9
 
-#define TALON_DRIVE_RAMP_TIME   0.5
+#define TALON_DRIVE_RAMP_TIME   0.25
 
 
 

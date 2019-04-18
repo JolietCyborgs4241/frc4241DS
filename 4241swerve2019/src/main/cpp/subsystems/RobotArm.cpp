@@ -10,6 +10,7 @@
 #include "Robotmap.h"
 #include "ctre/Phoenix.h"
 #include "cyborg_talons.h"
+#include "math.h"
 #include "subsytem_definitions.h"
 
 using namespace frc;
@@ -218,5 +219,28 @@ double RobotArm::ArmRackMaxAllowed() {
 
 
 
+}
+
+double RobotArm::GetArmDegrees() {
+  double angle;
+  angle = round(RobotArm::armangle->Get());
+  return angle;
+}
+
+void RobotArm::FulcrumMatchSet() {
+
+  //Used before matches to set Arm extension and Angle for proper calibration of 
+  //potentiometer, Only used in Test Periodic
+   m_fulcrum->Set(-Robot::oi->getControlLY()); // INVERT the value!
+
+
+
+}
+
+void RobotArm::ArmExtensionSet() {
+
+  //Used before matches to set Arm extension for proper calibration 
+  //of Mag Encoder, Only used in Test Periodic
+  m_extension->Set(-Robot::oi->getControlRY());
 }
 

@@ -56,20 +56,20 @@ void RobotMap::init() {
 
     driveTrainFrontLeftDrive = new WPI_TalonSRX(TALON_FL_DRIVE);
     driveTrainFrontLeftSteer = new WPI_TalonSRX(TALON_FL_STEER);
-    // driveTrainFrontLeftDrive->ConfigOpenloopRamp(TALON_DRIVE_RAMP_TIME, TALON_CONFIG_TIMEOUT);
+    driveTrainFrontLeftDrive->ConfigOpenloopRamp(TALON_DRIVE_RAMP_TIME, TALON_CONFIG_TIMEOUT);
 
     driveTrainFrontRightDrive = new WPI_TalonSRX(TALON_FR_DRIVE);
     driveTrainFrontRightSteer = new WPI_TalonSRX(TALON_FR_STEER);
 
-    // driveTrainFrontRightDrive->ConfigOpenloopRamp(TALON_DRIVE_RAMP_TIME, TALON_CONFIG_TIMEOUT);
+    driveTrainFrontRightDrive->ConfigOpenloopRamp(TALON_DRIVE_RAMP_TIME, TALON_CONFIG_TIMEOUT);
 
     driveTrainRearLeftDrive = new WPI_TalonSRX(TALON_RL_DRIVE);
     driveTrainRearLeftSteer = new WPI_TalonSRX(TALON_RL_STEER);
-    // driveTrainRearLeftDrive->ConfigOpenloopRamp(TALON_DRIVE_RAMP_TIME, TALON_CONFIG_TIMEOUT);
+    driveTrainRearLeftDrive->ConfigOpenloopRamp(TALON_DRIVE_RAMP_TIME, TALON_CONFIG_TIMEOUT);
 
     driveTrainRearRightDrive = new WPI_TalonSRX(TALON_RR_DRIVE);
      driveTrainRearRightSteer = new WPI_TalonSRX(TALON_RR_STEER);
-    // driveTrainRearRightDrive->ConfigOpenloopRamp(TALON_DRIVE_RAMP_TIME, TALON_CONFIG_TIMEOUT);
+    driveTrainRearRightDrive->ConfigOpenloopRamp(TALON_DRIVE_RAMP_TIME, TALON_CONFIG_TIMEOUT);
 
     driveTrainRearRightPos = new AnalogInput(2);
     /*lw->AddSensor("DriveTrain", "RearRightPos", driveTrainRearRightPos);*/  

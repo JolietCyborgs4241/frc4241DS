@@ -50,4 +50,7 @@ class RobotArm : public frc::Subsystem {
   void Fulcrum();
   double ArmRackPosition();
   double ArmRackMaxAllowed();
+  double GetArmDegrees();
+  void FulcrumMatchSet();
+  void ArmExtensionSet();
 };

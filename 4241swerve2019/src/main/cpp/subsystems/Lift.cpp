@@ -25,7 +25,10 @@ void Lift::LiftUp() {
 }
 
 void Lift::LiftDown() {
-  LiftWinch->Set(1.0);
+  LiftWinch->Set(0.75);   // we lower slower sp we don't out-race the arm retraction
+                          // ideally we would loop the arm extension reading back here
+                          // to lower as fast as we can so long as the arm stays within
+                          // legal limits
 }
 
 void Lift::LiftStop() {

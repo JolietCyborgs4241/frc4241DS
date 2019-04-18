@@ -248,8 +248,16 @@ void Robot::TeleopInit() {
  }
 
  void Robot::TestPeriodic() {
+
+    SmartDashboard::PutNumber("CycleTime", Timer::GetFPGATimestamp() - cycleTime);
+     cycleTime = Timer::GetFPGATimestamp();
+      Dashboard();
+      Robot::robotArm->FulcrumMatchSet(); //Set Arm angle to 56.5 degrees
+      Robot::robotArm->ArmExtensionSet(); //Pull Arm Extension all the way in
+
+     Scheduler::GetInstance()->Run();
 //     driveTrain->DisablePIDs();
-//     Dashboard();
+     Dashboard();
  }
 
  void Robot::Dashboard() {
@@ -282,10 +290,17 @@ void Robot::TeleopInit() {
     SmartDashboard::PutNumber("RRDrive", RobotMap::driveTrainRearRightDrive->GetMotorOutputVoltage());
     SmartDashboard::PutNumber("RLDrive", RobotMap::driveTrainRearLeftDrive->GetMotorOutputVoltage());
 
+    SmartDashboard::PutNumber("FL AMPS", RobotMap::driveTrainFrontLeftDrive->GetOutputCurrent());
+    SmartDashboard::PutNumber("RL AMPS", RobotMap::driveTrainRearLeftDrive->GetOutputCurrent());
+    SmartDashboard::PutNumber("FR AMPS", RobotMap::driveTrainFrontRightDrive->GetOutputCurrent());
+    SmartDashboard::PutNumber("RR AMPS", RobotMap::driveTrainRearRightDrive->GetOutputCurrent());
+
     //SmartDashboard::PutBoolean("LimitSwitch", RobotMap::elevatorUpperLimitSwitch->Get());
 
 
     SmartDashboard::PutNumber("Pigeon-Yaw", pigeon->GetYaw());
+    SmartDashboard::PutNumber("Arm Degrees", robotArm->GetArmDegrees());
+    SmartDashboard::PutNumber("Extension Length", robotArm->ArmRackPosition());
     // SmartDashboard::PutBoolean("Pigeon-AmTilted", pigeon->AmTilted());
     // SmartDashboard::PutBoolean("Pigeon-COLLIDED", pigeon->WasCollision());
 
